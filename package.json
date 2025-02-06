@@ -1,9 +1,11 @@
 {
   "scripts": {
     "dev": "next dev",
+    "lint:eslint:check": "next lint --dir .",
+    "lint:prettier:check": "prettier --check .",
+    "lint:prettier:fix": "prettier --write .",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start"
   },
   "dependencies": {
     "next": "^15.1.6",
@@ -13,6 +15,9 @@
   "devDependencies": {
     "@types/node": "22.13.1",
     "@types/react": "19.0.8",
+    "eslint": "9.19.0",
+    "eslint-config-next": "15.1.6",
+    "prettier": "^3.4.2",
     "typescript": "5.7.3"
   }
 }
