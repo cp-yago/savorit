@@ -1,7 +1,9 @@
-export default function Profile() {
+import React from "react";
+
+const Home: React.FC = () => {
   return (
     <>
-      <h1>Hello from Astolfo and Sushi!</h1>
+      <h1>Hello Astolfo and Sushi!</h1>
       <img
         src="https://i.imgur.com/XNt8yrI.jpeg"
         alt="My cats Astolfo and Sushi"
@@ -9,4 +11,6 @@ export default function Profile() {
       />
     </>
   );
-}
+};
+
+export default Home;
