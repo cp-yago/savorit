@@ -1,5 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-mint-500: oklch(0.72 0.11 178);
+  --font-geist-mono: "Geist Mono";
+  --font-albert-sans: "Albert Sans";
+
+  --color-mint-500: #00ac70;
+  --color-black: #000000;
 }
+
+/* html {
+  font-family: var(--font-geist-mono);
+} */
+
+/* h1 {
+  font-family: var(--font-geist-mono);
+  color: red;
+} */
