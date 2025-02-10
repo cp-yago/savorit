@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const AddRecipe = () => {
   return (
@@ -7,7 +7,10 @@ const AddRecipe = () => {
         <h1 className="text-2xl font-bold mb-6">Add New Recipe</h1>
         <form>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="title">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="title"
+            >
               Title
             </label>
             <input
@@ -18,7 +21,10 @@ const AddRecipe = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="description"
+            >
               Description
             </label>
             <textarea
@@ -28,7 +34,10 @@ const AddRecipe = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="ingredients">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="ingredients"
+            >
               Ingredients
             </label>
             <textarea
@@ -38,7 +47,10 @@ const AddRecipe = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="instructions">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="instructions"
+            >
               Instructions
             </label>
             <textarea
