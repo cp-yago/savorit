@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const Home: React.FC = () => {
   return (
@@ -9,6 +10,11 @@ const Home: React.FC = () => {
         alt="My cats Astolfo and Sushi"
         width={500}
       />
+      <div className="mt-4">
+        <Link href="/add/add-recipe">
+          <a className="text-blue-500 hover:underline">Add New Recipe</a>
+        </Link>
+      </div>
     </>
   );
 };

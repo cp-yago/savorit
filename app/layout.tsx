@@ -1,6 +1,5 @@
 import Head from "next/head";
 import "./styles/global.css";
-import { albert_sans } from "./styles/fonts";
 
 export const metadata = {
   title: "Next.js",
@@ -9,7 +8,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${albert_sans.className}`}>
+    <html lang="en">
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
