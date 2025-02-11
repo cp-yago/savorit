@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import Logo from "@/components/ui/logo";
-import BottomNavigation from "@/components/bottomNavigation";
 
 const Home: React.FC = () => {
   return (
@@ -36,7 +35,6 @@ const Home: React.FC = () => {
         />
         <Button className="w-full h-12">Salvar Receita</Button>
       </div>
-      <BottomNavigation />
     </div>
   );
 };
