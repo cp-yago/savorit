@@ -89,7 +89,9 @@ const NavigationButton = ({
       className="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group"
     >
       {icon}
-      <Link href={path} className="text-sm">{label}</Link>
+      <Link href={path} className="text-sm">
+        {label}
+      </Link>
     </button>
   );
 };
