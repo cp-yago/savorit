@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { TypeAnimation } from "react-type-animation";
-// import { croissant_one } from "@/styles/fonts";
+import { croissant_one } from "@/styles/fonts";
 
 const Logo: React.FC = () => {
     return (
@@ -11,7 +11,7 @@ const Logo: React.FC = () => {
             cursor={true}
             repeat={Infinity}
             style={{ fontSize: "3em", display: "inline-block" }}
-        // className={`${croissant_one.className}`}
+            className={`${croissant_one.className}`}
         />
     );
 };
