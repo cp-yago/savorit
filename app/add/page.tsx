@@ -1,10 +1,9 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-// import { FaInstagram } from 'react-icons/fa';
-// import svgicon from '.'
 import Image from "next/image";
 import Logo from "@/components/ui/logo";
+import BottomNavigation from "@/components/bottomNavigation";
 
 const Home: React.FC = () => {
   return (
@@ -37,6 +36,7 @@ const Home: React.FC = () => {
         />
         <Button className="w-full h-12">Salvar Receita</Button>
       </div>
+      <BottomNavigation />
     </div>
   );
 };
