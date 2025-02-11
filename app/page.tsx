@@ -13,9 +13,7 @@ const Home: React.FC = () => {
         height={500}
       />
       <div className="mt-4">
-        <Link href="/add/add-recipe">
-          Add New Recipe
-        </Link>
+        <Link href="/add/add-recipe">Add New Recipe</Link>
       </div>
     </>
   );
