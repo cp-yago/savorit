@@ -1,13 +1,14 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-// import { FaInstagram } from 'react-icons/fa';
-// import svgicon from '.'
 import Image from "next/image";
+import Logo from "@/components/ui/logo";
+import BottomNavigation from "@/components/bottomNavigation";
 
 const Home: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center bg-red-100 p-4 min-h-dvh">
+      <Logo />
       <h1 className="text-3xl text-center sm:w-80">
         Salve receitas direto das redes sociais!
       </h1>
@@ -35,6 +36,7 @@ const Home: React.FC = () => {
         />
         <Button className="w-full h-12">Salvar Receita</Button>
       </div>
+      <BottomNavigation />
     </div>
   );
 };
