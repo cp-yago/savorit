@@ -12,7 +12,7 @@ const Home: React.FC = () => {
       />
       <div className="mt-4">
         <Link href="/add/add-recipe">
-          <a className="text-blue-500 hover:underline">Add New Recipe</a>
+          Add New Recipe
         </Link>
       </div>
     </>
