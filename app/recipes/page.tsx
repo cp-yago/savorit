@@ -1,3 +1,4 @@
+import RoundButton from "@/components/roundButton";
 import { Input } from "@/components/ui/input";
 import React from "react";
 
@@ -6,7 +7,7 @@ const RecipeList: React.FC = () => {
     <div className="flex flex-col items-center gap-4">
       <header className="flex flex-row justify-between w-full py-4 px-5">
         <h1 className="text-2xl">Receitas</h1>
-        <button>Add Recipe</button>
+        <RoundButton icon="plus" />
       </header>
       <div>
         <Input
