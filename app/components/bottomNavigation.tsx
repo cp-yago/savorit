@@ -1,9 +1,18 @@
+import Link from "next/link";
 import React from "react";
 
-const items = [
+type NavigationItem = {
+  id: number;
+  label: string;
+  path: string;
+  icon: React.ReactNode;
+};
+
+const items: NavigationItem[] = [
   {
     id: 1,
     label: "Recipes",
+    path: "/recipes",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -24,6 +33,7 @@ const items = [
   {
     id: 2,
     label: "Collections",
+    path: "/collections",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -44,6 +54,7 @@ const items = [
   {
     id: 3,
     label: "Account",
+    path: "/account",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -66,9 +77,11 @@ const items = [
 const NavigationButton = ({
   label,
   icon,
+  path,
 }: {
   label: string;
   icon: React.ReactNode;
+  path: string;
 }) => {
   return (
     <button
@@ -76,7 +89,7 @@ const NavigationButton = ({
       className="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group"
     >
       {icon}
-      <span className="text-sm">{label}</span>
+      <Link href={path} className="text-sm">{label}</Link>
     </button>
   );
 };
@@ -86,7 +99,12 @@ const BottomNavigation = (): React.ReactNode => {
     <div className="fixed bottom-0 left-0 z-50 w-full h-16 bg-white border-t border-gray-200 dark:bg-gray-700 dark:border-gray-600">
       <div className={`grid h-full max-w-lg grid-cols-3 mx-auto font-medium`}>
         {items.map((item) => (
-          <NavigationButton key={item.id} label={item.label} icon={item.icon} />
+          <NavigationButton
+            key={item.id}
+            label={item.label}
+            icon={item.icon}
+            path={item.path}
+          />
         ))}
       </div>
     </div>
