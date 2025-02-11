@@ -8,9 +8,11 @@ const RecipeCard: React.FC = () => {
   return (
     <div className="flex flex-col items-center rounded-2xl border-2 p-2">
       <Image
-        src="img/food-01.png"
+        src="https://i.imgur.com/VIPsEYg.png"
         alt="Pastinha de alho poró"
         className="w-[150px]"
+        width={150}
+        height={150}
       />
       <h2 className="text-sm my-1">
         Pastinha de Alho Poró com Tomates Assados
