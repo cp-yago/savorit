@@ -5,6 +5,8 @@
 @theme {
   --color-emerald: #00ac70;
   --color-gray: #818181;
+  --color-soft-pink: #FFAAC7;
+  --color-peach-cream: #FDF7F0;
 }
 
 @layer base {
@@ -63,7 +65,8 @@
     --chart-5: 340 75% 55%;
   }
 
-  h1 {
+  h1,
+  h2 {
     font-family: "Geist Mono", monospace;
     font-weight: bold;
   }
