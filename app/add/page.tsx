@@ -4,10 +4,12 @@ import { Input } from "@/components/ui/input";
 // import { FaInstagram } from 'react-icons/fa';
 // import svgicon from '.'
 import Image from "next/image";
+import Logo from "@/components/ui/logo";
 
 const Home: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center bg-red-100 p-4 min-h-dvh">
+      <Logo />
       <h1 className="text-3xl text-center sm:w-80">
         Salve receitas direto das redes sociais!
       </h1>
