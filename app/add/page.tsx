@@ -1,31 +1,40 @@
 import React from "react";
-import { albert_sans, geist_mono } from "../styles/fonts";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+// import { FaInstagram } from 'react-icons/fa';
+// import svgicon from '.'
+import Image from "next/image";
 
 const Home: React.FC = () => {
   return (
-    <div className="flex flex-col items-center justify-center h-screen p-2">
-      <h1
-        className={`${geist_mono.className} text-3xl font-bold text-center max-w-2xs mb-2`}
-      >
+    <div className="flex flex-col items-center justify-center bg-red-100 p-4 min-h-dvh">
+      <h1 className="text-3xl text-center sm:w-80">
         Salve receitas direto das redes sociais!
       </h1>
-      <p
-        className={`${albert_sans.className} text-gray-400 text-xl font-semibold text-center`}
-      >
-        Copie o link de uma receita do Instagram, Facebook, TikTok ou YouTube, e
-        nós cuidamos do resto.
-      </p>
-      <p className="text-gray-400 text-lg font-semibold text-center mb-4">
-        (Funciona melhor quando a receita está na legenda!)
-      </p>
-      <input
-        type="text"
-        placeholder="Ex: https://www.instagram.com/p/DFYf6I3vPQ7/"
-        className="bg-white w-xs p-2 rounded-3xl border-2 border-solid border-black mb-2"
-      />
-      <button className="w-xs p-2 bg-mint-500 border-2 border-solid border-black rounded-3xl">
-        Salvar Receita
-      </button>
+      <div className="w-80 my-5">
+        <p className="text-gray text-center font-semibold ">
+          Copie o link de uma receita do Instagram e nós cuidamos do resto.
+        </p>
+        <p className="text-gray text-center font-semibold mt-2">
+          (Funciona melhor quando a receita está na legenda!)
+        </p>
+      </div>
+      <div>
+        <Image
+          src="icons/instagram.svg"
+          alt="Instagram icon"
+          width={24}
+          height={24}
+        />
+      </div>
+      <div className="flex flex-col justify-between my-5 w-80 h-30">
+        <Input
+          type="text"
+          placeholder="Cole o link da receita aqui"
+          className="h-12"
+        />
+        <Button className="w-full h-12">Salvar Receita</Button>
+      </div>
     </div>
   );
 };
