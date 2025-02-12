@@ -42,11 +42,7 @@ const icons = {
       stroke="green"
       className="size-6"
     >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M15 18l-6-6 6-6"
-      />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M15 18l-6-6 6-6" />
     </svg>
   ),
 };
@@ -56,9 +52,17 @@ type RoundButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   icon: "plus" | "x" | "back";
 };
 
-const RoundButton: React.FC<RoundButtonProps> = ({ label, icon, className, ...props }) => {
+const RoundButton: React.FC<RoundButtonProps> = ({
+  label,
+  icon,
+  className,
+  ...props
+}) => {
   return (
-    <button {...props} className={`rounded-full border-2 text-green p-2 flex items-center ${className || ""}`}>
+    <button
+      {...props}
+      className={`rounded-full border-2 text-green p-2 flex items-center ${className || ""}`}
+    >
       {icons[icon]}
       {label && <span>{label}</span>}
     </button>
