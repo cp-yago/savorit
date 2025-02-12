@@ -1,6 +1,6 @@
 import Head from "next/head";
-import "./styles/global.css";
-import BottomNavigation from "./components/bottomNavigation";
+import "@/styles/global.css";
+import BottomNavigation from "@/components/bottomNavigation";
 
 export const metadata = {
   title: "Next.js",
