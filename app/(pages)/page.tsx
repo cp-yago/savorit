@@ -4,12 +4,13 @@ import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import Logo from "@/components/ui/logo";
 
+
 const Home: React.FC = () => {
   return (
     <div className="flex flex-col items-center  bg-red-100 p-4 min-h-dvh">
       <Logo className="mb-6" />
       <h1 className="text-2xl text-center sm:w-80 mt-4">
-        Salve receitas direto do instagram!
+        Salve receitas direto do Instagram!
       </h1>
       <div className="w-80 my-5">
         <p className="text-gray text-center font-semibold ">

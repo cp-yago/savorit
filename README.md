@@ -19,8 +19,6 @@ Seu livro de receitas baseado em social medias e AI.
 - [ ] Implementar fluxo de criação de receita
 - [ ] Definir, e talvez criar layout no figma de estado de carregamento
 - [ ] Remover barra de pesquisa da página de lista de receitas
-- [ ] Melhorar layout do card da receita, talvez colocar algum hover event
-- [ ] Mudar title das páginas
 - [ ] Inserir validação no input de url (talvez desabilitar botão caso não tenha link)
 
 
@@ -28,6 +26,9 @@ Seu livro de receitas baseado em social medias e AI.
 ## Done
 
 
+- [ x ] Melhorar layout do card da receita, talvez colocar algum hover event
+- [ x ] Mudar title das páginas
+- [ x ] Ajustar navegação através do bottom menu, que funciona mal
 - [ x ] Remover item Collections do menu inicial
 - [ x ] Ajustar texto da página de criar receita para ficar mais específico o foco no instagram
 - [ x ] Tela de adicionar receita (Layout)

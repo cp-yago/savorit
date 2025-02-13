@@ -7,7 +7,7 @@ import React from "react";
 
 const RecipeCard: React.FC = () => {
   return (
-    <div className="flex flex-col items-center rounded-2xl border-2 p-2">
+    <div className="flex flex-col items-center rounded-2xl border-2 p-2 shadow-md transition-transform duration-200 ease-in-out hover:scale-105 hover:shadow-lg hover:bg-white/10 cursor-pointer">
       <Image
         src="https://i.imgur.com/VIPsEYg.png"
         alt="Pastinha de alho poró"
