@@ -25,6 +25,7 @@ Seu livro de receitas baseado em social medias e AI.
 ## Done
 
 
+- [ x ] Ao clicar em um card de receita, ser redirecionado para a página de receitas
 - [ x ] Ao clicar no botão de adicionar na página de receitas, redirecionar para add page
 - [ x ] Criar página /account só como placeholder
 - [ x ] Remover barra de pesquisa da página de lista de receitas
