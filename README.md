@@ -14,8 +14,7 @@ Seu livro de receitas baseado em social medias e AI.
 
 # To do
 
-- [ ] Ajustar texto da página de criar receita para ficar mais específico o foco no instagram
-- [ ] Remover item Collections do menu inicial
+
 - [ ] Layout página de perfil (Logged in and Logged out)
 - [ ] Implementar fluxo de criação de receita
 - [ ] Definir, e talvez criar layout no figma de estado de carregamento
@@ -28,6 +27,10 @@ Seu livro de receitas baseado em social medias e AI.
 
 ## Done
 
+
+- [ x ] Remover item Collections do menu inicial
+- [ x ] Ajustar texto da página de criar receita para ficar mais específico o foco no instagram
 - [ x ] Tela de adicionar receita (Layout)
 - [ x ] Tela de lista de receitas (Layout)
 - [ x ] Microservice Python que recebe uma url do instagram e devolve uma receita já formatada
+
