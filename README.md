@@ -15,10 +15,10 @@ Seu livro de receitas baseado em social medias e AI.
 # To do
 
 
+- [ ] Ao clicar no botão de adicionar na página de receitas, redirecionar para add page
 - [ ] Layout página de perfil (Logged in and Logged out)
 - [ ] Implementar fluxo de criação de receita
 - [ ] Definir, e talvez criar layout no figma de estado de carregamento
-- [ ] Remover barra de pesquisa da página de lista de receitas
 - [ ] Inserir validação no input de url (talvez desabilitar botão caso não tenha link)
 
 
@@ -26,6 +26,7 @@ Seu livro de receitas baseado em social medias e AI.
 ## Done
 
 
+- [ x ] Remover barra de pesquisa da página de lista de receitas
 - [ x ] Melhorar layout do card da receita, talvez colocar algum hover event
 - [ x ] Mudar title das páginas
 - [ x ] Ajustar navegação através do bottom menu, que funciona mal
