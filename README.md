@@ -20,12 +20,13 @@ Seu livro de receitas baseado em social medias e AI.
 - [ ] Implementar fluxo de criação de receita
 - [ ] Definir, e talvez criar layout no figma de estado de carregamento
 - [ ] Inserir validação no input de url (talvez desabilitar botão caso não tenha link)
-
+- [ ] Ajustar componente de bottom menu para que ele fique igual ao layout, com a aba ativa mais destacada
 
 
 ## Done
 
 
+- [ x ] Criar página /account só como placeholder
 - [ x ] Remover barra de pesquisa da página de lista de receitas
 - [ x ] Melhorar layout do card da receita, talvez colocar algum hover event
 - [ x ] Mudar title das páginas
