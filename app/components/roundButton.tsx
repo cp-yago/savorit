@@ -1,4 +1,7 @@
+"use client";
 import React from "react";
+import { useRouter } from "next/navigation";
+
 
 const icons = {
   plus: (
@@ -50,18 +53,33 @@ const icons = {
 type RoundButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   label?: string;
   icon: "plus" | "x" | "back";
+  redirectTo?: string;
 };
 
 const RoundButton: React.FC<RoundButtonProps> = ({
   label,
   icon,
+  redirectTo,
+  onClick,
   className,
   ...props
 }) => {
+  const router = useRouter();
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (redirectTo) {
+      router.push(`/${redirectTo}`);
+    }
+    if (onClick) {
+      onClick(e);
+    }
+  };
+
   return (
     <button
       {...props}
-      className={`rounded-full border-2 text-green p-2 flex items-center ${className || ""}`}
+      onClick={handleClick}
+      className={`rounded-full border-2 text-green p-2 flex items-center shadow-md transition-transform duration-200 ease-in-out hover:scale-105 hover:shadow-lg hover:bg-white/10 cursor-pointer ${className || ""}`}
     >
       {icons[icon]}
       {label && <span>{label}</span>}

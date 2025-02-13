@@ -15,7 +15,6 @@ Seu livro de receitas baseado em social medias e AI.
 # To do
 
 
-- [ ] Ao clicar no botão de adicionar na página de receitas, redirecionar para add page
 - [ ] Layout página de perfil (Logged in and Logged out)
 - [ ] Implementar fluxo de criação de receita
 - [ ] Definir, e talvez criar layout no figma de estado de carregamento
@@ -26,6 +25,7 @@ Seu livro de receitas baseado em social medias e AI.
 ## Done
 
 
+- [ x ] Ao clicar no botão de adicionar na página de receitas, redirecionar para add page
 - [ x ] Criar página /account só como placeholder
 - [ x ] Remover barra de pesquisa da página de lista de receitas
 - [ x ] Melhorar layout do card da receita, talvez colocar algum hover event
