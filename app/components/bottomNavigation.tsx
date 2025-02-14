@@ -84,7 +84,10 @@ const NavigationButton = ({
   path: string;
 }) => {
   return (
-    <Link href={path} className="inline-flex flex-col items-center justify-center hover:bg-gray-50 dark:hover:bg-gray-800 text-sm">
+    <Link
+      href={path}
+      className="inline-flex flex-col items-center justify-center hover:bg-gray-50 dark:hover:bg-gray-800 text-sm"
+    >
       {icon}
       {label}
     </Link>

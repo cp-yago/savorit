@@ -5,7 +5,6 @@ import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import React from "react";
 
-
 interface RecipeCardProps {
   id: string;
 }

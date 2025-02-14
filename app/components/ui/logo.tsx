@@ -11,7 +11,16 @@ interface LogoProps {
 const Logo: React.FC<LogoProps> = ({ className }) => {
   return (
     <TypeAnimation
-      sequence={["Discover", 1000, "Save it", 1000, "Savor it", 50, "Savorit", 3000]}
+      sequence={[
+        "Discover",
+        1000,
+        "Save it",
+        1000,
+        "Savor it",
+        50,
+        "Savorit",
+        3000,
+      ]}
       wrapper="span"
       cursor={true}
       repeat={Infinity}

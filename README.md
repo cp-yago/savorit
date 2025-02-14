@@ -2,15 +2,13 @@
 
 Seu livro de receitas baseado em social medias e AI.
 
-
 # Requisitos (MVP)
 
 - [ ] O app deve permitir a criação de uma receita a partir de uma URL de um post do Instagram.
 - [ ] O app deve exibir todas as receitas geradas na página de receitas.
 - [ ] O app deve permitir a criação da primeira receita sem login.
-- [ ] A primeira receita do usuário deve ficar salva no local storage do navegador. 
+- [ ] A primeira receita do usuário deve ficar salva no local storage do navegador.
 - [ ] Para criar a segunda receita em diante, o usuário deve fazer login com o Google.
-
 
 # To do
 
@@ -21,9 +19,7 @@ Seu livro de receitas baseado em social medias e AI.
 - [ ] Definir, e talvez criar layout no figma de estado de carregamento
 - [ ] Ajustar componente de bottom menu para que ele fique igual ao layout, com a aba ativa mais destacada
 
-
 ## Done
-
 
 - [ x ] Ao clicar em um card de receita, ser redirecionado para a página de receitas
 - [ x ] Ao clicar no botão de adicionar na página de receitas, redirecionar para add page
@@ -37,4 +33,3 @@ Seu livro de receitas baseado em social medias e AI.
 - [ x ] Tela de adicionar receita (Layout)
 - [ x ] Tela de lista de receitas (Layout)
 - [ x ] Microservice Python que recebe uma url do instagram e devolve uma receita já formatada
-

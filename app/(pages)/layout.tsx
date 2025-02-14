@@ -2,7 +2,6 @@ import Head from "next/head";
 import "@/styles/global.css";
 import BottomNavigation from "@/components/bottomNavigation";
 
-
 export const metadata = {
   title: "Savorit - Salve suas receitas favoritas do Instagram.",
   description: "Salve suas receitas favoritas do Instagram.",

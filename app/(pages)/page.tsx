@@ -4,7 +4,6 @@ import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import Logo from "@/components/ui/logo";
 
-
 const Home: React.FC = () => {
   return (
     <div className="flex flex-col items-center  bg-red-100 p-4 min-h-dvh">
@@ -20,8 +19,7 @@ const Home: React.FC = () => {
           (Funciona melhor quando a receita está na legenda!)
         </p>
       </div>
-      <div>
-      </div>
+      <div></div>
       <div className="flex flex-col justify-between my-5 w-80 h-30">
         <Input
           type="text"
