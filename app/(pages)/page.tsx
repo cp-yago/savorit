@@ -6,10 +6,10 @@ import Logo from "@/components/ui/logo";
 
 const Home: React.FC = () => {
   return (
-    <div className="flex flex-col items-center justify-center bg-red-100 p-4 min-h-dvh">
-      <Logo />
-      <h1 className="text-3xl text-center sm:w-80">
-        Salve receitas direto das redes sociais!
+    <div className="flex flex-col items-center  bg-red-100 p-4 min-h-dvh">
+      <Logo className="mb-6" />
+      <h1 className="text-2xl text-center sm:w-80 mt-4">
+        Salve receitas direto do Instagram!
       </h1>
       <div className="w-80 my-5">
         <p className="text-gray text-center font-semibold ">
@@ -19,21 +19,22 @@ const Home: React.FC = () => {
           (Funciona melhor quando a receita está na legenda!)
         </p>
       </div>
-      <div>
-        <Image
-          src="icons/instagram.svg"
-          alt="Instagram icon"
-          width={24}
-          height={24}
-        />
-      </div>
+      <div></div>
       <div className="flex flex-col justify-between my-5 w-80 h-30">
         <Input
           type="text"
           placeholder="Cole o link da receita aqui"
           className="h-12"
         />
-        <Button className="w-full h-12">Salvar Receita</Button>
+        <Button className="w-full h-12 shadow-md transition-transform duration-200 ease-in-out hover:scale-105 hover:shadow-lg cursor-pointer">
+          <Image
+            src="icons/instagram.svg"
+            alt="Instagram icon"
+            width={24}
+            height={24}
+          />
+          Salvar Receita
+        </Button>
       </div>
     </div>
   );

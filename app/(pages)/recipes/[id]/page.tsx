@@ -75,6 +75,7 @@ const RecipePage = () => {
         <RoundButton
           icon="back"
           className="absolute z-10 bg-white top-3 left-3"
+          redirectTo="recipes"
         />
         <Image
           src="https://i.imgur.com/uddqA0V.png"
