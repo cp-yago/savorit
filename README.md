@@ -12,6 +12,7 @@ Seu livro de receitas baseado em social medias e AI.
 
 # To do
 
+- [ ] Fazer o endpoint /status da api
 - [ ] Caso não tenha nenhuma receita criada, mostrar algum aviso em tela
 - [ ] Inserir validação no input de url (talvez desabilitar botão caso não tenha link)
 - [ ] Layout página de perfil (Logged in and Logged out)
@@ -21,6 +22,7 @@ Seu livro de receitas baseado em social medias e AI.
 
 ## Done
 
+- [ x ] Configurar o Drizzle
 - [ x ] Ao clicar em um card de receita, ser redirecionado para a página de receitas
 - [ x ] Ao clicar no botão de adicionar na página de receitas, redirecionar para add page
 - [ x ] Criar página /account só como placeholder

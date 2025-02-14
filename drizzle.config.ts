@@ -9,4 +9,5 @@ export default defineConfig({
     url: process.env.DATABASE_URL,
     ssl: false,
   },
+  casing: "snake_case",
 });
