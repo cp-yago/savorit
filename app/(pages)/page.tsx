@@ -28,7 +28,7 @@ const Home: React.FC = () => {
           placeholder="Cole o link da receita aqui"
           className="h-12"
         />
-        <Button className="w-full h-12">
+        <Button className="w-full h-12 shadow-md transition-transform duration-200 ease-in-out hover:scale-105 hover:shadow-lg cursor-pointer">
           <Image
             src="icons/instagram.svg"
             alt="Instagram icon"

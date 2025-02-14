@@ -80,7 +80,7 @@ const RecipeList: React.FC = () => {
         /> */}
       </header>
 
-      <main className="flex-1 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4 p-2 overflow-auto">
+      <main className="flex-1 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4 p-2 overflow-auto mb-16">
         {Array.from({ length: 10 }, (_, i) => (
           <RecipeCard key={i} id={`${i}`} />
         ))}

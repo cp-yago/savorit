@@ -79,7 +79,7 @@ const RoundButton: React.FC<RoundButtonProps> = ({
     <button
       {...props}
       onClick={handleClick}
-      className={`rounded-full border-2 text-green p-2 flex items-center shadow-md transition-transform duration-200 ease-in-out hover:scale-105 hover:shadow-lg hover:bg-white/10 cursor-pointer ${className || ""}`}
+      className={`rounded-full bg-white border-2 text-green p-2 flex items-center shadow-md transition-transform duration-200 ease-in-out hover:scale-105 hover:shadow-lg cursor-pointer ${className || ""}`}
     >
       {icons[icon]}
       {label && <span>{label}</span>}

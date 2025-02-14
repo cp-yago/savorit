@@ -14,11 +14,11 @@ Seu livro de receitas baseado em social medias e AI.
 
 # To do
 
-
+- [ ] Caso não tenha nenhuma receita criada, mostrar algum aviso em tela
+- [ ] Inserir validação no input de url (talvez desabilitar botão caso não tenha link)
 - [ ] Layout página de perfil (Logged in and Logged out)
 - [ ] Implementar fluxo de criação de receita
 - [ ] Definir, e talvez criar layout no figma de estado de carregamento
-- [ ] Inserir validação no input de url (talvez desabilitar botão caso não tenha link)
 - [ ] Ajustar componente de bottom menu para que ele fique igual ao layout, com a aba ativa mais destacada
 
 
