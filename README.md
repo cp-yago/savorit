@@ -58,3 +58,7 @@ Avaliar o uso de WebSockets ou polling para uma experiência mais fluida.
 ## Ideias
 
 - [ ] Ao inserir uma url, mudar o ícone do botão conforme a rede social.
+
+## Refatorações
+
+- [ ] Separar actions das métodos de db
