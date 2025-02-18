@@ -22,6 +22,13 @@
       "when": 1739565721519,
       "tag": "0002_lame_mysterio",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1739896249761,
+      "tag": "0003_famous_zombie",
+      "breakpoints": true
     }
   ]
 }

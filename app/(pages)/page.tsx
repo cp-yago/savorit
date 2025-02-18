@@ -9,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod"
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { insertRecipe } from "@/features/recipes/db/recipes";
 
 
 const createRecipeFormSchema = z.object({
@@ -30,10 +31,14 @@ const Home: React.FC = () => {
     resolver: zodResolver(createRecipeFormSchema)
   })
 
-  const onSubmit: SubmitHandler<CreateRecipeFormValues> = (data) => {
-    console.log(data)
+  const onSubmit: SubmitHandler<CreateRecipeFormValues> = async (values: CreateRecipeFormValues) => {
+    console.log(values)
     console.log(errors)
-  }
+    const data = await insertRecipe({
+      sourceUrl: values.url
+    });
+    console.log(data)
+  };
 
   return (
     <div className="flex flex-col items-center  bg-red-100 p-4 min-h-dvh">

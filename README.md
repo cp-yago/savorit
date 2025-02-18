@@ -41,10 +41,9 @@ Seu livro de receitas baseado em social medias e AI.
 
 - [ x ] Criar uma função para validar a URL antes de enviar a requisição.
 Exibir feedback instantâneo caso a URL seja inválida.
-- [ ] Submissão da Receita Criar um registro no banco com status pending.
+- [ x ] Submissão da Receita Criar um registro no banco com status pending.
 Retornar o recipeId e redirecionar imediatamente para /recipes/:recipeId.
-- [ ] Processamento Assíncrono da Receita
-Disparar a requisição para o microserviço em background.
+- [ ] Processamento Assíncrono da Receita Disparar a requisição para o microserviço em background.
 Quando a resposta chegar, atualizar o registro no banco com os dados da receita e mudar o status para completed.
 - [ ] Feedback para o Usuário
 Exibir um estado visual de carregamento enquanto a receita está sendo processada.
@@ -56,3 +55,6 @@ Utilizar React Suspense + Streaming para exibir os dados assim que disponíveis.
 Implementar cache da resposta do microserviço (ex: Redis ou Next.js fetch com { next: { revalidate: 60 } }).
 Avaliar o uso de WebSockets ou polling para uma experiência mais fluida.
 
+## Ideias
+
+- [ ] Ao inserir uma url, mudar o ícone do botão conforme a rede social.
