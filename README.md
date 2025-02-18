@@ -35,3 +35,24 @@ Seu livro de receitas baseado em social medias e AI.
 - [ x ] Tela de adicionar receita (Layout)
 - [ x ] Tela de lista de receitas (Layout)
 - [ x ] Microservice Python que recebe uma url do instagram e devolve uma receita já formatada
+
+
+## Feature criação da receita
+
+- [ x ] Criar uma função para validar a URL antes de enviar a requisição.
+Exibir feedback instantâneo caso a URL seja inválida.
+- [ ] Submissão da Receita Criar um registro no banco com status pending.
+Retornar o recipeId e redirecionar imediatamente para /recipes/:recipeId.
+- [ ] Processamento Assíncrono da Receita
+Disparar a requisição para o microserviço em background.
+Quando a resposta chegar, atualizar o registro no banco com os dados da receita e mudar o status para completed.
+- [ ] Feedback para o Usuário
+Exibir um estado visual de carregamento enquanto a receita está sendo processada.
+Na página /recipes/:recipeId, exibir um placeholder ou esqueleto até que os dados sejam carregados.
+- [ ] Atualização da UI em Tempo Real
+Usar revalidatePath("/recipes/[recipeId]") para garantir que os dados sejam atualizados automaticamente.
+Utilizar React Suspense + Streaming para exibir os dados assim que disponíveis.
+- [ ] Cache e Performance
+Implementar cache da resposta do microserviço (ex: Redis ou Next.js fetch com { next: { revalidate: 60 } }).
+Avaliar o uso de WebSockets ou polling para uma experiência mais fluida.
+
