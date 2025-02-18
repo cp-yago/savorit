@@ -12,13 +12,13 @@ Seu livro de receitas baseado em social medias e AI.
 
 # To do
 
-- [ ] Fazer o endpoint /status da api
 - [ ] Caso não tenha nenhuma receita criada, mostrar algum aviso em tela
 - [ ] Inserir validação no input de url (talvez desabilitar botão caso não tenha link)
 - [ ] Layout página de perfil (Logged in and Logged out)
 - [ ] Implementar fluxo de criação de receita
 - [ ] Definir, e talvez criar layout no figma de estado de carregamento
 - [ ] Ajustar componente de bottom menu para que ele fique igual ao layout, com a aba ativa mais destacada
+- [ ] Fazer o endpoint /status da api
 
 ## Done
 
@@ -43,10 +43,10 @@ Seu livro de receitas baseado em social medias e AI.
 Exibir feedback instantâneo caso a URL seja inválida.
 - [ x ] Submissão da Receita Criar um registro no banco com status pending.
 Retornar o recipeId e redirecionar imediatamente para /recipes/:recipeId.
-- [ ] Processamento Assíncrono da Receita Disparar a requisição para o microserviço em background.
-Quando a resposta chegar, atualizar o registro no banco com os dados da receita e mudar o status para completed.
-- [ ] Feedback para o Usuário
-Exibir um estado visual de carregamento enquanto a receita está sendo processada.
+- [ x ] Feedback para o Usuário,Exibir um estado visual de carregamento enquanto a receita está sendo processada (Skeleton).
+- [ ] Criar endpoint para atualizar receita
+- [ ] Ao criar a receita pending no db, enviar request para o microserviço de receitas para extrair ela.
+- [ ] Após geração da receita, bater no endpoint (next side) para atualização da receita e exibir valores reais
 Na página /recipes/:recipeId, exibir um placeholder ou esqueleto até que os dados sejam carregados.
 - [ ] Atualização da UI em Tempo Real
 Usar revalidatePath("/recipes/[recipeId]") para garantir que os dados sejam atualizados automaticamente.
@@ -62,3 +62,19 @@ Avaliar o uso de WebSockets ou polling para uma experiência mais fluida.
 ## Refatorações
 
 - [ ] Separar actions das métodos de db
+
+
+Considere o seguinte fluxo na minha aplicação que usa react 19 e next 15:
+
+- Usuário insere link de um post do instagram no input (o post deve ser de uma receita)
+- Ao clicar em submit o form é validado e caso passe, um registro é criado no db, uma receita que tem somente id e status pending. No mesmo momento, uma request é enviada para o microserviço que extrai as informações da receita do post do instagram e retorna um json com ela formatada
+- Usuário é redirecionado para a página da receita "recipes/{id}" enquanto o microserviço gera a receita.
+- Ao finalizar a gereção da receita o microserviço ira enviar um request para a api do next que atualizará a receita com os dados faltantes.
+
+Quero sua ajuda para desenvolver esse fluxo.
+
+Estou no estágio onde a receita já foi gerada, somente com id e status pending e o usuário foi redirecionado para a página da receita.
+
+Quero que enquanto a receita não seja gerada, ou seja, enquanto o microserviço não bater de volta no endpoint do lado do next, seja exibido um status de loading na página.
+
+Qual é a melhor abordagem para implementar isso utilizando as melhores e mais atuais práticas do next e react?

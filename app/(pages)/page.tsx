@@ -9,7 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod"
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { insertRecipe } from "@/features/recipes/db/recipes";
+import { insertRecipe } from "@/features/recipes/actions/recipes";
 
 
 const createRecipeFormSchema = z.object({
