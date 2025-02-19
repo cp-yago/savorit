@@ -29,6 +29,13 @@
       "when": 1739896249761,
       "tag": "0003_famous_zombie",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1739999302922,
+      "tag": "0004_slow_ozymandias",
+      "breakpoints": true
     }
   ]
 }
