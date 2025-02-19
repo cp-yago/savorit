@@ -34,7 +34,9 @@ export async function POST(
 ) {
   try {
     const requestParams = await params;
+    console.log("requestParams", requestParams);
     const data = await request.json();
+    console.log("data", data);
 
     if (!requestParams.id || !data) {
       return NextResponse.json({ error: "Dados inválidos" }, { status: 400 });
