@@ -33,6 +33,7 @@ export async function POST(
   { params }: { params: Promise<{ id: string }> },
 ) {
   try {
+    console.log("Chamou POST /api/v1/recipes/[id]");
     const requestParams = await params;
     console.log("requestParams", requestParams);
     const { data } = await request.json();

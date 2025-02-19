@@ -49,13 +49,14 @@ export default async function RecipePage({
               redirectTo="recipes"
             />
             <Image
-              src="https://i.imgur.com/uddqA0V.png"
-              alt="Pastinha de alho poró"
+              src={recipe.imageUrl}
+              alt={recipe.title}
               fill
+              objectFit="cover"
             />
           </header>
           <main className="h-min-[33vh] py-2 px-4">
-            <Link href={recipe.sourceUrl}>
+            <Link href={recipe.sourceUrl} target="_blank">
               <Badge className="bg-soft-pink rounded-full border-1 border-black py-2 transition-transform duration-100 ease-in-out hover:scale-102 hover:shadow-lg cursor-pointer">
                 <InstagramIcon />
                 <span>instagram.com</span>

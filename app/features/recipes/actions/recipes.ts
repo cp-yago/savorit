@@ -1,6 +1,6 @@
 "use server";
 import { redirect } from "next/navigation";
-import { unstable_cacheTag as cacheTag } from "next/cache";
+import { unstable_cacheTag as cacheTag, revalidateTag } from "next/cache";
 import {
   InsertRecipe,
   recipesTable,
@@ -10,6 +10,7 @@ import { db } from "@/infra/db";
 import { eq } from "drizzle-orm";
 
 export async function generateRecipe({ url, id }: { url: string; id: string }) {
+  console.log("Chamou generateRecipe", url, id);
   return fetch(
     `https://smuk7f1osf.execute-api.us-east-1.amazonaws.com/generate-recipe?url=${url}&id=${id}`,
   ).then((response) => {
@@ -26,19 +27,20 @@ export async function insertRecipe(data: InsertRecipe) {
   if (newRecipe == null) throw new Error("Failed to create recipe");
   generateRecipe({ url: newRecipe.sourceUrl, id: newRecipe.id });
   redirect(`/recipes/${newRecipe.id}`);
-  return newRecipe;
 }
 
 export async function updateRecipe(
   id: string,
   data: Partial<Omit<SelectRecipe, "id">>,
 ) {
+  console.log("updateRecipe", id, data);
   const [updatedRecipe] = await db
     .update(recipesTable)
     .set(data)
     .where(eq(recipesTable.id, id))
     .returning();
   if (updatedRecipe == null) throw new Error("Failed to update recipe");
+  revalidateTag("recipes");
   return updatedRecipe;
 }
 

@@ -14,15 +14,15 @@ https://www.instagram.com/p/DE8P7thz_iD/
 
 # To do
 
-- [ ] Retornar a imagem da receita e exibir ela em tela
 - [ ] Caso não tenha nenhuma receita criada, mostrar algum aviso em tela
 - [ ] Layout página de perfil (Logged in and Logged out)
-- [ ] Implementar fluxo de criação de receita
 - [ ] Ajustar componente de bottom menu para que ele fique igual ao layout, com a aba ativa mais destacada
 - [ ] Fazer o endpoint /status da api
 
 ## Done
 
+- [ x ] Implementar fluxo de criação de receita
+- [ x ] Retornar a imagem da receita e exibir ela em tela
 - [ x ] Transformar o Badge da página da receita em um link para o instagram
 - [ x ] Definir, e talvez criar layout no figma de estado de carregamento
 - [ x ] Inserir validação no input de url (talvez desabilitar botão caso não tenha link)
