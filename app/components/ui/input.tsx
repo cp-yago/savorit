@@ -18,7 +18,7 @@ function Input({ className, type, icon, ...props }: InputProps) {
         type={type}
         data-slot="input"
         className={cn(
-          "pl-10 border-input flex h-9 w-full min-w-0 rounded-full border bg-white pr-3 py-1 text-base shadow-xs",
+          "pl-4 border-input flex h-9 w-full min-w-0 rounded-full border bg-white pr-3 py-1 text-base shadow-xs focus:outline-none",
           className,
         )}
         {...props}

@@ -8,6 +8,27 @@
       "when": 1739552759272,
       "tag": "0000_known_purifiers",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1739565455578,
+      "tag": "0001_colorful_grey_gargoyle",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1739565721519,
+      "tag": "0002_lame_mysterio",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1739896249761,
+      "tag": "0003_famous_zombie",
+      "breakpoints": true
     }
   ]
 }
