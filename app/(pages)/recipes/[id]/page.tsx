@@ -2,7 +2,7 @@ import InstagramIcon from "@/components/icons/instagram";
 import RoundButton from "@/components/roundButton";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
-import * as React from 'react'
+import * as React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { notFound } from "next/navigation";
 import RecipeStatusPage from "./recipeLoading";
@@ -75,26 +75,24 @@ type Params = { id: string };
 async function getRecipe(id: string) {
   const res = await fetch(`http://localhost:3000/api/v1/recipes/${id}`, {
     next: {
-      revalidate: 5
-    }
+      revalidate: 5,
+    },
   });
-  if (!res.ok) throw new Error('Failed to fetch recipe');
+  if (!res.ok) throw new Error("Failed to fetch recipe");
   const { data } = await res.json();
   return data;
 }
-
 
 export default async function RecipePage({ params }: { params: Params }) {
   const { id: recipeId } = await params;
 
   const recipe = await getRecipe(recipeId);
 
-  console.log('recipe', recipe);
+  console.log("recipe", recipe);
 
   if (!recipe) {
     return notFound();
   }
-
 
   return (
     <div>
@@ -149,7 +147,9 @@ export default async function RecipePage({ params }: { params: Params }) {
                         <span className="font-bold mr-2">
                           {ingredient.quantity}
                         </span>
-                        <span className="font-bold mr-2">{ingredient.unit}</span>
+                        <span className="font-bold mr-2">
+                          {ingredient.unit}
+                        </span>
                         <span>de {ingredient.name}</span>
                       </li>
                     ))}
@@ -159,7 +159,9 @@ export default async function RecipePage({ params }: { params: Params }) {
                   <ul>
                     {recipe_mock.instructions.map((instruction, index) => (
                       <li key={index} className="flex mb-4">
-                        <span className="font-bold mr-4">{instruction.step}.</span>
+                        <span className="font-bold mr-4">
+                          {instruction.step}.
+                        </span>
                         <span>{instruction.description}</span>
                       </li>
                     ))}
@@ -169,8 +171,7 @@ export default async function RecipePage({ params }: { params: Params }) {
             </div>
           </main>
         </>
-      )
-      }
-    </div >
+      )}
+    </div>
   );
-};
+}

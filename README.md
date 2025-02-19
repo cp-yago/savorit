@@ -38,24 +38,23 @@ https://www.instagram.com/p/DE8P7thz_iD/
 - [ x ] Tela de lista de receitas (Layout)
 - [ x ] Microservice Python que recebe uma url do instagram e devolve uma receita já formatada
 
-
 ## Feature criação da receita
 
 - [ x ] Criar uma função para validar a URL antes de enviar a requisição.
-Exibir feedback instantâneo caso a URL seja inválida.
+  Exibir feedback instantâneo caso a URL seja inválida.
 - [ x ] Submissão da Receita Criar um registro no banco com status pending.
-Retornar o recipeId e redirecionar imediatamente para /recipes/:recipeId.
+  Retornar o recipeId e redirecionar imediatamente para /recipes/:recipeId.
 - [ x ] Feedback para o Usuário,Exibir um estado visual de carregamento enquanto a receita está sendo processada (Skeleton).
 - [ ] Criar endpoint para atualizar receita
 - [ ] Ao criar a receita pending no db, enviar request para o microserviço de receitas para extrair ela.
 - [ ] Após geração da receita, bater no endpoint (next side) para atualização da receita e exibir valores reais
-Na página /recipes/:recipeId, exibir um placeholder ou esqueleto até que os dados sejam carregados.
+      Na página /recipes/:recipeId, exibir um placeholder ou esqueleto até que os dados sejam carregados.
 - [ ] Atualização da UI em Tempo Real
-Usar revalidatePath("/recipes/[recipeId]") para garantir que os dados sejam atualizados automaticamente.
-Utilizar React Suspense + Streaming para exibir os dados assim que disponíveis.
+      Usar revalidatePath("/recipes/[recipeId]") para garantir que os dados sejam atualizados automaticamente.
+      Utilizar React Suspense + Streaming para exibir os dados assim que disponíveis.
 - [ ] Cache e Performance
-Implementar cache da resposta do microserviço (ex: Redis ou Next.js fetch com { next: { revalidate: 60 } }).
-Avaliar o uso de WebSockets ou polling para uma experiência mais fluida.
+      Implementar cache da resposta do microserviço (ex: Redis ou Next.js fetch com { next: { revalidate: 60 } }).
+      Avaliar o uso de WebSockets ou polling para uma experiência mais fluida.
 
 ## Ideias
 
@@ -64,7 +63,6 @@ Avaliar o uso de WebSockets ou polling para uma experiência mais fluida.
 ## Refatorações
 
 - [ ] Separar actions das métodos de db
-
 
 Considere o seguinte fluxo na minha aplicação que usa react 19 e next 15:
 

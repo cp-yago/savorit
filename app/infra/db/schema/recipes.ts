@@ -1,7 +1,7 @@
 import { pgTable, varchar, json, pgEnum } from "drizzle-orm/pg-core";
 import { timestamps, id } from "../schemaHelpers";
 
-export const statusEnum = pgEnum('status', ['error', 'pending', 'done']);
+export const statusEnum = pgEnum("status", ["error", "pending", "done"]);
 
 export const recipesTable = pgTable("recipes", {
   id,
@@ -11,7 +11,7 @@ export const recipesTable = pgTable("recipes", {
   sourceUrl: varchar({ length: 255 }).notNull(),
   ingredients: json(),
   instructions: json(),
-  status: statusEnum().default('pending'),
+  status: statusEnum().default("pending"),
   ...timestamps,
 });
 

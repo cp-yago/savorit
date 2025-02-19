@@ -1,7 +1,6 @@
 import RoundButton from "@/components/roundButton";
 import React from "react";
-import { Skeleton } from "@/components/ui/skeleton"
-
+import { Skeleton } from "@/components/ui/skeleton";
 
 const RecipeStatusPage = () => {
   return (
@@ -13,7 +12,6 @@ const RecipeStatusPage = () => {
           redirectTo="recipes"
         />
         <Skeleton className="h-[33svh] w-full bg-gray-300" />
-
       </header>
       <main className="h-min-[33vh] py-2 px-4">
         <Skeleton className="h-[30px] w-1/2 rounded-xl bg-gray-300" />

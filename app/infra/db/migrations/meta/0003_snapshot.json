@@ -93,11 +93,7 @@
     "public.status": {
       "name": "status",
       "schema": "public",
-      "values": [
-        "error",
-        "pending",
-        "done"
-      ]
+      "values": ["error", "pending", "done"]
     }
   },
   "schemas": {},

@@ -1,25 +1,26 @@
-"use client"
+"use client";
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import Logo from "@/components/ui/logo";
-import { useForm, SubmitHandler } from "react-hook-form"
+import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod"
+import { z } from "zod";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { insertRecipe } from "@/features/recipes/actions/recipes";
 
-
 const createRecipeFormSchema = z.object({
-  url: z.string().regex(
-    /^https:\/\/www\.instagram\.com\/p\/[a-zA-Z0-9_-]+\/$/,
-    "A URL deve ser um link válido do Instagram"
-  )
+  url: z
+    .string()
+    .regex(
+      /^https:\/\/www\.instagram\.com\/p\/[a-zA-Z0-9_-]+\/$/,
+      "A URL deve ser um link válido do Instagram",
+    ),
 });
 
-type CreateRecipeFormValues = z.infer<typeof createRecipeFormSchema>
+type CreateRecipeFormValues = z.infer<typeof createRecipeFormSchema>;
 
 const Home: React.FC = () => {
   const {
@@ -28,16 +29,18 @@ const Home: React.FC = () => {
     trigger,
     formState: { errors, isSubmitting },
   } = useForm<CreateRecipeFormValues>({
-    resolver: zodResolver(createRecipeFormSchema)
-  })
+    resolver: zodResolver(createRecipeFormSchema),
+  });
 
-  const onSubmit: SubmitHandler<CreateRecipeFormValues> = async (values: CreateRecipeFormValues) => {
-    console.log(values)
-    console.log(errors)
+  const onSubmit: SubmitHandler<CreateRecipeFormValues> = async (
+    values: CreateRecipeFormValues,
+  ) => {
+    console.log(values);
+    console.log(errors);
     const data = await insertRecipe({
-      sourceUrl: values.url
+      sourceUrl: values.url,
     });
-    console.log(data)
+    console.log(data);
   };
 
   return (
@@ -56,7 +59,8 @@ const Home: React.FC = () => {
       </div>
       <form
         className="flex flex-col justify-between items-center my-5 w-80 h-30"
-        onSubmit={handleSubmit(onSubmit)}>
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <motion.div
           className="w-full"
           animate={errors.url ? { x: [-5, 5, -5, 5, 0] } : { x: 0 }}
@@ -70,7 +74,7 @@ const Home: React.FC = () => {
               "h-12 w-full",
               errors.url
                 ? "border-red-500 focus:ring-red-500"
-                : "border-gray-300 focus:ring-blue-500"
+                : "border-gray-300 focus:ring-blue-500",
             )}
             onBlur={() => trigger("url")}
           />
@@ -81,7 +85,8 @@ const Home: React.FC = () => {
         <Button
           type="submit"
           disabled={isSubmitting}
-          className="w-full h-12 mt-2 shadow-md transition-transform duration-200 ease-in-out hover:scale-105 hover:shadow-lg cursor-pointer">
+          className="w-full h-12 mt-2 shadow-md transition-transform duration-200 ease-in-out hover:scale-105 hover:shadow-lg cursor-pointer"
+        >
           <Image
             src="icons/instagram.svg"
             alt="Instagram icon"
