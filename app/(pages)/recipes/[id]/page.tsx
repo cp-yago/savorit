@@ -145,23 +145,25 @@ export default async function RecipePage({
                 </TabsList>
                 <TabsContent value="ingredients">
                   <ul className="list list-disc list-inside ml-4">
-                    {recipe_mock.ingredients.map((ingredient, index) => (
+                    {recipe.ingredients.map((ingredient, index) => (
                       <li key={index} className="flex">
                         <span className="font-bold mr-2">●</span>
                         <span className="font-bold mr-2">
                           {ingredient.quantity}
                         </span>
-                        <span className="font-bold mr-2">
-                          {ingredient.unit}
-                        </span>
-                        <span>de {ingredient.name}</span>
+                        {ingredient.unit && (
+                          <span className="font-bold mr-2">
+                            {ingredient.unit}
+                          </span>
+                        )}
+                        <span>{ingredient.name}</span>
                       </li>
                     ))}
                   </ul>
                 </TabsContent>
                 <TabsContent value="instructions">
                   <ul>
-                    {recipe_mock.instructions.map((instruction, index) => (
+                    {recipe.instructions.map((instruction, index) => (
                       <li key={index} className="flex mb-4">
                         <span className="font-bold mr-4">
                           {instruction.step}.
