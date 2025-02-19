@@ -8,69 +8,6 @@ import { notFound } from "next/navigation";
 import RecipeStatusPage from "./recipeLoading";
 import Link from "next/link";
 
-const recipe_mock = {
-  name: "Pastinha de Alho Poró com Tomates Assados",
-  description:
-    "Uma pastinha cremosa e saborosa, feita com alho-poró refogado e tomates assados, trazendo um equilíbrio perfeito entre doçura e leveza. Ideal para servir com pães, torradas ou como acompanhamento para pratos diversos.",
-  image: "https://i.imgur.com/uddqA0V.png",
-  source: "instagram.com",
-  ingredients: [
-    {
-      name: "Alho-poró picado",
-      quantity: "1",
-      unit: "colher de sopa",
-    },
-    {
-      name: "Tomates maduros",
-      quantity: "4",
-      unit: "unidades",
-    },
-    {
-      name: "Azeite de oliva",
-      quantity: "3",
-      unit: "colheres de sopa",
-    },
-    {
-      name: "Sal",
-      quantity: "a gosto",
-    },
-    {
-      name: "Pimenta-do-reino",
-      quantity: "a gosto",
-    },
-  ],
-  instructions: [
-    {
-      step: "1",
-      description: "Pré-aqueça o forno a 180°C.",
-    },
-    {
-      step: "2",
-      description:
-        "Em uma assadeira, coloque os tomates cortados ao meio, regue com 2 colheres de sopa de azeite e tempere com sal e pimenta-do-reino.",
-    },
-    {
-      step: "3",
-      description:
-        "Leve ao forno por 30 minutos ou até que os tomates estejam macios e levemente dourados.",
-    },
-    {
-      step: "4",
-      description:
-        "Em uma frigideira, aqueça o restante do azeite e refogue o alho-poró até que esteja macio e levemente dourado.",
-    },
-    {
-      step: "5",
-      description:
-        "Em um processador, coloque os tomates assados, o alho-poró refogado e bata até obter uma pasta homogênea.",
-    },
-    {
-      step: "6",
-      description: "Sirva a pastinha com pães ou torradas.",
-    },
-  ],
-};
-
 type Params = { id: string };
 
 async function getRecipe(id: string) {
