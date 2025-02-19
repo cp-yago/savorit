@@ -14,16 +14,19 @@ https://www.instagram.com/p/DE8P7thz_iD/
 
 # To do
 
+- [ ] Retornar a imagem da receita e exibir ela em tela
 - [ ] Caso não tenha nenhuma receita criada, mostrar algum aviso em tela
-- [ ] Inserir validação no input de url (talvez desabilitar botão caso não tenha link)
 - [ ] Layout página de perfil (Logged in and Logged out)
 - [ ] Implementar fluxo de criação de receita
-- [ ] Definir, e talvez criar layout no figma de estado de carregamento
 - [ ] Ajustar componente de bottom menu para que ele fique igual ao layout, com a aba ativa mais destacada
 - [ ] Fazer o endpoint /status da api
 
 ## Done
 
+- [ x ] Transformar o Badge da página da receita em um link para o instagram
+- [ x ] Definir, e talvez criar layout no figma de estado de carregamento
+- [ x ] Inserir validação no input de url (talvez desabilitar botão caso não tenha link)
+- [ x ] Implementação inicial da feature de gerar receita
 - [ x ] Configurar o Drizzle
 - [ x ] Ao clicar em um card de receita, ser redirecionado para a página de receitas
 - [ x ] Ao clicar no botão de adicionar na página de receitas, redirecionar para add page
@@ -39,22 +42,6 @@ https://www.instagram.com/p/DE8P7thz_iD/
 - [ x ] Microservice Python que recebe uma url do instagram e devolve uma receita já formatada
 
 ## Feature criação da receita
-
-- [ x ] Criar uma função para validar a URL antes de enviar a requisição.
-  Exibir feedback instantâneo caso a URL seja inválida.
-- [ x ] Submissão da Receita Criar um registro no banco com status pending.
-  Retornar o recipeId e redirecionar imediatamente para /recipes/:recipeId.
-- [ x ] Feedback para o Usuário,Exibir um estado visual de carregamento enquanto a receita está sendo processada (Skeleton).
-- [ ] Criar endpoint para atualizar receita
-- [ ] Ao criar a receita pending no db, enviar request para o microserviço de receitas para extrair ela.
-- [ ] Após geração da receita, bater no endpoint (next side) para atualização da receita e exibir valores reais
-      Na página /recipes/:recipeId, exibir um placeholder ou esqueleto até que os dados sejam carregados.
-- [ ] Atualização da UI em Tempo Real
-      Usar revalidatePath("/recipes/[recipeId]") para garantir que os dados sejam atualizados automaticamente.
-      Utilizar React Suspense + Streaming para exibir os dados assim que disponíveis.
-- [ ] Cache e Performance
-      Implementar cache da resposta do microserviço (ex: Redis ou Next.js fetch com { next: { revalidate: 60 } }).
-      Avaliar o uso de WebSockets ou polling para uma experiência mais fluida.
 
 ## Ideias
 

@@ -36,17 +36,18 @@ export async function POST(
     const requestParams = await params;
     console.log("requestParams", requestParams);
     const { data } = await request.json();
-    console.log("data", data);
+    console.log("Recebeu data: ", data);
 
     if (!requestParams.id || !data) {
       return NextResponse.json({ error: "Dados inválidos" }, { status: 400 });
     }
 
     const recipe = await updateRecipe(requestParams.id, {
-      title: data.title,
-      description: data.description,
-      ingredients: data.ingredients,
-      instructions: data.instructions,
+      title: data.recipe.title,
+      description: data.recipe.description,
+      ingredients: data.recipe.ingredients,
+      instructions: data.recipe.instructions,
+      imageUrl: data.image_url,
       status: "done",
     });
 
