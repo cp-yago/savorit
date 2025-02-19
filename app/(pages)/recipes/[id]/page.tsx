@@ -73,7 +73,7 @@ const recipe_mock = {
 type Params = { id: string };
 
 async function getRecipe(id: string) {
-  const res = await fetch(`http://localhost:3000/api/v1/recipes/${id}`, {
+  const res = await fetch(`${process.env.HOST}/api/v1/recipes/${id}`, {
     next: {
       revalidate: 5,
     },

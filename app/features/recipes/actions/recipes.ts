@@ -9,9 +9,10 @@ export async function generateRecipe({ url, id }: { url: string; id: string }) {
   return fetch(
     `https://smuk7f1osf.execute-api.us-east-1.amazonaws.com/generate-recipe?url=${url}&id=${id}`,
   ).then((response) => {
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
+    // if (!response.ok) {
+    //   throw new Error("Network response was not ok");
+    // }
+    console.log("response", response);
     return response.json();
   });
 }
