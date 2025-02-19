@@ -6,6 +6,7 @@ import * as React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { notFound } from "next/navigation";
 import RecipeStatusPage from "./recipeLoading";
+import Link from "next/link";
 
 const recipe_mock = {
   name: "Pastinha de Alho Poró com Tomates Assados",
@@ -117,10 +118,12 @@ export default async function RecipePage({
             />
           </header>
           <main className="h-min-[33vh] py-2 px-4">
-            <Badge className="bg-soft-pink rounded-full border-1 border-black py-2">
-              <InstagramIcon />
-              <span>instagram.com</span>
-            </Badge>
+            <Link href={recipe.sourceUrl}>
+              <Badge className="bg-soft-pink rounded-full border-1 border-black py-2 transition-transform duration-100 ease-in-out hover:scale-102 hover:shadow-lg cursor-pointer">
+                <InstagramIcon />
+                <span>instagram.com</span>
+              </Badge>
+            </Link>
             <div className="py-2">
               <h1>{recipe.title}</h1>
               <p className="text-gray font-semibold mt-2">

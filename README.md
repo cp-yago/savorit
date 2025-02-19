@@ -15,7 +15,6 @@ https://www.instagram.com/p/DE8P7thz_iD/
 # To do
 
 - [ ] Retornar a imagem da receita e exibir ela em tela
-- [ ] Transformar o Badge da página da receita em um link para o instagram
 - [ ] Caso não tenha nenhuma receita criada, mostrar algum aviso em tela
 - [ ] Layout página de perfil (Logged in and Logged out)
 - [ ] Implementar fluxo de criação de receita
@@ -24,6 +23,7 @@ https://www.instagram.com/p/DE8P7thz_iD/
 
 ## Done
 
+- [ x ] Transformar o Badge da página da receita em um link para o instagram
 - [ x ] Definir, e talvez criar layout no figma de estado de carregamento
 - [ x ] Inserir validação no input de url (talvez desabilitar botão caso não tenha link)
 - [ x ] Implementação inicial da feature de gerar receita
@@ -42,9 +42,6 @@ https://www.instagram.com/p/DE8P7thz_iD/
 - [ x ] Microservice Python que recebe uma url do instagram e devolve uma receita já formatada
 
 ## Feature criação da receita
-
-
-
 
 ## Ideias
 
