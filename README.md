@@ -2,6 +2,8 @@
 
 Seu livro de receitas baseado em social medias e AI.
 
+https://www.instagram.com/p/DE8P7thz_iD/
+
 # Requisitos (MVP)
 
 - [ ] O app deve permitir a criação de uma receita a partir de uma URL de um post do Instagram.
@@ -69,12 +71,12 @@ Considere o seguinte fluxo na minha aplicação que usa react 19 e next 15:
 - Usuário insere link de um post do instagram no input (o post deve ser de uma receita)
 - Ao clicar em submit o form é validado e caso passe, um registro é criado no db, uma receita que tem somente id e status pending. No mesmo momento, uma request é enviada para o microserviço que extrai as informações da receita do post do instagram e retorna um json com ela formatada
 - Usuário é redirecionado para a página da receita "recipes/{id}" enquanto o microserviço gera a receita.
-- Ao finalizar a gereção da receita o microserviço ira enviar um request para a api do next que atualizará a receita com os dados faltantes.
+- Ao finalizar a geração da receita o microserviço ira enviar um request para a api do next que atualizará a receita com os dados faltantes.
 
 Quero sua ajuda para desenvolver esse fluxo.
 
-Estou no estágio onde a receita já foi gerada, somente com id e status pending e o usuário foi redirecionado para a página da receita.
+Estou no estágio onde a receita já foi gerada, somente com id e status pending e o usuário foi redirecionado para a página da receita com status loading.
 
-Quero que enquanto a receita não seja gerada, ou seja, enquanto o microserviço não bater de volta no endpoint do lado do next, seja exibido um status de loading na página.
+Quero que quando o microserviço finalizar a geração da receita ele bata no endpoint do lado do next enviando as informações da mesma, o endpoint deverá atualizar a receita no banco de dados e a página da receita "/recipes/{id}" deverá exibir a receita gerada
 
-Qual é a melhor abordagem para implementar isso utilizando as melhores e mais atuais práticas do next e react?
+Qual é a melhor forma de implementar isso usando os recursos mais modernos do next 15 e react 19? Pensei em usar cache e invalidação, faz sentido?

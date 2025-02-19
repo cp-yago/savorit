@@ -2,14 +2,10 @@ import InstagramIcon from "@/components/icons/instagram";
 import RoundButton from "@/components/roundButton";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
-import React from "react";
+import * as React from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { db } from "@/infra/db";
-import { recipesTable } from "@/infra/db/schema/recipes";
-import { eq } from "drizzle-orm";
 import { notFound } from "next/navigation";
 import RecipeStatusPage from "./recipeLoading";
-
 
 const recipe_mock = {
   name: "Pastinha de Alho Poró com Tomates Assados",
@@ -76,15 +72,28 @@ const recipe_mock = {
 
 type Params = { id: string };
 
-export default async function RecipePage({ params }: { params: Params }) {
-  const recipe = await db.query.recipesTable.findFirst({
-    where: eq(recipesTable.id, params.id)
+async function getRecipe(id: string) {
+  const res = await fetch(`http://localhost:3000/api/v1/recipes/${id}`, {
+    next: {
+      revalidate: 5
+    }
   });
+  if (!res.ok) throw new Error('Failed to fetch recipe');
+  const { data } = await res.json();
+  return data;
+}
 
-  console.log(recipe);
 
-  if (!recipe) return notFound();
+export default async function RecipePage({ params }: { params: Params }) {
+  const { id: recipeId } = await params;
 
+  const recipe = await getRecipe(recipeId);
+
+  console.log('recipe', recipe);
+
+  if (!recipe) {
+    return notFound();
+  }
 
 
   return (
@@ -111,12 +120,9 @@ export default async function RecipePage({ params }: { params: Params }) {
               <span>instagram.com</span>
             </Badge>
             <div className="py-2">
-              <h1>Pastinha de Alho Poró com Tomates Assados</h1>
+              <h1>{recipe.title}</h1>
               <p className="text-gray font-semibold mt-2">
-                Uma pastinha cremosa e saborosa, feita com alho-poró refogado e
-                tomates assados, trazendo um equilíbrio perfeito entre doçura e
-                leveza. Ideal para servir com pães, torradas ou como acompanhamento
-                para pratos diversos.
+                {recipe.description}
               </p>
             </div>
             <div className="w-full">
