@@ -35,7 +35,7 @@ export async function POST(
   try {
     const requestParams = await params;
     console.log("requestParams", requestParams);
-    const data = await request.json();
+    const { data } = await request.json();
     console.log("data", data);
 
     if (!requestParams.id || !data) {
@@ -43,7 +43,10 @@ export async function POST(
     }
 
     const recipe = await updateRecipe(requestParams.id, {
-      ...data,
+      title: data.title,
+      description: data.description,
+      ingredients: data.ingredients,
+      instructions: data.instructions,
       status: "done",
     });
 
