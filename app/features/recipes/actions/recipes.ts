@@ -1,7 +1,11 @@
 "use server";
 import { redirect } from "next/navigation";
 import { unstable_cacheTag as cacheTag } from "next/cache";
-import { InsertRecipe, recipesTable, SelectRecipe } from "@/infra/db/schema/recipes";
+import {
+  InsertRecipe,
+  recipesTable,
+  SelectRecipe,
+} from "@/infra/db/schema/recipes";
 import { db } from "@/infra/db";
 import { eq } from "drizzle-orm";
 
@@ -25,7 +29,10 @@ export async function insertRecipe(data: InsertRecipe) {
   return newRecipe;
 }
 
-export async function updateRecipe(id: string, data: Partial<Omit<SelectRecipe, 'id'>>) {
+export async function updateRecipe(
+  id: string,
+  data: Partial<Omit<SelectRecipe, "id">>,
+) {
   const [updatedRecipe] = await db
     .update(recipesTable)
     .set(data)
