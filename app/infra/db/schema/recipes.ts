@@ -3,7 +3,7 @@ import { timestamps, id } from "../schemaHelpers";
 
 export const statusEnum = pgEnum("status", ["error", "pending", "done"]);
 
-export const recipesTable = pgTable("recipes", {
+export const RecipesTable = pgTable("recipes", {
   id,
   title: varchar({ length: 255 }),
   description: varchar({ length: 255 }),
@@ -15,5 +15,6 @@ export const recipesTable = pgTable("recipes", {
   ...timestamps,
 });
 
-export type InsertRecipe = typeof recipesTable.$inferInsert;
-export type SelectRecipe = typeof recipesTable.$inferSelect;
+export type InsertRecipe = typeof RecipesTable.$inferInsert;
+
+export type SelectRecipe = typeof RecipesTable.$inferSelect;
