@@ -8,50 +8,47 @@ import {
 import {
   InsertRecipe,
   SelectRecipe,
-  RecipesTable,
 } from "@/infra/db/schema/recipes";
-import { db } from "@/infra/db";
-import { eq } from "drizzle-orm";
-import { insertRecipeDb } from "@/features/recipes/db/recipes";
+import { findRecipeByIdDb, insertRecipeDb, updateRecipeDb } from "@/features/recipes/db/recipes";
 import { getInstagramPost } from "@/services/apify";
 import { formatRecipeAI } from "@/services/openai";
 
 export async function createRecipe(data: InsertRecipe) {
+  // Create the recipe in the DB quickly with pending status
   const newRecipe = await insertRecipeDb(data);
 
-  const instagramPost = await getInstagramPost(data.sourceUrl);
-  const recipeFormatted = await formatRecipeAI(instagramPost.caption);
-  await updateRecipe(newRecipe.id, {
-    ...recipeFormatted,
-    status: "done",
-    imageUrl: instagramPost.displayUrl,
-  });
+  // Fire-and-forget the slow update operations
+  (async () => {
+    try {
+      const instagramPost = await getInstagramPost(data.sourceUrl);
+      const recipeFormatted = await formatRecipeAI(instagramPost.caption);
+      await updateRecipeDb(newRecipe.id, {
+        ...recipeFormatted,
+        status: "done",
+        imageUrl: instagramPost.displayUrl,
+      });
+      revalidateTag("recipes");
+    } catch (error) {
+      console.error("Error processing recipe update:", error);
+    }
+  })();
 
-  revalidateTag("recipes");
+  // Immediately redirect the user for a loading view
+  redirect(`/recipes/${newRecipe.id}`);
 }
 
 export async function updateRecipe(
   id: string,
   data: Partial<Omit<SelectRecipe, "id">>,
 ) {
-  console.log("updateRecipe", id, data);
-  const [updatedRecipe] = await db
-    .update(RecipesTable)
-    .set(data)
-    .where(eq(RecipesTable.id, id))
-    .returning();
-  if (updatedRecipe == null) throw new Error("Failed to update recipe");
+  const updatedRecipe = await updateRecipeDb(id, data);
+
   revalidateTag("recipes");
   revalidatePath(`/recipes/${id}`);
   return updatedRecipe;
 }
 
 export async function findRecipeById(id: string) {
-  // "use cache";
-  const recipe = await db.query.RecipesTable.findFirst({
-    where: eq(RecipesTable.id, id),
-  });
-  // console.log("recipe findRecipeById", recipe);
-  // cacheTag("recipes", recipe.id);
+  const recipe = await findRecipeByIdDb(id);
   return recipe;
 }
