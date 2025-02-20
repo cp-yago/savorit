@@ -1,4 +1,4 @@
-"use server"
+"use server";
 
 import { ApifyClient } from "apify-client";
 
@@ -19,13 +19,13 @@ const prepareActorInput = (url: string) => ({
   searchType: "hashtag",
 });
 
-const formatPost = (post: any) => {
+const formatPost = (post) => {
   return {
     caption: post.caption,
     displayUrl: post.displayUrl,
     videoUrl: post.videoUrl,
-  }
-}
+  };
+};
 
 export async function getInstagramPost(url: string) {
   // Prepare Actor input

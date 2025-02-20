@@ -1,21 +1,20 @@
 "use server";
 import { redirect } from "next/navigation";
 import {
-  unstable_cacheTag as cacheTag,
+  // unstable_cacheTag as cacheTag,
   revalidateTag,
   revalidatePath,
 } from "next/cache";
 import {
   InsertRecipe,
   SelectRecipe,
-  RecipesTable
+  RecipesTable,
 } from "@/infra/db/schema/recipes";
 import { db } from "@/infra/db";
 import { eq } from "drizzle-orm";
 import { insertRecipeDb } from "@/features/recipes/db/recipes";
 import { getInstagramPost } from "@/services/apify";
 import { formatRecipeAI } from "@/services/openai";
-
 
 export async function createRecipe(data: InsertRecipe) {
   console.log("createRecipe", data);
