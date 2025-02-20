@@ -17,21 +17,17 @@ import { getInstagramPost } from "@/services/apify";
 import { formatRecipeAI } from "@/services/openai";
 
 export async function createRecipe(data: InsertRecipe) {
-  console.log("createRecipe", data);
   const newRecipe = await insertRecipeDb(data);
-  console.log("newRecipe", newRecipe);
+
   const instagramPost = await getInstagramPost(data.sourceUrl);
-  console.log("instagramPost", instagramPost);
   const recipeFormatted = await formatRecipeAI(instagramPost.caption);
-  console.log("recipeFormatted", recipeFormatted);
   await updateRecipe(newRecipe.id, {
     ...recipeFormatted,
     status: "done",
     imageUrl: instagramPost.displayUrl,
   });
-  revalidateTag("recipes");
 
-  redirect(`/recipes/${newRecipe.id}`);
+  revalidateTag("recipes");
 }
 
 export async function updateRecipe(

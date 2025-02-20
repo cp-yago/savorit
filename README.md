@@ -6,7 +6,7 @@ https://www.instagram.com/p/DE8P7thz_iD/
 
 # Requisitos (MVP)
 
-- [ ] O app deve permitir a criação de uma receita a partir de uma URL de um post do Instagram.
+- [ x ] O app deve permitir a criação de uma receita a partir de uma URL de um post do Instagram.
 - [ ] O app deve exibir todas as receitas geradas na página de receitas.
 - [ ] O app deve permitir a criação da primeira receita sem login.
 - [ ] A primeira receita do usuário deve ficar salva no local storage do navegador.
