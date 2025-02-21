@@ -1,15 +1,13 @@
 "use server";
 
-import { redirect, } from "next/navigation";
+import { redirect } from "next/navigation";
+import { revalidateTag } from "next/cache";
+import { InsertRecipe, SelectRecipe } from "@/infra/db/schema/recipes";
 import {
-  unstable_cacheTag as cacheTag,
-  revalidateTag,
-} from "next/cache";
-import {
-  InsertRecipe,
-  SelectRecipe,
-} from "@/infra/db/schema/recipes";
-import { findRecipeByIdDb, insertRecipeDb, updateRecipeDb } from "@/features/recipes/db/recipes";
+  findRecipeByIdDb,
+  insertRecipeDb,
+  updateRecipeDb,
+} from "@/features/recipes/db/recipes";
 import { getInstagramPost } from "@/services/apify";
 import { formatRecipeAI } from "@/services/openai";
 

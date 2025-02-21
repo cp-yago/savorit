@@ -4,16 +4,20 @@ import { z } from "zod";
 
 export const statusEnum = pgEnum("status", ["error", "pending", "done"]);
 
-const ingredientsSchema = z.array(z.object({
-  name: z.string(),
-  quantity: z.string(),
-  unit: z.string().optional(),
-}));
+export const ingredientsSchema = z.array(
+  z.object({
+    name: z.string(),
+    quantity: z.string(),
+    unit: z.string().optional(),
+  }),
+);
 
-const instructionsSchema = z.array(z.object({
-  step: z.number(),
-  description: z.string(),
-}));
+export const instructionsSchema = z.array(
+  z.object({
+    step: z.number(),
+    description: z.string(),
+  }),
+);
 
 export type IngredientsType = z.infer<typeof ingredientsSchema>;
 

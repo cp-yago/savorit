@@ -5,10 +5,14 @@ import {
 import { revalidateTag } from "next/cache";
 import { NextResponse } from "next/server";
 
-export async function GET(request: Request, { params }: { params: { id: string } }) {
+export async function GET(
+  request: Request,
+  { params }: { params: { id: string } },
+) {
   const { id } = await params;
   const recipe = await findRecipeById(id);
-  if (!recipe) return NextResponse.json({ error: "Not found" }, { status: 404 });
+  if (!recipe)
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   return NextResponse.json(recipe);
 }
 

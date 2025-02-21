@@ -8,7 +8,10 @@ export async function insertRecipeDb(data: InsertRecipe) {
   return newRecipe;
 }
 
-export async function updateRecipeDb(id: string, data: Partial<Omit<SelectRecipe, "id">>) {
+export async function updateRecipeDb(
+  id: string,
+  data: Partial<Omit<SelectRecipe, "id">>,
+) {
   const [updatedRecipe] = await db
     .update(RecipesTable)
     .set(data)
