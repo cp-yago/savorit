@@ -17,7 +17,7 @@ export async function createRecipe(data: InsertRecipe) {
 
   // Fire-and-forget the slow update operations
   // generateRecipe(data.sourceUrl, newRecipe);
-  fetch("http://localhost:3000/api/v1/recipes/" + newRecipe.id, {
+  fetch(`${process.env.HOST}/api/v1/recipes/` + newRecipe.id, {
     method: "POST",
   });
 
