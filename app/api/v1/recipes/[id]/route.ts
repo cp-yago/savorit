@@ -2,6 +2,8 @@ import {
   findRecipeById,
   updateRecipe,
 } from "@/features/recipes/actions/recipes";
+import { getInstagramPost } from "@/services/apify";
+import { formatRecipeAI } from "@/services/openai";
 import { revalidateTag } from "next/cache";
 import { NextResponse } from "next/server";
 
@@ -9,23 +11,11 @@ export async function GET(
   request: Request,
   { params }: { params: Promise<{ id: string }> },
 ) {
-  try {
-    const requestParams = await params;
-
-    if (!requestParams.id) {
-      return NextResponse.json({ error: "Dados inválidos" }, { status: 400 });
-    }
-
-    const recipe = await findRecipeById(requestParams.id);
-
-    return Response.json({ data: recipe });
-  } catch (error) {
-    console.log("error", error);
-    return NextResponse.json(
-      { error: "Erro ao atualizar a receita" },
-      { status: 500 },
-    );
-  }
+  const { id } = await params;
+  const recipe = await findRecipeById(id);
+  if (!recipe)
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
+  return NextResponse.json(recipe);
 }
 
 export async function POST(
@@ -33,34 +23,23 @@ export async function POST(
   { params }: { params: Promise<{ id: string }> },
 ) {
   try {
-    console.log("Chamou POST /api/v1/recipes/[id]");
-    const requestParams = await params;
-    console.log("requestParams", requestParams);
-    const { data } = await request.json();
-    console.log("Recebeu data: ", data);
-
-    if (!requestParams.id || !data) {
-      return NextResponse.json({ error: "Dados inválidos" }, { status: 400 });
-    }
-
-    const recipe = await updateRecipe(requestParams.id, {
-      title: data.recipe.title,
-      description: data.recipe.description,
-      ingredients: data.recipe.ingredients,
-      instructions: data.recipe.instructions,
-      imageUrl: data.image_url,
+    const { id } = await params;
+    const recipe = await findRecipeById(id);
+    const sourceUrl = recipe.sourceUrl;
+    const instagramPost = await getInstagramPost(sourceUrl);
+    const recipeFormatted = await formatRecipeAI(instagramPost.caption);
+    await updateRecipe(recipe.id, {
+      ...recipeFormatted,
       status: "done",
+      imageUrl: instagramPost.displayUrl,
     });
-
-    console.log("recipe updates", recipe);
-
     revalidateTag("recipes");
-
-    return new Response("Recipe updated", { status: 200 });
+    console.log("RODOU revalidatePath");
+    return NextResponse.json(recipe);
   } catch (error) {
-    console.log("error", error);
+    console.error("Error processing recipe update:", error);
     return NextResponse.json(
-      { error: "Erro ao atualizar a receita" },
+      { error: "Unable to update recipe" },
       { status: 500 },
     );
   }

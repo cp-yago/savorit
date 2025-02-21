@@ -19,7 +19,7 @@ const nextConfig: NextConfig = {
     ],
   },
   experimental: {
-    useCache: true,
+    dynamicIO: true,
   },
 };
 

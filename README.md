@@ -6,7 +6,7 @@ https://www.instagram.com/p/DE8P7thz_iD/
 
 # Requisitos (MVP)
 
-- [ ] O app deve permitir a criação de uma receita a partir de uma URL de um post do Instagram.
+- [ x ] O app deve permitir a criação de uma receita a partir de uma URL de um post do Instagram.
 - [ ] O app deve exibir todas as receitas geradas na página de receitas.
 - [ ] O app deve permitir a criação da primeira receita sem login.
 - [ ] A primeira receita do usuário deve ficar salva no local storage do navegador.
@@ -53,15 +53,124 @@ https://www.instagram.com/p/DE8P7thz_iD/
 
 Considere o seguinte fluxo na minha aplicação que usa react 19 e next 15:
 
-- Usuário insere link de um post do instagram no input (o post deve ser de uma receita)
-- Ao clicar em submit o form é validado e caso passe, um registro é criado no db, uma receita que tem somente id e status pending. No mesmo momento, uma request é enviada para o microserviço que extrai as informações da receita do post do instagram e retorna um json com ela formatada
-- Usuário é redirecionado para a página da receita "recipes/{id}" enquanto o microserviço gera a receita.
-- Ao finalizar a geração da receita o microserviço ira enviar um request para a api do next que atualizará a receita com os dados faltantes.
+A aplicação consiste em um app web que extrai receitas de posts do instagram e as salva de forma organizada no app.
 
-Quero sua ajuda para desenvolver esse fluxo.
+O fluxo que estou desenvolvendo é o seguinte:
 
-Estou no estágio onde a receita já foi gerada, somente com id e status pending e o usuário foi redirecionado para a página da receita com status loading.
+1. Usuário preenche formulário e insere link de um post do Instagram
+2. Após submiter o formulário e ele for validado, um registro é criado no db, esse registro é uma receita que tem somente id e status pending.
+3. Usuário é redirecionado para a página da receita "recipes/{id}"
+4. Ao acessar a página "recipes/{id}" a página fica com status de loading, são exibidos skeletons para dar esse feedback visual ao usuário.
 
-Quero que quando o microserviço finalizar a geração da receita ele bata no endpoint do lado do next enviando as informações da mesma, o endpoint deverá atualizar a receita no banco de dados e a página da receita "/recipes/{id}" deverá exibir a receita gerada
+A função que é chamada ao submeter o formulário é essa abaixo, ela é uma server action:
 
-Qual é a melhor forma de implementar isso usando os recursos mais modernos do next 15 e react 19? Pensei em usar cache e invalidação, faz sentido?
+```ts
+export async function createRecipe(data: InsertRecipe) {
+  // Create the recipe in the DB quickly with pending status
+  const newRecipe = await insertRecipeDb(data);
+
+  // Fire-and-forget the slow update operations
+  (async () => {
+    try {
+      const instagramPost = await getInstagramPost(data.sourceUrl);
+      const recipeFormatted = await formatRecipeAI(instagramPost.caption);
+      await updateRecipe(newRecipe.id, {
+        ...recipeFormatted,
+        status: "done",
+        imageUrl: instagramPost.displayUrl,
+      });
+    } catch (error) {
+      console.error("Error processing recipe update:", error);
+    }
+  })();
+
+  // Immediately redirect the user for a loading view
+  redirect(`/recipes/${newRecipe.id}`);
+}
+```
+
+essa é a função updateRecipe, ela também é uma server action:
+
+```ts
+export async function updateRecipe(
+  id: string,
+  data: Partial<Omit<SelectRecipe, "id">>,
+) {
+  const updatedRecipe = await updateRecipeDb(id, data);
+  revalidateTag("recipe-data");
+  return updatedRecipe;
+}
+```
+
+A estrutura da página "/recipes/{id}" é essa:
+
+```ts
+export default async function RecipePage({
+  params,
+}: {
+  params: Promise<Params>;
+}) {
+  "use cache";
+  cacheTag("recipe-data");
+
+  const { id: recipeId } = await params;
+
+  const recipe = await findRecipeById(recipeId);
+
+  console.log("recipe", recipe);
+
+  if (!recipe) {
+    return notFound();
+  }
+
+  return (
+    <div>
+      {recipe.status === "pending" ? (
+        <>
+          <RecipeStatusPage />
+          <RecipePolling />
+        </>
+      ) : (
+        <>
+            // aqui vai o conteúdo da receita
+        </>
+      )}
+    </div>
+  );
+}
+
+```
+
+O componente RecipePolling é esse:
+
+```ts
+"use client";
+
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+
+const RecipePolling = () => {
+    const router = useRouter();
+
+    useEffect(() => {
+        // Poll every 3 seconds by triggering a refresh of the server component
+        const interval = setInterval(() => {
+            router.refresh();
+        }, 3000);
+        return () => clearInterval(interval);
+    }, [router]);
+
+    return (
+        <div className="flex flex-col justify-center items-center h-screen">
+            <p>Aguardando atualização da receita...</p>
+            {/* Spinner opcional poderia ser adicionado aqui */}
+        </div>
+    );
+};
+
+export default RecipePolling;
+```
+
+O comportamento que está acontecendo é que ao submeter o form, o usuário é imediatamente redirecionado para a página "/recipes/{id}" porém ao finalizar o restante do processamento que atualiza os dados da receita, a página não é atualizada imediatamente, fazendo se necessário dar um f5.
+
+O que pode estar acontecendo? Me sugira como resolver isso utilizando os recursos mais recentes do next e react. se possivel mude a abordagem e não utilize o componente RecipePolling.
