@@ -1,23 +1,33 @@
-import { Suspense } from "react";
-import RecipeStatusPage from "./recipeLoading";
-import { unstable_cacheTag as cacheTag } from "next/cache";
+import { findRecipeById } from "@/features/recipes/actions/recipes";
+import { unstable_cache } from "next/cache";
 import RecipeContent from "./recipeContent";
 
 type Params = { id: string };
+
+const getRecipe = unstable_cache(
+  async (id: string) => {
+    return findRecipeById(id);
+  },
+  ["recipes"],
+  { revalidate: 5, tags: ["recipes"] },
+);
 
 export default async function RecipePage({
   params,
 }: {
   params: Promise<Params>;
 }) {
-  "use cache";
-  cacheTag("recipe-data");
-
   const { id: recipeId } = await params;
 
+  const data = await getRecipe(recipeId);
+
+  if (!data) {
+    return <div>Recipe not found</div>;
+  }
+
   return (
-    <Suspense fallback={<RecipeStatusPage />}>
+    <div>
       <RecipeContent recipeId={recipeId} />
-    </Suspense>
+    </div>
   );
 }

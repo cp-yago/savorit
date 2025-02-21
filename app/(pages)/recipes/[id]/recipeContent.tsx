@@ -2,12 +2,12 @@
 import InstagramIcon from "@/components/icons/instagram";
 import RoundButton from "@/components/roundButton";
 import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { SelectRecipe } from "@/infra/db/schema";
 import Image from "next/image";
 import Link from "next/link";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import RecipeLoading from "./recipeLoading";
 import useSWR from "swr";
-import { SelectRecipe } from "@/infra/db/schema";
+import RecipeLoading from "./recipeLoading";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
