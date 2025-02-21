@@ -1,9 +1,9 @@
 "use server";
-import { redirect } from "next/navigation";
+
+import { redirect, } from "next/navigation";
 import {
-  // unstable_cacheTag as cacheTag,
+  unstable_cacheTag as cacheTag,
   revalidateTag,
-  revalidatePath,
 } from "next/cache";
 import {
   InsertRecipe,
@@ -22,12 +22,11 @@ export async function createRecipe(data: InsertRecipe) {
     try {
       const instagramPost = await getInstagramPost(data.sourceUrl);
       const recipeFormatted = await formatRecipeAI(instagramPost.caption);
-      await updateRecipeDb(newRecipe.id, {
+      await updateRecipe(newRecipe.id, {
         ...recipeFormatted,
         status: "done",
         imageUrl: instagramPost.displayUrl,
       });
-      revalidateTag("recipes");
     } catch (error) {
       console.error("Error processing recipe update:", error);
     }
@@ -42,9 +41,7 @@ export async function updateRecipe(
   data: Partial<Omit<SelectRecipe, "id">>,
 ) {
   const updatedRecipe = await updateRecipeDb(id, data);
-
-  revalidateTag("recipes");
-  revalidatePath(`/recipes/${id}`);
+  revalidateTag("recipe-data");
   return updatedRecipe;
 }
 

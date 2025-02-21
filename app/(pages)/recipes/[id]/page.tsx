@@ -7,28 +7,24 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { notFound } from "next/navigation";
 import RecipeStatusPage from "./recipeLoading";
 import Link from "next/link";
+import { unstable_cacheTag as cacheTag } from 'next/cache'
+import { findRecipeById } from "@/features/recipes/actions/recipes";
+import RecipePolling from "@/recipes/[id]/recipeLoading";
 
 type Params = { id: string };
 
-async function getRecipe(id: string) {
-  const res = await fetch(`${process.env.HOST}/api/v1/recipes/${id}`, {
-    next: {
-      revalidate: 5,
-    },
-  });
-  if (!res.ok) throw new Error("Failed to fetch recipe");
-  const { data } = await res.json();
-  return data;
-}
 
 export default async function RecipePage({
   params,
 }: {
   params: Promise<Params>;
 }) {
+  "use cache";
+  cacheTag("recipe-data");
+
   const { id: recipeId } = await params;
 
-  const recipe = await getRecipe(recipeId);
+  const recipe = await findRecipeById(recipeId);
 
   console.log("recipe", recipe);
 
@@ -39,7 +35,10 @@ export default async function RecipePage({
   return (
     <div>
       {recipe.status === "pending" ? (
-        <RecipeStatusPage />
+        <>
+          <RecipeStatusPage />
+          <RecipePolling />
+        </>
       ) : (
         <>
           <header className="relative h-[33svh] overflow-hidden">
