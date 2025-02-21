@@ -5,27 +5,11 @@ import {
 import { revalidateTag } from "next/cache";
 import { NextResponse } from "next/server";
 
-export async function GET(
-  request: Request,
-  { params }: { params: Promise<{ id: string }> },
-) {
-  try {
-    const requestParams = await params;
-
-    if (!requestParams.id) {
-      return NextResponse.json({ error: "Dados inválidos" }, { status: 400 });
-    }
-
-    const recipe = await findRecipeById(requestParams.id);
-
-    return Response.json({ data: recipe });
-  } catch (error) {
-    console.log("error", error);
-    return NextResponse.json(
-      { error: "Erro ao atualizar a receita" },
-      { status: 500 },
-    );
-  }
+export async function GET(request: Request, { params }: { params: { id: string } }) {
+  const { id } = await params;
+  const recipe = await findRecipeById(id);
+  if (!recipe) return NextResponse.json({ error: "Not found" }, { status: 404 });
+  return NextResponse.json(recipe);
 }
 
 export async function POST(

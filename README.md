@@ -102,10 +102,9 @@ export async function updateRecipe(
 }
 ```
 
-A página "/recipes/{id}" é essa:
+A estrutura da página "/recipes/{id}" é essa:
 
 ```ts
-
 export default async function RecipePage({
   params,
 }: {
@@ -141,3 +140,37 @@ export default async function RecipePage({
 }
 
 ```
+
+O componente RecipePolling é esse:
+
+```ts
+"use client";
+
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+
+const RecipePolling = () => {
+    const router = useRouter();
+
+    useEffect(() => {
+        // Poll every 3 seconds by triggering a refresh of the server component
+        const interval = setInterval(() => {
+            router.refresh();
+        }, 3000);
+        return () => clearInterval(interval);
+    }, [router]);
+
+    return (
+        <div className="flex flex-col justify-center items-center h-screen">
+            <p>Aguardando atualização da receita...</p>
+            {/* Spinner opcional poderia ser adicionado aqui */}
+        </div>
+    );
+};
+
+export default RecipePolling;
+```
+
+O comportamento que está acontecendo é que ao submeter o form, o usuário é imediatamente redirecionado para a página "/recipes/{id}" porém ao finalizar o restante do processamento que atualiza os dados da receita, a página não é atualizada imediatamente, fazendo se necessário dar um f5.
+
+O que pode estar acontecendo? Me sugira como resolver isso utilizando os recursos mais recentes do next e react. se possivel mude a abordagem e não utilize o componente RecipePolling.
