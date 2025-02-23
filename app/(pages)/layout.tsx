@@ -1,13 +1,6 @@
 import BottomNavigation from "@/components/bottomNavigation";
 import "@/styles/global.css";
-import {
-  ClerkProvider,
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  SignUpButton,
-  UserButton
-} from '@clerk/nextjs';
+import { ClerkProvider } from "@clerk/nextjs";
 import Head from "next/head";
 
 export const metadata = {
@@ -23,15 +16,6 @@ export default function RootLayout({ children }) {
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         </Head>
         <body className="bg-rose-50">
-          <header className="flex justify-end items-center p-4 gap-4 h-16">
-            <SignedOut>
-              <SignInButton />
-              <SignUpButton />
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
-          </header>
           {children}
           <BottomNavigation />
         </body>
