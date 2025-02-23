@@ -1,5 +1,5 @@
 "use client";
-import { Button } from "@/components/ui/button";
+import { CustomButton } from "@/components/CustomButton";
 import { Input } from "@/components/ui/input";
 import { createRecipe } from "@/features/recipes/actions/recipes";
 import { cn } from "@/lib/utils";
@@ -66,7 +66,7 @@ export default function CreateRecipeForm() {
       {errors.url && (
         <p className="text-xs text-red-600">{errors.url.message}</p>
       )}
-      <Button
+      <CustomButton
         type="submit"
         disabled={isSubmitting}
         className="w-full h-12 mt-2 shadow-md transition-transform duration-200 ease-in-out hover:scale-105 hover:shadow-lg cursor-pointer"
@@ -78,7 +78,7 @@ export default function CreateRecipeForm() {
           height={24}
         />
         Salvar Receita
-      </Button>
+      </CustomButton>
     </form>
   );
 }

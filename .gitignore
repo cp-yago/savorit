@@ -2,3 +2,5 @@
 node_modules
 .vscode
 .env
+# clerk configuration (can include secrets)
+/.clerk/
