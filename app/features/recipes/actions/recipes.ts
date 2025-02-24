@@ -25,7 +25,10 @@ export async function createRecipe(data: InsertRecipe) {
   redirect(`/recipes/${newRecipe.id}`);
 }
 
-export async function generateRecipe(sourceUrl, newRecipe) {
+export async function generateRecipe(
+  sourceUrl: string,
+  newRecipe: SelectRecipe,
+) {
   try {
     const instagramPost = await getInstagramPost(sourceUrl);
     const recipeFormatted = await formatRecipeAI(instagramPost.caption);
@@ -44,7 +47,7 @@ export async function generateRecipe(sourceUrl, newRecipe) {
 
 export async function updateRecipe(
   id: string,
-  data: Partial<Omit<SelectRecipe, "id">>,
+  data: Partial<Omit<InsertRecipe, "id">>,
 ) {
   const updatedRecipe = await updateRecipeDb(id, data);
   console.log("RODOU updateRecipe");

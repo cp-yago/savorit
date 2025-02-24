@@ -7,22 +7,25 @@ https://www.instagram.com/p/DE8P7thz_iD/
 # Requisitos (MVP)
 
 - [ x ] O app deve permitir a criação de uma receita a partir de uma URL de um post do Instagram.
-- [ ] O app deve permitir que o usuário se logue com o google e apple.
+- [ x ] O app deve permitir que o usuário se logue com o google e apple.
 - [ ] O app deve exibir todas as receitas geradas pelo usuário.
-- [ ] A primeira receita do usuário deve ficar salva no local storage do navegador.
-- [ ] Para criar a segunda receita em diante, o usuário deve fazer login com o Google.
-- [ ] O app deve permitir a criação da primeira receita sem login (Despriorizado).
+- [ ] O usuário pode criar até x receitas grátis
 
 # To do
 
-- [ ] Implementar fluxo de login com Google e Apple utilizando Clerk
+- [ ] Ao criar usuário, chamar o webhook de criação de usuário e salvá-lo no banco
+- [ ] Fazer endpoint de retry
+- [ ] Exibir as receitas do usuário na página de receitas
+- [ ] Ao criar receita, linkar ao usuário
 - [ ] Caso não tenha nenhuma receita criada, mostrar algum aviso em tela
 - [ ] Layout página de perfil (Logged in and Logged out)
 - [ ] Ajustar componente de bottom menu para que ele fique igual ao layout, com a aba ativa mais destacada
 - [ ] Fazer o endpoint /status da api
+- [ ] Deploy Clerk to production
 
 ## Done
 
+- [ x ] Implementar fluxo de login com Google e Apple utilizando Clerk
 - [ x ] Implementar fluxo de criação de receita
 - [ x ] Retornar a imagem da receita e exibir ela em tela
 - [ x ] Transformar o Badge da página da receita em um link para o instagram
@@ -46,10 +49,6 @@ https://www.instagram.com/p/DE8P7thz_iD/
 ## Ideias
 
 - [ ] Ao inserir uma url, mudar o ícone do botão conforme a rede social.
-
-## Refatorações
-
-- [ ] Separar actions das métodos de db
 
 ## Prompt
 

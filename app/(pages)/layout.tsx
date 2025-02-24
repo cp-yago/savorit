@@ -2,13 +2,18 @@ import BottomNavigation from "@/components/bottomNavigation";
 import "@/styles/global.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Head from "next/head";
+import React from "react";
 
 export const metadata = {
   title: "Savorit - Salve suas receitas favoritas do Instagram.",
   description: "Salve suas receitas favoritas do Instagram.",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <ClerkProvider>
       <html lang="en">

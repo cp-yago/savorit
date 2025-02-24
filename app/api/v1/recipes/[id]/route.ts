@@ -25,6 +25,9 @@ export async function POST(
   try {
     const { id } = await params;
     const recipe = await findRecipeById(id);
+    if (!recipe) {
+      return NextResponse.json({ error: "Recipe not found" }, { status: 404 });
+    }
     const sourceUrl = recipe.sourceUrl;
     const instagramPost = await getInstagramPost(sourceUrl);
     const recipeFormatted = await formatRecipeAI(instagramPost.caption);

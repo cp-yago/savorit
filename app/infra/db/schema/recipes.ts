@@ -1,14 +1,14 @@
-import { pgTable, varchar, json, pgEnum, text } from "drizzle-orm/pg-core";
-import { timestamps, id } from "../schemaHelpers";
+import { json, pgEnum, pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { z } from "zod";
+import { id, timestamps } from "../schemaHelpers";
 
 export const statusEnum = pgEnum("status", ["error", "pending", "done"]);
 
 export const ingredientsSchema = z.array(
   z.object({
     name: z.string(),
-    quantity: z.string(),
-    unit: z.string().optional(),
+    quantity: z.string().nullable(),
+    unit: z.string().nullable(),
   }),
 );
 
