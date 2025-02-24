@@ -36,6 +36,13 @@
       "when": 1739999302922,
       "tag": "0004_slow_ozymandias",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1740430339277,
+      "tag": "0005_outstanding_talos",
+      "breakpoints": true
     }
   ]
 }
