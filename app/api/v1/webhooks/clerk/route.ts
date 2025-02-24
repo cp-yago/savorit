@@ -71,7 +71,7 @@ export async function POST(req: Request) {
       if (name === "") return new Response("No name", { status: 400 });
 
       if (evt.type === "user.created") {
-        const user = await createUserDb({
+        await createUserDb({
           clerkUserId: evt.data.id,
           email,
           name,

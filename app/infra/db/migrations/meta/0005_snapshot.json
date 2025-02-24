@@ -131,12 +131,8 @@
           "name": "user_recipe_user_id_users_id_fk",
           "tableFrom": "user_recipe",
           "tableTo": "users",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -144,12 +140,8 @@
           "name": "user_recipe_recipe_id_recipes_id_fk",
           "tableFrom": "user_recipe",
           "tableTo": "recipes",
-          "columnsFrom": [
-            "recipe_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["recipe_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -157,10 +149,7 @@
       "compositePrimaryKeys": {
         "user_recipe_user_id_recipe_id_pk": {
           "name": "user_recipe_user_id_recipe_id_pk",
-          "columns": [
-            "user_id",
-            "recipe_id"
-          ]
+          "columns": ["user_id", "recipe_id"]
         }
       },
       "uniqueConstraints": {},
@@ -231,9 +220,7 @@
         "users_clerkUserId_unique": {
           "name": "users_clerkUserId_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "clerk_user_id"
-          ]
+          "columns": ["clerk_user_id"]
         }
       },
       "policies": {},
@@ -245,11 +232,7 @@
     "public.status": {
       "name": "status",
       "schema": "public",
-      "values": [
-        "error",
-        "pending",
-        "done"
-      ]
+      "values": ["error", "pending", "done"]
     }
   },
   "schemas": {},
