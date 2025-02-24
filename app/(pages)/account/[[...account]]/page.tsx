@@ -26,7 +26,7 @@ const Account: React.FC = () => {
     error: boolean;
     message: string;
   }> => {
-    const userId = user.id;
+    const userId = user?.id;
     if (!userId) {
       return { error: true, message: "Usuário não encontrado" };
     }

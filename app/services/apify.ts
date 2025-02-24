@@ -19,7 +19,14 @@ const prepareActorInput = (url: string) => ({
   searchType: "hashtag",
 });
 
-const formatPost = (post) => {
+type Post = {
+  caption: string;
+  displayUrl: string;
+  videoUrl: string;
+};
+
+/* eslint-disable  @typescript-eslint/no-explicit-any */
+const formatPost = (post: any): Post => {
   return {
     caption: post.caption,
     displayUrl: post.displayUrl,
@@ -32,7 +39,11 @@ export async function getInstagramPost(url: string) {
   const input = prepareActorInput(url); // Provide an example URL
 
   // Run the Actor and wait for it to finish
-  const run = await client.actor(process.env.APIFY_ACTOR_ID).call(input);
+  const actorId = process.env.APIFY_ACTOR_ID;
+  if (!actorId) {
+    throw new Error("APIFY_ACTOR_ID is not set in the environment variables");
+  }
+  const run = await client.actor(actorId).call(input);
 
   // Fetch and print Actor results from the run's dataset (if any)
   console.log("Results from dataset");

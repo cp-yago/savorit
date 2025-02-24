@@ -54,6 +54,9 @@ export async function formatRecipeAI(caption: string) {
     response_format: zodResponseFormat(RecipeEvent, "event"),
   });
 
-  const event = completion.choices[0].message.parsed;
+  const event = completion.choices[0]?.message?.parsed;
+  if (!event) {
+    throw new Error("Recipe event parsing failed: parsed event is null");
+  }
   return event;
 }
