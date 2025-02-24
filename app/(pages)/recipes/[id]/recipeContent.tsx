@@ -32,7 +32,14 @@ export default function RecipeContent({ recipeId }: { recipeId: string }) {
           className="absolute z-10 bg-white top-3 left-3"
           redirectTo="recipes"
         />
-        {data.imageUrl && (<Image src={data.imageUrl} alt={data.title || "Recipe Image"} fill objectFit="cover" />)}
+        {data.imageUrl && (
+          <Image
+            src={data.imageUrl}
+            alt={data.title || "Recipe Image"}
+            fill
+            objectFit="cover"
+          />
+        )}
       </header>
       <main className="h-min-[33vh] py-2 px-4">
         <Link href={data.sourceUrl} target="_blank">
