@@ -2,6 +2,7 @@ import {
   findRecipeById,
   updateRecipe,
 } from "@/features/recipes/actions/recipes";
+import { insertUserRecipeDb } from "@/features/userRecipes/db/recipes";
 import { getInstagramPost } from "@/services/apify";
 import { formatRecipeAI } from "@/services/openai";
 import { revalidateTag } from "next/cache";
@@ -24,6 +25,13 @@ export async function POST(
 ) {
   try {
     const { id } = await params;
+    const payload = await request.json();
+
+    const { userId } = payload;
+    if (!userId) {
+      return NextResponse.json({ error: "Missing user ID" }, { status: 400 });
+    }
+
     const recipe = await findRecipeById(id);
     if (!recipe) {
       return NextResponse.json({ error: "Recipe not found" }, { status: 404 });
@@ -35,6 +43,10 @@ export async function POST(
       ...recipeFormatted,
       status: "done",
       imageUrl: instagramPost.displayUrl,
+    });
+    await insertUserRecipeDb({
+      recipeId: recipe.id,
+      userId,
     });
     revalidateTag("recipes");
     console.log("RODOU revalidatePath");

@@ -16,3 +16,5 @@ export const UserRecipeTable = pgTable(
   },
   (t) => [primaryKey({ columns: [t.userId, t.recipeId] })],
 );
+
+export type InsertUserRecipe = typeof UserRecipeTable.$inferInsert;

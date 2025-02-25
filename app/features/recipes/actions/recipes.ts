@@ -8,17 +8,32 @@ import {
 import { InsertRecipe, SelectRecipe } from "@/infra/db/schema/recipes";
 import { getInstagramPost } from "@/services/apify";
 import { formatRecipeAI } from "@/services/openai";
+import { currentUser } from "@clerk/nextjs/server";
 import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 
 export async function createRecipe(data: InsertRecipe) {
+  console.log("Chamou createRecipe");
   // Create the recipe in the DB quickly with pending status
   const newRecipe = await insertRecipeDb(data);
+  console.log("Inseriu recipe", newRecipe.id);
+
+  const user = await currentUser();
+  console.log("RODOU getCurrentUser user.userId", user);
+  // console.log("user.userId", user.userId);
+  if (!user?.publicMetadata.dbId) {
+    throw new Error("User not found");
+  }
 
   // Fire-and-forget the slow update operations
-  // generateRecipe(data.sourceUrl, newRecipe);
   fetch(`${process.env.HOST}/api/v1/recipes/` + newRecipe.id, {
     method: "POST",
+    body: JSON.stringify({
+      userId: user.publicMetadata.dbId,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
   });
 
   // Immediately redirect the user for a loading view
