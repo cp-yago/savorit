@@ -2,7 +2,7 @@
 import { getUserIdTag } from "@/features/users/db/cache";
 import { createUserDb } from "@/features/users/db/users";
 import { db } from "@/infra/db";
-import { UserTable } from "@/infra/db/schema";
+import { UsersTable } from "@/infra/db/schema";
 import { auth, clerkClient, currentUser } from "@clerk/nextjs/server";
 import { eq } from "drizzle-orm";
 import { cacheTag } from "next/dist/server/use-cache/cache-tag";
@@ -72,7 +72,7 @@ async function getUser(id: string) {
   cacheTag(getUserIdTag(id));
   console.log("Called");
 
-  return db.query.UserTable.findFirst({
-    where: eq(UserTable.id, id),
+  return db.query.UsersTable.findFirst({
+    where: eq(UsersTable.id, id),
   });
 }

@@ -1,14 +1,14 @@
 import { db } from "@/infra/db";
-import { InsertUser, UserTable } from "@/infra/db/schema";
+import { InsertUser, UsersTable } from "@/infra/db/schema";
 import { eq } from "drizzle-orm";
 
 export async function createUserDb(data: InsertUser) {
   const [newUser] = await db
-    .insert(UserTable)
+    .insert(UsersTable)
     .values(data)
     .returning()
     .onConflictDoUpdate({
-      target: [UserTable.clerkUserId],
+      target: [UsersTable.clerkUserId],
       set: data,
     });
 
@@ -18,12 +18,12 @@ export async function createUserDb(data: InsertUser) {
 
 export async function updateUserDb(
   { clerkUserId }: { clerkUserId: string },
-  data: Partial<typeof UserTable.$inferInsert>,
+  data: Partial<typeof UsersTable.$inferInsert>,
 ) {
   const [updatedUser] = await db
-    .update(UserTable)
+    .update(UsersTable)
     .set(data)
-    .where(eq(UserTable.clerkUserId, clerkUserId))
+    .where(eq(UsersTable.clerkUserId, clerkUserId))
     .returning();
 
   if (updatedUser == null) throw new Error("Failed to update user");
@@ -33,7 +33,7 @@ export async function updateUserDb(
 
 export async function deleteUserDb({ clerkUserId }: { clerkUserId: string }) {
   const [deletedUser] = await db
-    .update(UserTable)
+    .update(UsersTable)
     .set({
       deletedAt: new Date(),
       email: "redacted@deleted.com",
@@ -41,7 +41,7 @@ export async function deleteUserDb({ clerkUserId }: { clerkUserId: string }) {
       clerkUserId: "deleted",
       imageUrl: null,
     })
-    .where(eq(UserTable.clerkUserId, clerkUserId))
+    .where(eq(UsersTable.clerkUserId, clerkUserId))
     .returning();
 
   if (deletedUser == null) throw new Error("Failed to delete user");

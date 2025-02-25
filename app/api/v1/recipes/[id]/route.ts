@@ -2,7 +2,6 @@ import {
   findRecipeById,
   updateRecipe,
 } from "@/features/recipes/actions/recipes";
-import { insertUserRecipeDb } from "@/features/userRecipes/db/recipes";
 import { getInstagramPost } from "@/services/apify";
 import { formatRecipeAI } from "@/services/openai";
 import { revalidateTag } from "next/cache";
@@ -43,10 +42,6 @@ export async function POST(
       ...recipeFormatted,
       status: "done",
       imageUrl: instagramPost.displayUrl,
-    });
-    await insertUserRecipeDb({
-      recipeId: recipe.id,
-      userId,
     });
     revalidateTag("recipes");
     console.log("RODOU revalidatePath");

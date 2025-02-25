@@ -1,0 +1,1 @@
+ALTER TABLE "recipes" ADD COLUMN "user_id" uuid NOT NULL;
