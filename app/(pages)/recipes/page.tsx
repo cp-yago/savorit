@@ -2,7 +2,7 @@ import InstagramIcon from "@/components/icons/instagram";
 import RoundButton from "@/components/roundButton";
 import { Badge } from "@/components/ui/badge";
 import { findRecipesByUserId } from "@/features/recipes/db/recipes";
-import { currentUser } from '@clerk/nextjs/server';
+import { currentUser } from "@clerk/nextjs/server";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -18,7 +18,7 @@ function RecipeCard({
   id,
   imageURL,
   timeToCookInMinutes = 30,
-  title
+  title,
 }: RecipeCardProps): React.ReactElement {
   return (
     <Link href={`/recipes/${id}`} className="block">
@@ -30,9 +30,7 @@ function RecipeCard({
           width={150}
           height={150}
         />
-        <h2 className="text-sm my-1">
-          {title}
-        </h2>
+        <h2 className="text-sm my-1">{title}</h2>
         <div className="flex justify-between w-full">
           <Badge className="rounded-full bg-soft-pink">
             <svg
@@ -56,7 +54,7 @@ function RecipeCard({
       </div>
     </Link>
   );
-};
+}
 
 export default async function RecipeList() {
   const user = await currentUser();
@@ -67,7 +65,6 @@ export default async function RecipeList() {
   }
 
   const recipes = await findRecipesByUserId(userId);
-
 
   return (
     <div className="flex flex-col items-center gap-4">
@@ -91,4 +88,4 @@ export default async function RecipeList() {
       </main>
     </div>
   );
-};
+}

@@ -151,9 +151,7 @@
         "users_clerkUserId_unique": {
           "name": "users_clerkUserId_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "clerk_user_id"
-          ]
+          "columns": ["clerk_user_id"]
         }
       },
       "policies": {},
@@ -165,11 +163,7 @@
     "public.status": {
       "name": "status",
       "schema": "public",
-      "values": [
-        "error",
-        "pending",
-        "done"
-      ]
+      "values": ["error", "pending", "done"]
     }
   },
   "schemas": {},
