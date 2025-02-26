@@ -19,7 +19,7 @@ const nextConfig: NextConfig = {
     ],
   },
   experimental: {
-    dynamicIO: true,
+    dynamicIO: false,
   },
 };
 

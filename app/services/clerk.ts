@@ -66,7 +66,6 @@ export async function syncClerkUserMetadata(user: InsertUser) {
 }
 
 async function getUser(id: string) {
-  "use cache";
   cacheTag(getUserIdTag(id));
   console.log("Called");
 
