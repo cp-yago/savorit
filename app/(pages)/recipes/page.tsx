@@ -58,8 +58,12 @@ function RecipeCard({
 
 export default async function RecipeList() {
   const user = await getCurrentUser();
-  const userId = user?.userId!;
-  const recipes = await findRecipesByUserId(userId)
+
+  if (!user.userId) {
+    throw new Error("User not found");
+  }
+
+  const recipes = await findRecipesByUserId(user.userId);
 
   return (
     <div className="flex flex-col items-center gap-4">

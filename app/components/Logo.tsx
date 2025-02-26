@@ -26,7 +26,9 @@ const Logo: React.FC<LogoProps> = ({ className }) => {
       cursor={true}
       repeat={Infinity}
       style={{ fontSize: "3em", display: "inline-block" }}
-      className={cn(`${croissant_one.className}${className ? " " + className : ""}`)}
+      className={cn(
+        `${croissant_one.className}${className ? " " + className : ""}`,
+      )}
     />
   );
 };

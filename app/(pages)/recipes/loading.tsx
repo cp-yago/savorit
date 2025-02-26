@@ -10,7 +10,7 @@ export function CardSkeleton() {
         <Skeleton className="h-4 w-[150px]" />
       </div>
     </div>
-  )
+  );
 }
 
 export default function Loading() {
