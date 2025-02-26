@@ -1,6 +1,15 @@
-import { json, pgEnum, pgTable, text, varchar } from "drizzle-orm/pg-core";
+import { relations } from "drizzle-orm";
+import {
+  json,
+  pgEnum,
+  pgTable,
+  text,
+  uuid,
+  varchar,
+} from "drizzle-orm/pg-core";
 import { z } from "zod";
 import { id, timestamps } from "../schemaHelpers";
+import { UsersTable } from "./users";
 
 export const statusEnum = pgEnum("status", ["error", "pending", "done"]);
 
@@ -25,6 +34,7 @@ export type InstructionsType = z.infer<typeof instructionsSchema>;
 
 export const RecipesTable = pgTable("recipes", {
   id,
+  userId: uuid().notNull(),
   title: varchar({ length: 255 }),
   description: varchar({ length: 255 }),
   imageUrl: text(),
@@ -34,6 +44,13 @@ export const RecipesTable = pgTable("recipes", {
   status: statusEnum().default("pending"),
   ...timestamps,
 });
+
+export const recipesRelations = relations(RecipesTable, ({ one }) => ({
+  author: one(UsersTable, {
+    fields: [RecipesTable.userId],
+    references: [UsersTable.id],
+  }),
+}));
 
 export type InsertRecipe = typeof RecipesTable.$inferInsert;
 

@@ -1,9 +1,9 @@
 import { relations } from "drizzle-orm";
 import { pgTable, text } from "drizzle-orm/pg-core";
 import { id, timestamps } from "../schemaHelpers";
-import { UserRecipeTable } from "./userRecipe";
+import { RecipesTable } from "./recipes";
 
-export const UserTable = pgTable("users", {
+export const UsersTable = pgTable("users", {
   id,
   clerkUserId: text().notNull().unique(),
   email: text().notNull(),
@@ -12,8 +12,8 @@ export const UserTable = pgTable("users", {
   ...timestamps,
 });
 
-export const UserRelations = relations(UserTable, ({ many }) => ({
-  userRecipes: many(UserRecipeTable),
+export const usersRelations = relations(UsersTable, ({ many }) => ({
+  recipes: many(RecipesTable),
 }));
 
-export type InsertUser = typeof UserTable.$inferInsert;
+export type InsertUser = typeof UsersTable.$inferInsert;

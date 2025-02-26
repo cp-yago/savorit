@@ -24,6 +24,13 @@ export async function POST(
 ) {
   try {
     const { id } = await params;
+    const payload = await request.json();
+
+    const { userId } = payload;
+    if (!userId) {
+      return NextResponse.json({ error: "Missing user ID" }, { status: 400 });
+    }
+
     const recipe = await findRecipeById(id);
     if (!recipe) {
       return NextResponse.json({ error: "Recipe not found" }, { status: 404 });

@@ -22,7 +22,7 @@ export function ActionButton({
   requireAreYouSure = false,
   ...props
 }: Omit<ComponentPropsWithRef<typeof Button>, "onClick"> & {
-  action: () => Promise<{ error: boolean; message: string }>;
+  action?: () => Promise<{ error: boolean; message: string }>; // remove this later, just for testing
   requireAreYouSure?: boolean;
 }) {
   {
@@ -30,6 +30,7 @@ export function ActionButton({
 
     function performAction() {
       startTransition(async () => {
+        if (!action) return; // remove this later
         await action();
         // const data = await action()
         // actionToast({ actionData: data })

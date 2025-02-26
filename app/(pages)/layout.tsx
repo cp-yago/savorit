@@ -1,8 +1,8 @@
 import BottomNavigation from "@/components/bottomNavigation";
 import "@/styles/global.css";
-import { ClerkProvider } from "@clerk/nextjs";
+import { ClerkProvider, SignedIn } from "@clerk/nextjs";
 import Head from "next/head";
-import React from "react";
+import React, { Suspense } from "react";
 
 export const metadata = {
   title: "Savorit - Salve suas receitas favoritas do Instagram.",
@@ -25,7 +25,11 @@ export default function RootLayout({
         </Head>
         <body className="bg-rose-50">
           {children}
-          <BottomNavigation />
+          <Suspense>
+            <SignedIn>
+              <BottomNavigation />
+            </SignedIn>
+          </Suspense>
         </body>
       </html>
     </ClerkProvider>

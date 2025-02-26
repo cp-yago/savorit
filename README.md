@@ -8,23 +8,31 @@ https://www.instagram.com/p/DE8P7thz_iD/
 
 - [ x ] O app deve permitir a criação de uma receita a partir de uma URL de um post do Instagram.
 - [ x ] O app deve permitir que o usuário se logue com o google e apple.
-- [ ] O app deve exibir todas as receitas geradas pelo usuário.
+- [ x ] O app deve exibir todas as receitas geradas pelo usuário.
 - [ ] O usuário pode criar até x receitas grátis
 
 # To do
 
-- [ ] Ao criar usuário, chamar o webhook de criação de usuário e salvá-lo no banco
-- [ ] Fazer endpoint de retry
-- [ ] Exibir as receitas do usuário na página de receitas
-- [ ] Ao criar receita, linkar ao usuário
 - [ ] Caso não tenha nenhuma receita criada, mostrar algum aviso em tela
-- [ ] Layout página de perfil (Logged in and Logged out)
 - [ ] Ajustar componente de bottom menu para que ele fique igual ao layout, com a aba ativa mais destacada
-- [ ] Fazer o endpoint /status da api
 - [ ] Deploy Clerk to production
+- [ ] Funcionalidade excluir receita
+
+# Melhorias de experiência do usuário e layout
+
+- [ ] O comportamento do botão de Sign out não está funcionando corretamente, ajustar isso
+- [ ] O comportamento do botão de deletar conta não está funcionando corretamente, ajustar isso
 
 ## Done
 
+- [ x ] Na página de listar receitas, os cards ficam com tamanhos diferentes a depender do tamanho da imagem, ajustar isso
+- [ x ] Layout página de perfil (Logged in and Logged out)
+- [ x ] Página de loading da listagem de receitas com skeleton
+- [ x ] Implementar loading na página de listagem de receita
+- [ x ] Ao clicar em "Salvar Receita", desabilitar o botão e mostrar um loading (Spinner)
+- [ x ] Exibir as receitas do usuário na página de receitas
+- [ x ] Ao criar receita, linkar ao usuário
+- [ x ] Ao criar usuário, chamar o webhook de criação de usuário e salvá-lo no banco
 - [ x ] Implementar fluxo de login com Google e Apple utilizando Clerk
 - [ x ] Implementar fluxo de criação de receita
 - [ x ] Retornar a imagem da receita e exibir ela em tela

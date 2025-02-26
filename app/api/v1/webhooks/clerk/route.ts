@@ -3,6 +3,7 @@ import {
   deleteUserDb,
   updateUserDb,
 } from "@/features/users/db/users";
+import { syncClerkUserMetadata } from "@/services/clerk";
 import { WebhookEvent } from "@clerk/nextjs/server";
 import { headers } from "next/headers";
 import { Webhook } from "svix";
@@ -71,14 +72,14 @@ export async function POST(req: Request) {
       if (name === "") return new Response("No name", { status: 400 });
 
       if (evt.type === "user.created") {
-        await createUserDb({
+        const user = await createUserDb({
           clerkUserId: evt.data.id,
           email,
           name,
           imageUrl: evt.data.image_url,
         });
 
-        // await syncClerkUserMetadata(user);
+        await syncClerkUserMetadata(user);
       } else {
         await updateUserDb(
           { clerkUserId: evt.data.id },

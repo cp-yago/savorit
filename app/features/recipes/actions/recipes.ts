@@ -8,17 +8,41 @@ import {
 import { InsertRecipe, SelectRecipe } from "@/infra/db/schema/recipes";
 import { getInstagramPost } from "@/services/apify";
 import { formatRecipeAI } from "@/services/openai";
+import { currentUser } from "@clerk/nextjs/server";
 import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 
-export async function createRecipe(data: InsertRecipe) {
+export async function createRecipe(data: Partial<InsertRecipe>) {
   // Create the recipe in the DB quickly with pending status
-  const newRecipe = await insertRecipeDb(data);
+  const sourceUrl = data.sourceUrl;
+
+  if (!sourceUrl) {
+    throw new Error("Source URL is required");
+  }
+
+  const user = await currentUser();
+  const userId = user?.publicMetadata.dbId;
+
+  if (!userId) {
+    throw new Error("User not found");
+  }
+
+  const newRecipe = await insertRecipeDb({
+    ...data,
+    sourceUrl,
+    userId,
+    status: "pending",
+  });
 
   // Fire-and-forget the slow update operations
-  // generateRecipe(data.sourceUrl, newRecipe);
   fetch(`${process.env.HOST}/api/v1/recipes/` + newRecipe.id, {
     method: "POST",
+    body: JSON.stringify({
+      userId: user.publicMetadata.dbId,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
   });
 
   // Immediately redirect the user for a loading view
