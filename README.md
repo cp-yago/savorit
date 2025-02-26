@@ -20,6 +20,14 @@ https://www.instagram.com/p/DE8P7thz_iD/
 - [ ] Fazer o endpoint /status da api
 - [ ] Deploy Clerk to production
 
+# Melhorias de experiência do usuário e layout
+
+- [ ] Implementar loading na página de listagem de receita
+- [ ] Ao clicar em "Salvar Receita", desabilitar o botão e mostrar um loading (Spinner)
+- [ ] Na página de listar receitas, os cards ficam com tamanhos diferentes a depender do tamanho da imagem, ajustar isso
+- [ ] O comportamento do botão de Sign out não está funcionando corretamente, ajustar isso
+- [ ] O comportamento do botão de deletar conta não está funcionando corretamente, ajustar isso
+
 ## Done
 
 - [ x ] Exibir as receitas do usuário na página de receitas

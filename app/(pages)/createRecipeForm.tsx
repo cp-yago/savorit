@@ -5,6 +5,7 @@ import { createRecipe } from "@/features/recipes/actions/recipes";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
+import { Loader2 } from "lucide-react";
 import Image from "next/image";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
@@ -71,12 +72,16 @@ export default function CreateRecipeForm() {
         disabled={isSubmitting}
         className="w-full h-12 mt-2 shadow-md transition-transform duration-200 ease-in-out hover:scale-105 hover:shadow-lg cursor-pointer"
       >
-        <Image
-          src="icons/instagram.svg"
-          alt="Instagram icon"
-          width={24}
-          height={24}
-        />
+        {isSubmitting ? (
+          <Loader2 className="animate-spin" />
+        ) : (
+          <Image
+            src="icons/instagram.svg"
+            alt="Instagram icon"
+            width={24}
+            height={24}
+          />
+        )}
         Salvar Receita
       </CustomButton>
     </form>

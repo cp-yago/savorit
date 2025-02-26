@@ -1,5 +1,11 @@
+import Logo from "@/components/Logo";
 import { SignIn } from "@clerk/nextjs";
 
 export default function Page() {
-  return <SignIn />;
+  return (
+    <div className="flex flex-col items-center justify-center h-svh">
+      <Logo className="mb-4" />
+      <SignIn />
+    </div>
+  );
 }
