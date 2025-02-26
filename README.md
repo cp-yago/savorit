@@ -13,21 +13,21 @@ https://www.instagram.com/p/DE8P7thz_iD/
 
 # To do
 
-- [ ] Página de loading da listagem de receitas com skeleton
 - [ ] Caso não tenha nenhuma receita criada, mostrar algum aviso em tela
-- [ ] Layout página de perfil (Logged in and Logged out)
 - [ ] Ajustar componente de bottom menu para que ele fique igual ao layout, com a aba ativa mais destacada
-- [ ] Fazer o endpoint /status da api
 - [ ] Deploy Clerk to production
+- [ ] Funcionalidade excluir receita
 
 # Melhorias de experiência do usuário e layout
 
-- [ ] Na página de listar receitas, os cards ficam com tamanhos diferentes a depender do tamanho da imagem, ajustar isso
 - [ ] O comportamento do botão de Sign out não está funcionando corretamente, ajustar isso
 - [ ] O comportamento do botão de deletar conta não está funcionando corretamente, ajustar isso
 
 ## Done
 
+- [ x ] Na página de listar receitas, os cards ficam com tamanhos diferentes a depender do tamanho da imagem, ajustar isso
+- [ x ] Layout página de perfil (Logged in and Logged out)
+- [ x ] Página de loading da listagem de receitas com skeleton
 - [ x ] Implementar loading na página de listagem de receita
 - [ x ] Ao clicar em "Salvar Receita", desabilitar o botão e mostrar um loading (Spinner)
 - [ x ] Exibir as receitas do usuário na página de receitas
