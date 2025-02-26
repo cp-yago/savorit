@@ -2,10 +2,11 @@
 import { getUserIdTag } from "@/features/users/db/cache";
 import { createUserDb } from "@/features/users/db/users";
 import { db } from "@/infra/db";
-import { UsersTable } from "@/infra/db/schema";
+import { InsertUser, UsersTable } from "@/infra/db/schema";
 import { auth, clerkClient, currentUser } from "@clerk/nextjs/server";
 import { eq } from "drizzle-orm";
 import { cacheTag } from "next/dist/server/use-cache/cache-tag";
+import { redirect } from "next/navigation";
 
 const client = await clerkClient();
 
@@ -42,7 +43,7 @@ export async function getCurrentUser({ allData = false } = {}) {
   const { userId, sessionClaims, redirectToSignIn } = await auth();
 
   if (userId != null && sessionClaims.dbId == null) {
-    await syncUsers();
+    redirect("/api/v1/clerk/syncUsers");
   }
 
   return {
@@ -56,10 +57,7 @@ export async function getCurrentUser({ allData = false } = {}) {
   };
 }
 
-export async function syncClerkUserMetadata(user: {
-  id: string;
-  clerkUserId: string;
-}) {
+export async function syncClerkUserMetadata(user: InsertUser) {
   return client.users.updateUserMetadata(user.clerkUserId, {
     publicMetadata: {
       dbId: user.id,

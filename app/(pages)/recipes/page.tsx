@@ -2,7 +2,7 @@ import InstagramIcon from "@/components/icons/instagram";
 import RoundButton from "@/components/roundButton";
 import { Badge } from "@/components/ui/badge";
 import { findRecipesByUserId } from "@/features/recipes/db/recipes";
-import { currentUser } from "@clerk/nextjs/server";
+import { getCurrentUser } from "@/services/clerk";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -57,14 +57,9 @@ function RecipeCard({
 }
 
 export default async function RecipeList() {
-  const user = await currentUser();
-  const userId = user?.publicMetadata.dbId;
-
-  if (!userId) {
-    return <div>Usuário não encontrado</div>;
-  }
-
-  const recipes = await findRecipesByUserId(userId);
+  const user = await getCurrentUser();
+  const userId = user?.userId!;
+  const recipes = await findRecipesByUserId(userId)
 
   return (
     <div className="flex flex-col items-center gap-4">
