@@ -1,4 +1,4 @@
-import RoundButton from "@/components/roundButton";
+import RoundButton from "@/components/rounded-link-button";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export function CardSkeleton() {
@@ -19,7 +19,7 @@ export default function Loading() {
       <header className="flex flex-col justify-between w-full py-4 px-5 sticky top-0 bg-peach-cream z-10">
         <div className="flex justify-between items-center py-2">
           <h1 className="text-xl">Carregando Receitas</h1>
-          <RoundButton icon="plus" redirectTo="/" />
+          <RoundButton icon="plus" pathOrUrl="/" />
         </div>
       </header>
 

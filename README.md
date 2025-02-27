@@ -13,7 +13,6 @@ https://www.instagram.com/p/DE8P7thz_iD/
 
 # To do
 
-- [ ] Caso não tenha nenhuma receita criada, mostrar algum aviso em tela
 - [ ] Ajustar componente de bottom menu para que ele fique igual ao layout, com a aba ativa mais destacada
 - [ ] Deploy Clerk to production
 - [ ] Funcionalidade excluir receita
@@ -25,6 +24,7 @@ https://www.instagram.com/p/DE8P7thz_iD/
 
 ## Done
 
+- [ x ] Caso não tenha nenhuma receita criada, mostrar algum aviso em tela
 - [ x ] Na página de listar receitas, os cards ficam com tamanhos diferentes a depender do tamanho da imagem, ajustar isso
 - [ x ] Layout página de perfil (Logged in and Logged out)
 - [ x ] Página de loading da listagem de receitas com skeleton

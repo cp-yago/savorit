@@ -1,13 +1,13 @@
 "use client";
 import InstagramIcon from "@/components/icons/instagram";
-import RoundButton from "@/components/roundButton";
+import RoundButton from "@/components/rounded-link-button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { SelectRecipe } from "@/infra/db/schema";
 import Image from "next/image";
 import Link from "next/link";
 import useSWR from "swr";
-import RecipeLoading from "./recipeLoading";
+import RecipeLoading from "./loading";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -30,7 +30,7 @@ export default function RecipeContent({ recipeId }: { recipeId: string }) {
         <RoundButton
           icon="back"
           className="absolute z-10 bg-white top-3 left-3"
-          redirectTo="recipes"
+          pathOrUrl="/recipes"
         />
         {data.imageUrl && (
           <Image

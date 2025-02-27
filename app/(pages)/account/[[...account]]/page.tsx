@@ -1,18 +1,9 @@
 import { ActionButton } from "@/components/ActionButton";
-import SignOutIcon from "@/components/icons/sign-out";
 import { TrashIcon } from "lucide-react";
+import SignOutButton from "./components/sign-out-button";
 
 export default function Account() {
-  // const { signOut, user } = useClerk();
-
-  // async function handleSignOut() {
-  //   return
-  // };
-
   return (
-    // <Suspense fallback={<div>Loading...</div>}>
-    //   <h1>Teste</h1>
-    // </Suspense>
     <div className="p-4 mt-4">
       <h1 className="ml-4 text-2xl">Conta</h1>
       <div className="flex flex-col border rounded-3xl m-4 p-4">
@@ -40,13 +31,7 @@ export default function Account() {
             <TrashIcon />
           </ActionButton>
           <hr className="w-5/6 my-2" />
-          <button
-            // onClick={handleSignOut}
-            className="flex flex-row justify-between px-3 py-1"
-          >
-            <h2>Sign out</h2>
-            <SignOutIcon />
-          </button>
+          <SignOutButton />
         </div>
       </div>
     </div>

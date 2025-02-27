@@ -1,12 +1,12 @@
 "use client";
 import { CustomButton } from "@/components/CustomButton";
+import InstagramIcon from "@/components/icons/instagram";
 import { Input } from "@/components/ui/input";
 import { createRecipe } from "@/features/recipes/actions/recipes";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
-import Image from "next/image";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -75,12 +75,7 @@ export default function CreateRecipeForm() {
         {isSubmitting ? (
           <Loader2 className="animate-spin" />
         ) : (
-          <Image
-            src="icons/instagram.svg"
-            alt="Instagram icon"
-            width={24}
-            height={24}
-          />
+          <InstagramIcon />
         )}
         Salvar Receita
       </CustomButton>
