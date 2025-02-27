@@ -1,6 +1,6 @@
 import { findRecipeById } from "@/features/recipes/actions/recipes";
 import { unstable_cache } from "next/cache";
-import RecipeContent from "./recipeContent";
+import RecipeContent from "./recipe-content";
 
 type Params = { id: string };
 
