@@ -35,7 +35,7 @@ export default function DeleteUserButton() {
       action={handleDeleteUser}
       requireAreYouSure
       variant="ghost"
-      className="flex flex-row justify-between py-4"
+      className="flex flex-row justify-between py-4 transition-transform duration-200 ease-in-out hover:scale-101 cursor-pointer"
     >
       <h2>Deletar Conta</h2>
       <TrashIcon />
