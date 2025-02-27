@@ -13,17 +13,19 @@ https://www.instagram.com/p/DE8P7thz_iD/
 
 # To do
 
+- [ ] Somente exibir receitas com status done na listagem de receitas
 - [ ] Ajustar componente de bottom menu para que ele fique igual ao layout, com a aba ativa mais destacada
 - [ ] Deploy Clerk to production
 - [ ] Funcionalidade excluir receita
 
 # Melhorias de experiência do usuário e layout
 
-- [ ] O comportamento do botão de Sign out não está funcionando corretamente, ajustar isso
 - [ ] O comportamento do botão de deletar conta não está funcionando corretamente, ajustar isso
 
 ## Done
 
+- [ x ] Ao fazer login, o usuário deve ser redirecionado para a página /recipes
+- [ x ] O comportamento do botão de Sign out não está funcionando corretamente, ajustar isso
 - [ x ] Caso não tenha nenhuma receita criada, mostrar algum aviso em tela
 - [ x ] Na página de listar receitas, os cards ficam com tamanhos diferentes a depender do tamanho da imagem, ajustar isso
 - [ x ] Layout página de perfil (Logged in and Logged out)

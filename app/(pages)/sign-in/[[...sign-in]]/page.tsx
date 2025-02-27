@@ -7,7 +7,10 @@ export default function Page() {
     <Suspense fallback="Loading...">
       <div className="flex flex-col items-center justify-center h-svh">
         <Logo className="mb-4" />
-        <SignIn />
+        <SignIn
+          forceRedirectUrl="/recipes"
+          signUpFallbackRedirectUrl="/recipes"
+        />
       </div>
     </Suspense>
   );

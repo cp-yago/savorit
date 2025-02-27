@@ -22,7 +22,7 @@ export function ActionButton({
   requireAreYouSure = false,
   ...props
 }: Omit<ComponentPropsWithRef<typeof Button>, "onClick"> & {
-  action?: () => Promise<{ error: boolean; message: string }>; // remove this later, just for testing
+  action: () => Promise<void>; // remove this later, just for testing
   requireAreYouSure?: boolean;
 }) {
   {
@@ -45,19 +45,19 @@ export function ActionButton({
           </AlertDialogTrigger>
           <AlertDialogContent className="bg-white">
             <AlertDialogHeader>
-              <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+              <AlertDialogTitle>Você tem certeza?</AlertDialogTitle>
               <AlertDialogDescription>
-                This action cannot be undone.
+                Essa ação não pode ser desfeita.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogCancel>Cancelar</AlertDialogCancel>
               <AlertDialogAction
                 disabled={isLoading}
                 onClick={performAction}
                 className="bg-red-500 text-white"
               >
-                <LoadingTextSwap isLoading={isLoading}>Yes</LoadingTextSwap>
+                <LoadingTextSwap isLoading={isLoading}>Sim</LoadingTextSwap>
               </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>

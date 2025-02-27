@@ -36,13 +36,9 @@ export async function deleteUserDb({ clerkUserId }: { clerkUserId: string }) {
     .update(UsersTable)
     .set({
       deletedAt: new Date(),
-      email: "redacted@deleted.com",
-      name: "Deleted User",
-      clerkUserId: "deleted",
-      imageUrl: null,
     })
     .where(eq(UsersTable.clerkUserId, clerkUserId))
-    .returning();
+    .returning({ clerkUserId: UsersTable.clerkUserId });
 
   if (deletedUser == null) throw new Error("Failed to delete user");
 
