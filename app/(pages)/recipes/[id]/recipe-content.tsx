@@ -41,29 +41,29 @@ export default function RecipeContent({ recipeId }: { recipeId: string }) {
           />
         )}
       </header>
-      <main className="h-min-[33vh] py-2 px-4">
+      <main className="h-min-[33vh] p-4">
         <Link href={data.sourceUrl} target="_blank">
-          <Badge className="bg-soft-pink rounded-full border-1 border-black py-2 transition-transform duration-100 ease-in-out hover:scale-102 hover:shadow-lg cursor-pointer">
+          <Badge className="w-30 bg-soft-pink rounded-full border-1 border-black py-1 transition-transform duration-100 ease-in-out hover:scale-102 hover:shadow-lg cursor-pointer">
             <InstagramIcon />
-            <span>instagram.com</span>
+            <span className="text-xsm">instagram.com</span>
           </Badge>
         </Link>
         <div className="py-2">
           <h1>{data.title}</h1>
           <p className="text-gray font-semibold mt-2">{data.description}</p>
         </div>
-        <div className="w-full">
+        <div className="w-full mt-2">
           <Tabs defaultValue="ingredients" className="w-full">
             <TabsList className="w-full relative">
               <TabsTrigger
                 value="ingredients"
-                className="py-2 w-full border-1 rounded-full relative data-[state=active]:bg-light-blue data-[state=active]:z-10"
+                className="py-1 w-full border-1 rounded-full relative data-[state=active]:bg-light-blue data-[state=active]:z-10"
               >
                 Ingredients
               </TabsTrigger>
               <TabsTrigger
                 value="instructions"
-                className="py-2 w-full border-1 rounded-full relative ml-[-30px] data-[state=active]:bg-light-blue data-[state=active]:z-10"
+                className="py-1 w-full border-1 rounded-full relative ml-[-30px] data-[state=active]:bg-light-blue data-[state=active]:z-10"
               >
                 Instructions
               </TabsTrigger>

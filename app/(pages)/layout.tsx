@@ -1,4 +1,4 @@
-import BottomNavigation from "@/components/bottomNavigation";
+import BottomNavigation from "@/components/bottom-navigation";
 import "@/styles/global.css";
 import { ClerkProvider, SignedIn } from "@clerk/nextjs";
 import Head from "next/head";
@@ -23,7 +23,7 @@ export default function RootLayout({
             content="width=device-width, initial-scale=1.0"
           />
         </Head>
-        <body className="bg-rose-50">
+        <body className="bg-rose-50 pb-16">
           {children}
           <Suspense>
             <SignedIn>
