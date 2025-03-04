@@ -1,10 +1,10 @@
 import { createUserDb } from "@/features/users/db/users";
 import { syncClerkUserMetadata } from "@/services/clerk";
 import { currentUser } from "@clerk/nextjs/server";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 // Not used so far
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
   console.log("Chamou rota GET clerk");
   const user = await currentUser();
 
@@ -27,5 +27,8 @@ export async function GET(request: Request) {
 
   await new Promise((res) => setTimeout(res, 100));
 
-  return NextResponse.redirect(request.headers.get("referer") ?? "/");
+  const redirectUrl = request.nextUrl.clone();
+  redirectUrl.pathname = "/";
+
+  return NextResponse.redirect(request.headers.get("referer") ?? redirectUrl);
 }
