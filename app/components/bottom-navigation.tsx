@@ -109,4 +109,4 @@ export default function BottomNavigation() {
       </div>
     </div>
   );
-};
+}
