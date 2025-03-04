@@ -1,9 +1,13 @@
 import RoundButton from "@/components/rounded-link-button";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Progress } from "@radix-ui/react-progress";
+import LoadingText from "./loading-text";
 
 export default function RecipeStatusPage() {
   return (
     <div>
+      <LoadingText className="text-center my-4 z-10" />
+      <Progress value={33} />
       <header className="relative h-[33svh] overflow-hidden">
         <RoundButton
           icon="back"
