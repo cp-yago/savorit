@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import RecipeLoading from "./components/loading";
-import RecipeContent from "./recipe-content";
+import RecipeContent from "./components/recipe";
 
 type Params = { id: string };
 

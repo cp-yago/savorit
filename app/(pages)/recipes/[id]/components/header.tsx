@@ -1,5 +1,6 @@
 import RoundButton from "@/components/rounded-link-button";
 import Image from "next/image";
+import MenuButton from "./menu-button";
 
 interface HeaderProps {
   imageUrl?: string | null;
@@ -23,6 +24,7 @@ export default function RecipeHeader({ imageUrl, title }: HeaderProps) {
           priority
         />
       )}
+      <MenuButton className="absolute z-10 top-3 right-3" />
     </header>
   );
 }
