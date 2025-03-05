@@ -8,6 +8,7 @@
   --color-soft-pink: #ffaac7;
   --color-peach-cream: #fdf7f0;
   --color-light-blue: #a2e3f6;
+  --color-danger: #ff0000;
 }
 
 @layer base {

@@ -1,3 +1,4 @@
+import BackSpaceIcon from "@/components/icons/back-space";
 import EllipsisVertical from "@/components/icons/ellipsis-vertical";
 import {
   DropdownMenu,
@@ -25,7 +26,10 @@ export default function MenuButton({ className }: MenuButtonProps) {
         <DropdownMenuContent className="bg-white border-2 rounded-lg shadow-md">
           <DropdownMenuLabel>Opções</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem onClick={handleEdit}>Editar</DropdownMenuItem>
+          <DropdownMenuItem onClick={handleEdit} className="flex justify-between">
+            Deletar
+            <BackSpaceIcon />
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
