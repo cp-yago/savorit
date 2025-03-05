@@ -13,6 +13,10 @@ https://www.instagram.com/p/DE8P7thz_iD/
 
 # To do
 
+- [ ] Feature Deletar receita
+- [ ] Feature Editar receita (sem alterar a foto)
+- [ ] Feature favoritar receita
+- [ ] Lidar com erros na geração de receita
 - [ ] Somente exibir receitas com status done na listagem de receitas
 - [ ] Ajustar componente de bottom menu para que ele fique igual ao layout, com a aba ativa mais destacada
 - [ ] Deploy Clerk to production

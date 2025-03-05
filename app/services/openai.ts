@@ -33,6 +33,7 @@ O texto abaixo foi extraído da legenda de um post do Instagram, esse post é de
 - Você pode retornar valores que não estão explicitamente no texto, mas não invente ingredientes e etapas.
 - Caso a receita não tenha uma descrição, crie uma descrição com base no texto fornecido, o texto deve conter no máximo 200 caracteres.
 - Os valores quantity e unit dos ingredientes podem ser nulos caso não estejam especificados.
+- O texto pode ser fornecido em inglês, português ou outro idioma, retorne sempre em português.
 Receita:
 ${caption}
 `;
