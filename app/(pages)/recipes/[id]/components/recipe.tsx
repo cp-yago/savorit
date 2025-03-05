@@ -1,22 +1,26 @@
 "use client";
-import InstagramIcon from "@/components/icons/instagram";
-import RoundButton from "@/components/rounded-link-button";
-import { Badge } from "@/components/ui/badge";
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { SelectRecipe } from "@/infra/db/schema";
-import Image from "next/image";
-import Link from "next/link";
 import useSWR from "swr";
+import SocialMediaBadge from "./badge";
+import RecipeHeader from "./header";
 import RecipeLoading from "./loading";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-export default function RecipeContent({ recipeId }: { recipeId: string }) {
+interface RecipeContentProps {
+  recipeId: string;
+}
+
+export default function RecipeContent({ recipeId }: RecipeContentProps) {
   const { data, isLoading } = useSWR<SelectRecipe>(
     `/api/v1/recipes/${recipeId}`,
     fetcher,
     {
       refreshInterval: 5000,
+      suspense: true,
+      fallbackData: { status: "pending" } as SelectRecipe,
     },
   );
 
@@ -26,31 +30,16 @@ export default function RecipeContent({ recipeId }: { recipeId: string }) {
 
   return (
     <div>
-      <header className="relative h-[33svh] overflow-hidden">
-        <RoundButton
-          icon="back"
-          className="absolute z-10 bg-white top-3 left-3"
-          pathOrUrl="/recipes"
-        />
-        {data.imageUrl && (
-          <Image
-            src={data.imageUrl}
-            alt={data.title || "Recipe Image"}
-            fill
-            objectFit="cover"
-          />
-        )}
-      </header>
+      <RecipeHeader
+        imageUrl={data?.imageUrl}
+        title={data?.title}
+        recipeId={recipeId}
+      />
       <main className="h-min-[33vh] p-4">
-        <Link href={data.sourceUrl} target="_blank">
-          <Badge className="w-30 bg-soft-pink rounded-full border-1 border-black py-1 transition-transform duration-100 ease-in-out hover:scale-102 hover:shadow-lg cursor-pointer">
-            <InstagramIcon />
-            <span className="text-xsm">instagram.com</span>
-          </Badge>
-        </Link>
+        <SocialMediaBadge sourceUrl={data?.sourceUrl} />
         <div className="py-2">
-          <h1>{data.title}</h1>
-          <p className="text-gray font-semibold mt-2">{data.description}</p>
+          <h1>{data?.title}</h1>
+          <p className="text-gray font-semibold mt-2">{data?.description}</p>
         </div>
         <div className="w-full mt-2">
           <Tabs defaultValue="ingredients" className="w-full">
@@ -70,7 +59,7 @@ export default function RecipeContent({ recipeId }: { recipeId: string }) {
             </TabsList>
             <TabsContent value="ingredients">
               <ul className="list list-disc list-inside ml-4">
-                {data.ingredients &&
+                {data?.ingredients &&
                   data.ingredients.map((ingredient, index) => (
                     <li key={index} className="flex">
                       <span className="font-bold mr-2">●</span>
@@ -89,7 +78,7 @@ export default function RecipeContent({ recipeId }: { recipeId: string }) {
             </TabsContent>
             <TabsContent value="instructions">
               <ul>
-                {data.instructions &&
+                {data?.instructions &&
                   data.instructions.map((instruction, index) => (
                     <li key={index} className="flex mb-4">
                       <span className="font-bold mr-4">

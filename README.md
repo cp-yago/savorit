@@ -17,6 +17,9 @@ https://www.instagram.com/p/DE8P7thz_iD/
 - [ ] Feature Editar receita (sem alterar a foto)
 - [ ] Feature favoritar receita
 - [ ] Lidar com erros na geração de receita
+- [ ] Feature buscar receitas
+- [ ] Feature criar coleções de receitas
+- [ ] Feature
 - [ ] Somente exibir receitas com status done na listagem de receitas
 - [ ] Ajustar componente de bottom menu para que ele fique igual ao layout, com a aba ativa mais destacada
 - [ ] Deploy Clerk to production
