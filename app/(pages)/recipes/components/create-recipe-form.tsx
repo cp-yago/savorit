@@ -14,8 +14,8 @@ const createRecipeFormSchema = z.object({
   url: z
     .string()
     .regex(
-      /^https:\/\/www\.instagram\.com\/p\/[a-zA-Z0-9_-]+\/$/,
-      "A URL deve ser um link válido do Instagram",
+      /^https:\/\/www\.instagram\.com\/(p|reel)\/[a-zA-Z0-9_-]+\/?(\?.*)?$/,
+      "A URL deve ser um link válido do Instagram (post ou reel)",
     ),
 });
 
