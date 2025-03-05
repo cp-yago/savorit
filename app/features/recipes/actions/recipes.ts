@@ -1,6 +1,7 @@
 "use server";
 
 import {
+  deleteRecipeByIdDb,
   findRecipeByIdDb,
   insertRecipeDb,
   updateRecipeDb,
@@ -83,4 +84,11 @@ export async function findRecipeById(id: string) {
   const recipe = await findRecipeByIdDb(id);
   console.log("RODOU findRecipeById");
   return recipe;
+}
+
+export async function deleteRecipeById(id: string) {
+  console.log("Chamou deleteRecipeById");
+  const deletedRecipe = await deleteRecipeByIdDb(id);
+  console.log("RODOU deletedRecipe", deletedRecipe);
+  // return deletedRecipe;
 }

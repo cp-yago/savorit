@@ -34,3 +34,12 @@ export async function findRecipesByUserId(userId: string) {
   });
   return recipes;
 }
+
+export async function deleteRecipeByIdDb(id: string) {
+  const deletedRecipe = await db
+    .delete(RecipesTable)
+    .where(eq(RecipesTable.id, id))
+    .returning();
+  if (deletedRecipe == null) throw new Error("Failed to delete recipe");
+  return deletedRecipe;
+}
