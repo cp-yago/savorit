@@ -3,9 +3,9 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { SelectRecipe } from "@/infra/db/schema";
 import useSWR from "swr";
-import SocialMediaBadge from "./components/badge";
-import RecipeHeader from "./components/header";
-import RecipeLoading from "./components/loading";
+import SocialMediaBadge from "./badge";
+import RecipeHeader from "./header";
+import RecipeLoading from "./loading";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 

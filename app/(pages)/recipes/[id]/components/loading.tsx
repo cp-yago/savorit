@@ -3,7 +3,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Progress } from "@radix-ui/react-progress";
 import LoadingText from "./loading-text";
 
-export default function RecipeStatusPage() {
+export default function RecipeLoading() {
   return (
     <div>
       <LoadingText className="text-center my-4 z-10" />
