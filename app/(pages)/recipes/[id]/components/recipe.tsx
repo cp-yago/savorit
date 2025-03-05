@@ -30,7 +30,11 @@ export default function RecipeContent({ recipeId }: RecipeContentProps) {
 
   return (
     <div>
-      <RecipeHeader imageUrl={data?.imageUrl} title={data?.title} />
+      <RecipeHeader
+        imageUrl={data?.imageUrl}
+        title={data?.title}
+        recipeId={recipeId}
+      />
       <main className="h-min-[33vh] p-4">
         <SocialMediaBadge sourceUrl={data?.sourceUrl} />
         <div className="py-2">

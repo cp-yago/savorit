@@ -5,9 +5,14 @@ import MenuButton from "./menu-button";
 interface HeaderProps {
   imageUrl?: string | null;
   title?: string | null;
+  recipeId: string;
 }
 
-export default function RecipeHeader({ imageUrl, title }: HeaderProps) {
+export default function RecipeHeader({
+  imageUrl,
+  title,
+  recipeId,
+}: HeaderProps) {
   return (
     <header className="relative h-[33svh] overflow-hidden">
       <RoundButton
@@ -24,7 +29,7 @@ export default function RecipeHeader({ imageUrl, title }: HeaderProps) {
           priority
         />
       )}
-      <MenuButton className="absolute z-10 top-3 right-3" />
+      <MenuButton recipeId={recipeId} className="absolute z-10 top-3 right-3" />
     </header>
   );
 }

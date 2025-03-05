@@ -27,6 +27,7 @@ export default function RecipeCard({
             className="w-150 h-40 rounded-2xl"
             width={150}
             height={40}
+            priority
           />
         )}
         <h2 className="text-sm my-auto">{title}</h2>

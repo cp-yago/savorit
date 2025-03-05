@@ -87,8 +87,11 @@ export async function findRecipeById(id: string) {
 }
 
 export async function deleteRecipeById(id: string) {
-  console.log("Chamou deleteRecipeById");
   const deletedRecipe = await deleteRecipeByIdDb(id);
-  console.log("RODOU deletedRecipe", deletedRecipe);
-  // return deletedRecipe;
+
+  if (!deletedRecipe) {
+    throw new Error("Failed to delete the recipe.");
+  }
+
+  redirect(`/recipes`);
 }

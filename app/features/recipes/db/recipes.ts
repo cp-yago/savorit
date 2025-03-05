@@ -1,6 +1,6 @@
 import { db } from "@/infra/db";
 import { InsertRecipe, RecipesTable, SelectRecipe } from "@/infra/db/schema";
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 
 export async function insertRecipeDb(data: InsertRecipe) {
   const [newRecipe] = await db.insert(RecipesTable).values(data).returning();
@@ -30,7 +30,10 @@ export async function findRecipeByIdDb(id: string) {
 
 export async function findRecipesByUserId(userId: string) {
   const recipes = await db.query.RecipesTable.findMany({
-    where: eq(RecipesTable.userId, userId),
+    where: and(
+      eq(RecipesTable.userId, userId),
+      eq(RecipesTable.status, "done"),
+    ),
   });
   return recipes;
 }
