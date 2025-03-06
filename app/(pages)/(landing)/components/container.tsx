@@ -1,11 +1,18 @@
-import React from 'react';
+import React from "react";
 
 interface Props {
   className?: string;
 }
 
-export default function Container({ children, className }: React.PropsWithChildren<Props>) {
+export default function Container({
+  children,
+  className,
+}: React.PropsWithChildren<Props>) {
   return (
-    <div className={`px-5 w-full max-w-7xl mx-auto ${className ? className : ""}`}>{children}</div>
-  )
+    <div
+      className={`px-5 w-full max-w-7xl mx-auto ${className ? className : ""}`}
+    >
+      {children}
+    </div>
+  );
 }

@@ -1,25 +1,26 @@
-'use client';
+"use client";
 
 import { croissant_one } from "@/styles/fonts";
-import { Transition } from '@headlessui/react';
-import Link from 'next/link';
-import { useState } from 'react';
+import { Transition } from "@headlessui/react";
+import Link from "next/link";
+import { useState } from "react";
 import { FaCookieBite } from "react-icons/fa";
-import { HiBars3, HiOutlineXMark } from 'react-icons/hi2';
-import Container from './container';
+import { HiBars3, HiOutlineXMark } from "react-icons/hi2";
+import Container from "./container";
 
 const siteDetails = {
-  siteName: 'Savorit',
-  siteUrl: 'https://savorit.com.br',
+  siteName: "Savorit",
+  siteUrl: "https://savorit.com.br",
   metadata: {
-    title: 'Savorit | Salve e organize receitas do Instagram com facilidade',
-    description: 'A plataforma ideal para salvar e organizar suas receitas do Instagram com facilidade e eficiência.',
+    title: "Savorit | Salve e organize receitas do Instagram com facilidade",
+    description:
+      "A plataforma ideal para salvar e organizar suas receitas do Instagram com facilidade e eficiência.",
   },
-  language: 'en-us',
-  locale: 'en-US',
-  siteLogo: `${process.env.BASE_PATH || ''}/images/logo.png`, // or use a string for the logo e.g. "TechStartup"
-  googleAnalyticsId: '', // e.g. G-XXXXXXX,
-}
+  language: "en-us",
+  locale: "en-US",
+  siteLogo: `${process.env.BASE_PATH || ""}/images/logo.png`, // or use a string for the logo e.g. "TechStartup"
+  googleAnalyticsId: "", // e.g. G-XXXXXXX,
+};
 
 const menuItems: { text: string; url: string }[] = [
   // {
@@ -50,22 +51,30 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <FaCookieBite className="text-foreground min-w-fit w-7 h-7" />
-            <span className={`manrope text-2xl font-semibold text-foreground cursor-pointer ${croissant_one.className}`}>
+            <span
+              className={`manrope text-2xl font-semibold text-foreground cursor-pointer ${croissant_one.className}`}
+            >
               {siteDetails.siteName}
             </span>
           </Link>
 
           {/* Desktop Menu */}
           <ul className="hidden md:flex space-x-6">
-            {menuItems.map(item => (
+            {menuItems.map((item) => (
               <li key={item.text}>
-                <Link href={item.url} className="text-foreground hover:text-foreground-accent transition-colors">
+                <Link
+                  href={item.url}
+                  className="text-foreground hover:text-foreground-accent transition-colors"
+                >
                   {item.text}
                 </Link>
               </li>
             ))}
             <li>
-              <Link href="/sign-in" className="text-black bg-emerald hover:bg-emerald-accent px-8 py-3 rounded-full transition-colors">
+              <Link
+                href="/sign-in"
+                className="text-black bg-emerald hover:bg-emerald-accent px-8 py-3 rounded-full transition-colors"
+              >
                 Sign In
               </Link>
             </li>
@@ -103,15 +112,23 @@ export default function Header() {
       >
         <div id="mobile-menu" className="md:hidden bg-white shadow-lg">
           <ul className="flex flex-col space-y-4 pt-1 pb-6 px-6">
-            {menuItems.map(item => (
+            {menuItems.map((item) => (
               <li key={item.text}>
-                <Link href={item.url} className="text-foreground hover:text-primary block" onClick={toggleMenu}>
+                <Link
+                  href={item.url}
+                  className="text-foreground hover:text-primary block"
+                  onClick={toggleMenu}
+                >
                   {item.text}
                 </Link>
               </li>
             ))}
             <li>
-              <Link href="/sign-in" className="text-black bg-emerald hover:bg-emerald-accent px-5 py-2 rounded-full block w-fit" onClick={toggleMenu}>
+              <Link
+                href="/sign-in"
+                className="text-black bg-emerald hover:bg-emerald-accent px-5 py-2 rounded-full block w-fit"
+                onClick={toggleMenu}
+              >
                 Sign In
               </Link>
             </li>
@@ -120,4 +137,4 @@ export default function Header() {
       </Transition>
     </header>
   );
-};
+}
