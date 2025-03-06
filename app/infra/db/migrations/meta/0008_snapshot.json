@@ -27,12 +27,8 @@
           "name": "books_to_recipes_book_id_books_id_fk",
           "tableFrom": "books_to_recipes",
           "tableTo": "books",
-          "columnsFrom": [
-            "book_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["book_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -40,12 +36,8 @@
           "name": "books_to_recipes_recipe_id_recipes_id_fk",
           "tableFrom": "books_to_recipes",
           "tableTo": "recipes",
-          "columnsFrom": [
-            "recipe_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["recipe_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -53,10 +45,7 @@
       "compositePrimaryKeys": {
         "books_to_recipes_book_id_recipe_id_pk": {
           "name": "books_to_recipes_book_id_recipe_id_pk",
-          "columns": [
-            "book_id",
-            "recipe_id"
-          ]
+          "columns": ["book_id", "recipe_id"]
         }
       },
       "uniqueConstraints": {},
@@ -269,9 +258,7 @@
         "users_clerkUserId_unique": {
           "name": "users_clerkUserId_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "clerk_user_id"
-          ]
+          "columns": ["clerk_user_id"]
         }
       },
       "policies": {},
@@ -283,11 +270,7 @@
     "public.status": {
       "name": "status",
       "schema": "public",
-      "values": [
-        "error",
-        "pending",
-        "done"
-      ]
+      "values": ["error", "pending", "done"]
     }
   },
   "schemas": {},

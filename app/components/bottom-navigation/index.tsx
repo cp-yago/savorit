@@ -1,3 +1,4 @@
+import { MdOutlineCookie } from "react-icons/md";
 import { NavigationButton } from "./navigation-item";
 
 type NavigationItem = {
@@ -12,6 +13,12 @@ const items: NavigationItem[] = [
     id: 1,
     label: "Receitas",
     path: "/recipes",
+    icon: <MdOutlineCookie className="text-foreground min-w-fit w-7 h-7" />,
+  },
+  {
+    id: 2,
+    label: "Livros",
+    path: "/books",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -29,27 +36,6 @@ const items: NavigationItem[] = [
       </svg>
     ),
   },
-  // {
-  //   id: 2,
-  //   label: "Livros",
-  //   path: "/collections",
-  //   icon: (
-  //     <svg
-  //       xmlns="http://www.w3.org/2000/svg"
-  //       fill="none"
-  //       viewBox="0 0 24 24"
-  //       strokeWidth="1.5"
-  //       stroke="currentColor"
-  //       className="size-6"
-  //     >
-  //       <path
-  //         strokeLinecap="round"
-  //         strokeLinejoin="round"
-  //         d="M16.5 3.75V16.5L12 14.25 7.5 16.5V3.75m9 0H18A2.25 2.25 0 0 1 20.25 6v12A2.25 2.25 0 0 1 18 20.25H6A2.25 2.25 0 0 1 3.75 18V6A2.25 2.25 0 0 1 6 3.75h1.5m9 0h-9"
-  //       />
-  //     </svg>
-  //   ),
-  // },
   {
     id: 3,
     label: "Conta",
@@ -76,7 +62,7 @@ const items: NavigationItem[] = [
 export default function BottomNavigation() {
   return (
     <div className="fixed bottom-0 left-0 z-50 w-full h-16 mt-16 bg-white border-t border-gray-200 dark:bg-gray-700 dark:border-gray-600">
-      <div className={`grid h-full max-w-lg grid-cols-2 mx-auto font-medium`}>
+      <div className={`grid h-full max-w-lg grid-cols-3 mx-auto font-medium`}>
         {items.map((item) => (
           <NavigationButton
             key={item.id}

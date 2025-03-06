@@ -12,7 +12,6 @@ https://www.instagram.com/p/DE8P7thz_iD/
 
 # To do
 
-- [ ] Feature criar coleções de receitas
 - [ ] Feature Editar receita (sem alterar a foto)
 - [ ] Feature favoritar receita
 - [ ] Lidar com erros na geração de receita
