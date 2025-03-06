@@ -7,23 +7,18 @@ https://www.instagram.com/p/DE8P7thz_iD/
 # Requisitos (MVP)
 
 - [ x ] O app deve permitir a criação de uma receita a partir de uma URL de um post do Instagram.
-- [ x ] O app deve permitir que o usuário se logue com o google e apple.
+- [ x ] O app deve permitir que o usuário se logue com o google.
 - [ x ] O app deve exibir todas as receitas geradas pelo usuário.
-- [ ] O usuário pode criar até x receitas grátis
 
 # To do
 
-- [ ] Feature Deletar receita
+- [ ] Implementar fake landing page
+- [ ] Ajustar componente de bottom menu para que ele fique igual ao layout, com a aba ativa mais destacada
+- [ ] Feature criar coleções de receitas
 - [ ] Feature Editar receita (sem alterar a foto)
 - [ ] Feature favoritar receita
 - [ ] Lidar com erros na geração de receita
 - [ ] Feature buscar receitas
-- [ ] Feature criar coleções de receitas
-- [ ] Feature
-- [ ] Somente exibir receitas com status done na listagem de receitas
-- [ ] Ajustar componente de bottom menu para que ele fique igual ao layout, com a aba ativa mais destacada
-- [ ] Deploy Clerk to production
-- [ ] Funcionalidade excluir receita
 
 # Melhorias de experiência do usuário e layout
 
@@ -31,6 +26,9 @@ https://www.instagram.com/p/DE8P7thz_iD/
 
 ## Done
 
+- [ x ] Deploy Clerk to production
+- [ x ] Somente exibir receitas com status done na listagem de receitas
+- [ x ] Feature Deletar receita
 - [ x ] Ao fazer login, o usuário deve ser redirecionado para a página /recipes
 - [ x ] O comportamento do botão de Sign out não está funcionando corretamente, ajustar isso
 - [ x ] Caso não tenha nenhuma receita criada, mostrar algum aviso em tela
