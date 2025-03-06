@@ -1,5 +1,6 @@
 import { db } from "@/infra/db";
 import { InsertRecipe, RecipesTable, SelectRecipe } from "@/infra/db/schema";
+import { BooksToRecipes } from "@/infra/db/schema/books-to-recipes";
 import { and, eq } from "drizzle-orm";
 
 export async function insertRecipeDb(data: InsertRecipe) {
@@ -45,4 +46,14 @@ export async function deleteRecipeByIdDb(id: string) {
     .returning();
   if (deletedRecipe == null) throw new Error("Failed to delete recipe");
   return deletedRecipe;
+}
+
+export async function findRecipesByBookIdDb(bookId: string) {
+  const recipes = await db.query.BooksToRecipes.findMany({
+    where: eq(BooksToRecipes.bookId, bookId),
+    with: {
+      recipe: true,
+    },
+  }).then((results) => results.map((result) => result.recipe));
+  return recipes;
 }

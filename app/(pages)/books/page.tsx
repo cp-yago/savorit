@@ -23,7 +23,7 @@ export default async function BookList() {
               key={book.id}
               id={book.id}
               title={book.name}
-              timeToCookInMinutes={book.bookToRecipes?.length || 0}
+              recipeCount={book.bookToRecipes?.length || 0}
             />
           ))
         ) : (

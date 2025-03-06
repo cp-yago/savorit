@@ -23,3 +23,10 @@ export async function findBooksByUserId(userId: string) {
   });
   return books;
 }
+
+export async function findBookByIdDb(id: string) {
+  const book = await db.query.BooksTable.findFirst({
+    where: eq(BooksTable.id, id),
+  });
+  return book;
+}
