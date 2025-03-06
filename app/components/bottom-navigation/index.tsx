@@ -1,5 +1,4 @@
-import Link from "next/link";
-import React from "react";
+import { NavigationButton } from "./navigation-item";
 
 type NavigationItem = {
   id: number;
@@ -74,25 +73,6 @@ const items: NavigationItem[] = [
   },
 ];
 
-const NavigationButton = ({
-  label,
-  icon,
-  path,
-}: {
-  label: string;
-  icon: React.ReactNode;
-  path: string;
-}) => {
-  return (
-    <Link
-      href={path}
-      className="inline-flex flex-col items-center justify-center hover:bg-gray-50 dark:hover:bg-gray-800 text-sm"
-    >
-      {icon}
-      {label}
-    </Link>
-  );
-};
 
 export default function BottomNavigation() {
   return (

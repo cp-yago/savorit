@@ -12,8 +12,6 @@ https://www.instagram.com/p/DE8P7thz_iD/
 
 # To do
 
-- [ ] Implementar fake landing page
-- [ ] Ajustar componente de bottom menu para que ele fique igual ao layout, com a aba ativa mais destacada
 - [ ] Feature criar coleções de receitas
 - [ ] Feature Editar receita (sem alterar a foto)
 - [ ] Feature favoritar receita
@@ -26,6 +24,8 @@ https://www.instagram.com/p/DE8P7thz_iD/
 
 ## Done
 
+- [ x ] Ajustar componente de bottom menu para que ele fique igual ao layout, com a aba ativa mais destacada
+- [ x ] Implementar fake landing page
 - [ x ] Deploy Clerk to production
 - [ x ] Somente exibir receitas com status done na listagem de receitas
 - [ x ] Feature Deletar receita
