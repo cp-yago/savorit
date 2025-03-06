@@ -7,7 +7,6 @@ import Mockup from './mockup';
 export const heroDetails = {
   heading: '🔎 A melhor forma de encontrar e organizar suas receitas das redes sociais',
   subheading: 'Salve, organize e aprimore receitas do Instagram com inteligência e praticidade.',
-  centerImageSrc: '/images/hero-mockup.webp',
 }
 
 export default function Hero() {
