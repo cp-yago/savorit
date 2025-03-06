@@ -6,7 +6,7 @@ import { UsersTable } from "./users";
 
 export const BooksTable = pgTable("books", {
   id,
-  name: varchar({ length: 255 }),
+  name: varchar({ length: 255 }).notNull(),
   userId: uuid().notNull(),
   ...timestamps,
 });
@@ -18,3 +18,5 @@ export const BooksRelations = relations(BooksTable, ({ one, many }) => ({
   }),
   bookToRecipes: many(BooksToRecipes),
 }));
+
+export type InsertBook = typeof BooksTable.$inferInsert;

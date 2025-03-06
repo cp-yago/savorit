@@ -12,10 +12,12 @@ https://www.instagram.com/p/DE8P7thz_iD/
 
 # To do
 
+- [ ] Corrigir input da criação de receita
 - [ ] Feature Editar receita (sem alterar a foto)
 - [ ] Feature favoritar receita
 - [ ] Lidar com erros na geração de receita
 - [ ] Feature buscar receitas
+- [ ] Colocar o form de criação de receita dentro da pasta /new
 
 # Melhorias de experiência do usuário e layout
 
