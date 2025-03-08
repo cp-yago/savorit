@@ -62,7 +62,12 @@ interface NavItemProps {
 
 function NavItem({ id, label, icon, isActive, onClick }: NavItemProps) {
   return (
-    <Link id={id} href="#" className="flex flex-col items-center" onClick={onClick}>
+    <Link
+      id={id}
+      href="#"
+      className="flex flex-col items-center"
+      onClick={onClick}
+    >
       <svg
         viewBox="0 0 24 24"
         className={`w-6 h-6 ${isActive ? "text-black" : "text-gray-400"}`}
