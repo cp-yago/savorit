@@ -3,6 +3,7 @@
 import {
   deleteRecipeByIdDb,
   findRecipeByIdDb,
+  findRecipesByUserIdDb,
   insertRecipeDb,
   updateRecipeDb,
 } from "@/features/recipes/db/recipes";
@@ -12,6 +13,7 @@ import { formatRecipeAI } from "@/services/openai";
 import { currentUser } from "@clerk/nextjs/server";
 import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
+import { toUiRecipe } from "../utils";
 
 export async function createRecipe(data: Partial<InsertRecipe>) {
   // Create the recipe in the DB quickly with pending status
@@ -94,4 +96,9 @@ export async function deleteRecipeById(id: string) {
   }
 
   redirect(`/recipes`);
+}
+
+export async function findRecipesByUserId(userId: string) {
+  const recipes = await findRecipesByUserIdDb(userId);
+  return recipes.map(toUiRecipe);
 }

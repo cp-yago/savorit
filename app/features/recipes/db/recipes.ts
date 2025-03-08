@@ -28,7 +28,7 @@ export async function findRecipeByIdDb(id: string) {
   return recipe;
 }
 
-export async function findRecipesByUserId(userId: string) {
+export async function findRecipesByUserIdDb(userId: string) {
   const recipes = await db.query.RecipesTable.findMany({
     where: and(
       eq(RecipesTable.userId, userId),
