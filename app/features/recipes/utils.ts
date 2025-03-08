@@ -6,5 +6,6 @@ export function toUiRecipe(recipe: SelectRecipe): UiRecipe {
     ...recipe,
     title: recipe.title || "Receita sem título",
     timeToCookInMinutes: 30,
+    imageUrl: recipe.imageUrl || "",
   };
 }

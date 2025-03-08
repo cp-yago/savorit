@@ -7,7 +7,7 @@ import Link from "next/link";
 interface RecipeCardProps {
   id: string;
   imageURL: string;
-  title?: string;
+  title: string;
   timeToCookInMinutes: number;
 }
 
