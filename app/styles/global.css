@@ -5,6 +5,7 @@
 @theme {
   --color-emerald: #00ac70;
   --color-gray: #818181;
+  --color-fog-gray: #e0e0e0;
   --color-soft-pink: #ffaac7;
   --color-peach-cream: #fdf7f0;
   --color-light-blue: #a2e3f6;
@@ -76,4 +77,8 @@
   p {
     font-family: "Albert Sans", sans-serif;
   }
+}
+
+.hover-scale {
+  @apply hover:scale-101 transition-transform duration-200 ease-in-out;
 }

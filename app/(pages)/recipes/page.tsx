@@ -1,8 +1,7 @@
-import RoundButton from "@/components/rounded-link-button";
-import { findRecipesByUserId } from "@/features/recipes/db/recipes";
+import { findRecipesByUserId } from "@/features/recipes/actions/recipes";
 import { getCurrentUser } from "@/services/clerk";
-import AddRecipeCard from "./components/add-recipe-card";
-import RecipeCard from "./components/recipe-card";
+import Header from "./components/header";
+import RecipeGrid from "./components/recipe-grid";
 
 export const dynamic = "force-dynamic";
 
@@ -16,26 +15,11 @@ export default async function RecipeList() {
   const recipes = await findRecipesByUserId(user.userId);
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      <header className="flex flex-col justify-between w-full py-4 px-5 sticky top-0 bg-peach-cream z-10">
-        <div className="flex justify-between items-center py-2">
-          <h1 className="text-2xl">Receitas</h1>
-          <RoundButton icon="plus" pathOrUrl="/recipes/new" />
-        </div>
-      </header>
+    <div className="flex flex-col h-screen">
+      <Header title="Receitas" href="/recipes/new" />
 
-      <main className="flex-1 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4 p-2 overflow-auto mb-16">
-        {recipes.length === 0 && <AddRecipeCard />}
-
-        {recipes.map((recipe) => (
-          <RecipeCard
-            key={recipe.id}
-            id={recipe.id}
-            imageURL={recipe.imageUrl!} // refactor
-            title={recipe.title || "Untitled"}
-            timeToCookInMinutes={30}
-          />
-        ))}
+      <main className="flex-1 overflow-auto px-5 pb-20">
+        <RecipeGrid recipes={recipes} />
       </main>
     </div>
   );
