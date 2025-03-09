@@ -1,68 +1,28 @@
-import { z } from "zod";
+import { UiRecipe } from "@/features/recipes/types";
 
-const createBookFormSchema = z.object({
-  name: z.string().min(1, "O nome deve ter no mínimo 1 caractere"),
-});
-
-type CreateBookFormValues = z.infer<typeof createBookFormSchema>;
-
-export default function AddRecipeToBook() {
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   trigger,
-  //   formState: { errors, isSubmitting },
-  // } = useForm<CreateBookFormValues>({
-  //   resolver: zodResolver(createBookFormSchema),
-  // });
-
-  // const onSubmit = async (values: CreateBookFormValues) => {
-  //   console.log("errors", errors.name);
-  //   console.log("values", values);
-  //   await createBook(values);
-  // };
+export default function AddRecipeToBookForm({
+  availableRecipes,
+}: {
+  availableRecipes: UiRecipe[];
+}) {
+  if (availableRecipes.length === 0) {
+    return (
+      <div className="py-4 text-center">
+        Não há receitas disponíveis para adicionar a este livro.
+      </div>
+    );
+  }
 
   return (
-    <form>
-      <h1>TESTEE</h1>
-      {/* <div className="gap-4 py-4">
-        <motion.div
-          className="w-full"
-          animate={errors.name ? { x: [-5, 5, -5, 5, 0] } : { x: 0 }}
-          transition={{ duration: 0.2 }}
+    <div className="space-y-2 max-h-60 overflow-y-auto">
+      {availableRecipes.map((recipe) => (
+        <div
+          key={recipe.id}
+          className="p-3 bg-white rounded-md border border-fog-gray flex items-center"
         >
-          <Input
-            id="name"
-            placeholder="Ex: Sobremesas, Café da manhã..."
-            className={cn(
-              "h-12 w-full",
-              errors.name
-                ? "border-red-500 focus:ring-red-500"
-                : "border-gray-300 focus:ring-blue-500",
-            )}
-            {...register("name")}
-            onBlur={() => trigger("name")}
-          />
-        </motion.div>
-        {errors.name && (
-          <p className="text-sm text-red-600 mt-2">{errors.name.message}</p>
-        )}
-      </div>
-      <DialogFooter>
-        <Button
-          type="submit"
-          className="bg-emerald shadow-md hover-scale rounded-xl border-fog-gray p-2 w-full"
-        >
-          {isSubmitting ? (
-            <>
-              <Loader2 className="animate-spin" />
-              <span>Criando...</span>
-            </>
-          ) : (
-            <span>Criar</span>
-          )}
-        </Button>
-      </DialogFooter> */}
-    </form>
+          {recipe.title}
+        </div>
+      ))}
+    </div>
   );
 }

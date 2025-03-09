@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -7,12 +9,24 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import dynamic from "next/dynamic";
+import { useState } from "react";
 import { FaPlus } from "react-icons/fa6";
-import AddRecipeToBookForm from './add-recipe-to-book-form';
 
-export default function AddRecipeToBookButton({ bookId }: { bookId: string }) {
+const RecipesList = dynamic(() => import('./recipe-list-for-book'), {
+  ssr: false,
+  loading: () => <div className="py-4 text-center">Carregando receitas...</div>
+});
+
+interface AddRecipeToBookButtonProps {
+  bookId: string;
+}
+
+export default function AddRecipeToBookButton({ bookId }: AddRecipeToBookButtonProps) {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <Dialog>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button
           variant="outline"
@@ -28,7 +42,10 @@ export default function AddRecipeToBookButton({ bookId }: { bookId: string }) {
             Selecione as receitas que deseja adicionar ao livro
           </DialogDescription>
         </DialogHeader>
-        <AddRecipeToBookForm />
+
+        {isOpen && (
+          <RecipesList bookId={bookId} />
+        )}
       </DialogContent>
     </Dialog>
   )
