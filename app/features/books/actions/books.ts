@@ -5,8 +5,11 @@ import {
   findRecipesByUserIdDb,
 } from "@/features/recipes/db/recipes";
 import { toUiRecipe } from "@/features/recipes/utils";
+import { db } from "@/infra/db";
 import { InsertBook } from "@/infra/db/schema";
+import { BooksToRecipes } from "@/infra/db/schema/books-to-recipes";
 import { currentUser } from "@clerk/nextjs/server";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createBookDb } from "../db/books";
 
@@ -60,4 +63,32 @@ export async function getAvailableRecipesForBook(bookId: string) {
 
   // Convert to UI format
   return availableRecipes.map(toUiRecipe);
+}
+
+export async function addRecipesToBook(bookId: string, recipeIds: string[]) {
+  if (!bookId) {
+    throw new Error("Book ID is required");
+  }
+
+  if (!recipeIds || recipeIds.length === 0) {
+    throw new Error("At least one recipe must be selected");
+  }
+
+  try {
+    // Create entries in books_to_recipes table for each recipe
+    const values = recipeIds.map((recipeId) => ({
+      bookId,
+      recipeId,
+    }));
+
+    await db.insert(BooksToRecipes).values(values);
+
+    // Revalidate the book page to show the newly added recipes
+    revalidatePath(`/books/${bookId}`);
+
+    return { success: true };
+  } catch (error) {
+    console.error("Error adding recipes to book:", error);
+    throw new Error("Failed to add recipes to book");
+  }
 }

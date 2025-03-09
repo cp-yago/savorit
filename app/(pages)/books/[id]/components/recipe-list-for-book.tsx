@@ -7,9 +7,10 @@ import AddRecipeToBookForm from './add-recipe-to-book-form';
 
 interface RecipesListForBookProps {
   bookId: string;
+  onSuccess: () => void;
 }
 
-export default function RecipesListForBook({ bookId }: RecipesListForBookProps) {
+export default function RecipesListForBook({ bookId, onSuccess }: RecipesListForBookProps) {
   const [availableRecipes, setAvailableRecipes] = useState<UiRecipe[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -40,5 +41,11 @@ export default function RecipesListForBook({ bookId }: RecipesListForBookProps) 
     return <div className="py-4 text-center text-red-500">{error}</div>;
   }
 
-  return <AddRecipeToBookForm availableRecipes={availableRecipes} />;
+  return (
+    <AddRecipeToBookForm
+      availableRecipes={availableRecipes}
+      bookId={bookId}
+      onSuccess={onSuccess}
+    />
+  );
 }

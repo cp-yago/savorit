@@ -25,6 +25,10 @@ interface AddRecipeToBookButtonProps {
 export default function AddRecipeToBookButton({ bookId }: AddRecipeToBookButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleCloseDialog = () => {
+    setIsOpen(false);
+  };
+
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
@@ -44,7 +48,7 @@ export default function AddRecipeToBookButton({ bookId }: AddRecipeToBookButtonP
         </DialogHeader>
 
         {isOpen && (
-          <RecipesList bookId={bookId} />
+          <RecipesList bookId={bookId} onSuccess={handleCloseDialog} />
         )}
       </DialogContent>
     </Dialog>
