@@ -20,3 +20,4 @@ export const BooksRelations = relations(BooksTable, ({ one, many }) => ({
 }));
 
 export type InsertBook = typeof BooksTable.$inferInsert;
+export type SelectBook = typeof BooksTable.$inferSelect;

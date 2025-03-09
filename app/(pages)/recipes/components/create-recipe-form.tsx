@@ -70,7 +70,7 @@ export default function CreateRecipeForm() {
       <CustomButton
         type="submit"
         disabled={isSubmitting}
-        className="w-full h-12 mt-2 shadow-md transition-transform duration-200 ease-in-out hover:scale-105 hover:shadow-lg cursor-pointer"
+        className="w-full h-12 mt-2 shadow-md hover-scale border-fog-gray"
       >
         {isSubmitting ? (
           <Loader2 className="animate-spin" />

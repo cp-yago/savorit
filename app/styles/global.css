@@ -8,6 +8,7 @@
   --color-fog-gray: #e0e0e0;
   --color-soft-pink: #ffaac7;
   --color-peach-cream: #fdf7f0;
+  --color-soft-peach: #f8f3ea;
   --color-light-blue: #a2e3f6;
   --color-danger: #ff0000;
 }
@@ -80,5 +81,5 @@
 }
 
 .hover-scale {
-  @apply hover:scale-101 transition-transform duration-200 ease-in-out;
+  @apply hover:scale-101 transition-transform duration-200 ease-in-out cursor-pointer;
 }

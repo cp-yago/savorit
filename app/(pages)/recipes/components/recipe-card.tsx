@@ -1,4 +1,5 @@
 import InstagramIcon from "@/components/icons/instagram";
+import placeholderImage from "@/public/img/placeholder.png";
 import { Clock } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -21,7 +22,7 @@ export default function RecipeCard({
       <div className="bg-white rounded-3xl overflow-hidden border-2 border-fog-gray hover-scale">
         <div className="relative h-32 overflow-hidden rounded-2xl mx-1 my-1">
           <Image
-            src={imageURL || "/placeholder.svg"}
+            src={imageURL || placeholderImage}
             alt={title}
             fill
             className="object-cover rounded-2xl"

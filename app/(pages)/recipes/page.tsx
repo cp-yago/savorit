@@ -1,6 +1,6 @@
+import Header from "@/components/header";
 import { findRecipesByUserId } from "@/features/recipes/actions/recipes";
 import { getCurrentUser } from "@/services/clerk";
-import Header from "./components/header";
 import RecipeGrid from "./components/recipe-grid";
 
 export const dynamic = "force-dynamic";
