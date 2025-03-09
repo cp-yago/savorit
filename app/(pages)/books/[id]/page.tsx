@@ -2,7 +2,7 @@ import Header from "@/components/header";
 import RecipeCard from "@/components/recipe-card";
 import { findBookByIdDb } from "@/features/books/db/books";
 import { findRecipesByBookIdDb } from "@/features/recipes/db/recipes";
-import AddRecipeToBookButton from "../components/add-recipe-to-book-button";
+import AddRecipeToBookButton from "./components/add-recipe-to-book-button";
 
 type Params = { id: string };
 
