@@ -9,7 +9,7 @@ export default async function BooksPage() {
   const books = userId ? await findBooksByUserId(userId) : [];
 
   return (
-    <div className="min-h-screen bg-soft-peach p-4">
+    <div className="min-h-screen">
       <div className="mx-auto w-full">
         <Header
           title="Livros"

@@ -23,7 +23,7 @@ export default function RootLayout({
             content="width=device-width, initial-scale=1.0"
           />
         </Head>
-        <body className="bg-rose-50 pb-16">
+        <body className="bg-soft-peach pb-16">
           {children}
           <Suspense>
             <SignedIn>

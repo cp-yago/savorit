@@ -1,4 +1,3 @@
-"use client";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -8,11 +7,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-
 import { FaPlus } from "react-icons/fa6";
-import NewBookForm from "./new-book-form";
+import AddRecipeToBookForm from './add-recipe-to-book-form';
 
-export default function NewBookButton() {
+export default function AddRecipeToBookButton({ bookId }: { bookId: string }) {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -25,13 +23,13 @@ export default function NewBookButton() {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] bg-soft-peach border-fog-gray">
         <DialogHeader>
-          <DialogTitle className="font-bold">Criar livro</DialogTitle>
+          <DialogTitle className="font-bold">Adicionar receitas</DialogTitle>
           <DialogDescription className="text-gray">
-            Escolha um nome para o seu livro
+            Selecione as receitas que deseja adicionar ao livro
           </DialogDescription>
         </DialogHeader>
-        <NewBookForm />
+        <AddRecipeToBookForm />
       </DialogContent>
     </Dialog>
-  );
+  )
 }
