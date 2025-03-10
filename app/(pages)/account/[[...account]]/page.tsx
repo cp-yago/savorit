@@ -4,9 +4,9 @@ import UserInfo from "./components/user-info";
 
 export default function Account() {
   return (
-    <div className="p-4 mt-4">
-      <h1 className="ml-4 text-2xl">Conta</h1>
-      <div className="flex flex-col border rounded-3xl m-4 p-4">
+    <div className="p-4">
+      <h1 className="text-2xl mb-4">Conta</h1>
+      <div className="flex flex-col border rounded-3xl p-4">
         <UserInfo />
         <div className="flex flex-col py-2">
           <DeleteUserButton />

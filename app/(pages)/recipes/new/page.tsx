@@ -1,6 +1,6 @@
 import Logo from "@/components/Logo";
 import React from "react";
-import CreateRecipeForm from "../components/create-recipe-form";
+import CreateRecipeForm from "./components/create-recipe-form";
 
 const Home: React.FC = () => {
   return (

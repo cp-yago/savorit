@@ -24,7 +24,7 @@ export default async function RecipeBook({
         rightButton={<AddRecipeToBookButton bookId={bookId} />}
       />
 
-      <main className="flex-1 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4 overflow-auto mb-16 w-full p-4">
+      <main className="flex-1 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4 overflow-auto mb-16 w-full p-4 mt-40">
         {recipes.map((recipe) => (
           <RecipeCard
             key={recipe.id}

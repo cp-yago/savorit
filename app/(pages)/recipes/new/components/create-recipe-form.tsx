@@ -56,17 +56,17 @@ export default function CreateRecipeForm() {
           type="text"
           placeholder="Ex: https://www.instagram.com/p/..."
           className={cn(
-            "h-12 w-full",
+            "h-12 w-full py-3 pl-10 pr-4 bg-white border-2 border-fog-gray rounded-full focus:outline-none",
             errors.url
-              ? "border-red-500 focus:ring-red-500"
-              : "border-gray-300 focus:ring-blue-500",
+              ? "border-red-500 focus:ring-red-300"
+              : "border-gray-300 focus:ring-blue-300",
           )}
           onBlur={() => trigger("url")}
         />
+        {errors.url && (
+          <p className="text-xs text-red-600 mt-1">{errors.url.message}</p>
+        )}
       </motion.div>
-      {errors.url && (
-        <p className="text-xs text-red-600">{errors.url.message}</p>
-      )}
       <CustomButton
         type="submit"
         disabled={isSubmitting}
