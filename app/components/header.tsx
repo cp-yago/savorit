@@ -7,6 +7,7 @@ interface HeaderProps {
   href: string;
   searchPlaceholder?: string;
   rightButton?: React.ReactNode;
+  showSearchBar?: boolean;
 }
 
 export default function Header({
@@ -14,9 +15,10 @@ export default function Header({
   href = "#",
   searchPlaceholder,
   rightButton,
+  showSearchBar = true,
 }: HeaderProps) {
   return (
-    <header className="p-5 w-full fixed top-0 left-0 z-50 bg-[#fdf7f0] shadow-sm">
+    <header className="p-5 w-full fixed top-0 left-0 z-50 bg-peach-cream shadow-sm">
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-2xl font-bold">{title}</h1>
         {rightButton ? (
@@ -30,7 +32,9 @@ export default function Header({
           </Link>
         )}
       </div>
-      <SearchBar placeholder={searchPlaceholder || "Pesquisar"} />
+      {showSearchBar && (
+        <SearchBar placeholder={searchPlaceholder || "Pesquisar"} />
+      )}
     </header>
   );
 }

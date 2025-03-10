@@ -16,9 +16,10 @@ export default async function BooksPage() {
           href="/books/new"
           searchPlaceholder="Pesquisar livros"
           rightButton={<NewBookButton />}
+          showSearchBar={false}
         />
 
-        <main className="px-4 sm:px-6 pb-24 mt-40">
+        <main className="px-4 sm:px-6 pb-24 mt-30">
           <BookGrid books={books} />
         </main>
       </div>
