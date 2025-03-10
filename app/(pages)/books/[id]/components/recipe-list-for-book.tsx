@@ -1,16 +1,19 @@
-'use client';
+"use client";
 
 import { getAvailableRecipesForBook } from "@/features/books/actions/books";
 import { UiRecipe } from "@/features/recipes/types";
 import { useEffect, useState } from "react";
-import AddRecipeToBookForm from './add-recipe-to-book-form';
+import AddRecipeToBookForm from "./add-recipe-to-book-form";
 
 interface RecipesListForBookProps {
   bookId: string;
   onSuccess: () => void;
 }
 
-export default function RecipesListForBook({ bookId, onSuccess }: RecipesListForBookProps) {
+export default function RecipesListForBook({
+  bookId,
+  onSuccess,
+}: RecipesListForBookProps) {
   const [availableRecipes, setAvailableRecipes] = useState<UiRecipe[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -34,7 +37,9 @@ export default function RecipesListForBook({ bookId, onSuccess }: RecipesListFor
   }, [bookId]);
 
   if (loading) {
-    return <div className="py-4 text-center">Carregando receitas disponíveis...</div>;
+    return (
+      <div className="py-4 text-center">Carregando receitas disponíveis...</div>
+    );
   }
 
   if (error) {

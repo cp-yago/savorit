@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -13,16 +13,18 @@ import dynamic from "next/dynamic";
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa6";
 
-const RecipesList = dynamic(() => import('./recipe-list-for-book'), {
+const RecipesList = dynamic(() => import("./recipe-list-for-book"), {
   ssr: false,
-  loading: () => <div className="py-4 text-center">Carregando receitas...</div>
+  loading: () => <div className="py-4 text-center">Carregando receitas...</div>,
 });
 
 interface AddRecipeToBookButtonProps {
   bookId: string;
 }
 
-export default function AddRecipeToBookButton({ bookId }: AddRecipeToBookButtonProps) {
+export default function AddRecipeToBookButton({
+  bookId,
+}: AddRecipeToBookButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleCloseDialog = () => {
@@ -52,5 +54,5 @@ export default function AddRecipeToBookButton({ bookId }: AddRecipeToBookButtonP
         )}
       </DialogContent>
     </Dialog>
-  )
+  );
 }

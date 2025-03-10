@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { Button } from "@/components/ui/button";
 import { addRecipesToBook } from "@/features/books/actions/books";
@@ -15,7 +15,9 @@ export default function AddRecipeToBookForm({
   bookId: string;
   onSuccess: () => void;
 }) {
-  const [selectedRecipes, setSelectedRecipes] = useState<Set<string>>(new Set());
+  const [selectedRecipes, setSelectedRecipes] = useState<Set<string>>(
+    new Set(),
+  );
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
 
@@ -61,10 +63,11 @@ export default function AddRecipeToBookForm({
             <div
               key={recipe.id}
               onClick={() => toggleRecipe(recipe.id)}
-              className={`p-3 bg-white rounded-md border flex items-center cursor-pointer transition-colors ${isSelected
-                ? "border-emerald-500 bg-emerald-50"
-                : "border-fog-gray hover:bg-gray-50"
-                }`}
+              className={`p-3 bg-white rounded-md border flex items-center cursor-pointer transition-colors ${
+                isSelected
+                  ? "border-emerald-500 bg-emerald-50"
+                  : "border-fog-gray hover:bg-gray-50"
+              }`}
             >
               <input
                 type="checkbox"
@@ -85,8 +88,7 @@ export default function AddRecipeToBookForm({
       >
         {isSubmitting
           ? "Adicionando..."
-          : `Adicionar ${selectedRecipes.size} ${selectedRecipes.size === 1 ? 'receita' : 'receitas'}`
-        }
+          : `Adicionar ${selectedRecipes.size} ${selectedRecipes.size === 1 ? "receita" : "receitas"}`}
       </Button>
     </div>
   );

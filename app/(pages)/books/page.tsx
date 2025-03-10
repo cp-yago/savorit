@@ -9,8 +9,8 @@ export default async function BooksPage() {
   const books = userId ? await findBooksByUserId(userId) : [];
 
   return (
-    <div className="min-h-screen">
-      <div className="mx-auto w-full">
+    <div className="min-h-screen flex flex-col bg-gray-50">
+      <div className="w-full flex-1">
         <Header
           title="Livros"
           href="/books/new"
@@ -18,7 +18,7 @@ export default async function BooksPage() {
           rightButton={<NewBookButton />}
         />
 
-        <main className="flex-1 overflow-auto px-5 pb-20">
+        <main className="px-4 sm:px-6 pb-24">
           <BookGrid books={books} />
         </main>
       </div>
