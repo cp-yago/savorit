@@ -31,7 +31,7 @@ export default function NewBookForm() {
     await createBook(values);
   };
 
-  const isSubmitting = true
+  const isSubmitting = true;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
