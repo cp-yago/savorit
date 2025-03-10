@@ -57,6 +57,20 @@
       "when": 1740520703527,
       "tag": "0007_fancy_skin",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1741286057195,
+      "tag": "0008_hesitant_human_cannonball",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1741295125894,
+      "tag": "0009_lush_earthquake",
+      "breakpoints": true
     }
   ]
 }

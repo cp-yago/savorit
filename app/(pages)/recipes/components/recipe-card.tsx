@@ -13,23 +13,17 @@ interface RecipeCardProps {
 
 export default function RecipeCard({
   id,
-  imageURL,
+  imageURL = "/placeholder.svg",
   title,
   timeToCookInMinutes = 30,
 }: RecipeCardProps) {
-  console.log("RecipeCardProps", {
-    id,
-    imageURL,
-    title,
-    timeToCookInMinutes,
-  });
   return (
     <Link href={`/recipes/${id}`} className="block">
       <div className="bg-white rounded-3xl overflow-hidden border-2 border-fog-gray hover-scale">
         <div className="relative h-32 overflow-hidden rounded-2xl mx-1 my-1">
           <Image
             src={imageURL || placeholderImage}
-            alt={title || "Recipe Image"}
+            alt={title}
             fill
             className="object-cover rounded-2xl"
             sizes="(max-width: 768px) 100vw, 50vw"

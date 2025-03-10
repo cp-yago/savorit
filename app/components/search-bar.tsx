@@ -13,7 +13,7 @@ export default function SearchBar({ placeholder }: SearchBarProps) {
       <input
         type="text"
         placeholder={placeholder}
-        className="w-full py-3 pl-10 pr-4 bg-white border-2 border-[#e0e0e0] rounded-full focus:outline-none"
+        className="w-full py-3 pl-10 pr-4 bg-white border-2 border-fog-gray rounded-full focus:outline-none"
       />
     </div>
   );
