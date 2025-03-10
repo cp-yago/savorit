@@ -16,9 +16,9 @@ export default async function RecipeList() {
 
   return (
     <div className="flex flex-col h-screen">
-      <Header title="Receitas" href="/recipes/new" />
+      <Header title="Receitas" href="/recipes/new" showSearchBar={false} />
 
-      <main className="flex-1 overflow-auto px-5 pb-20 relative mt-40">
+      <main className="flex-1 overflow-auto px-5 pb-20 relative mt-30">
         <RecipeGrid recipes={recipes} />
       </main>
     </div>
