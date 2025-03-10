@@ -16,7 +16,7 @@ export default function Header({
   rightButton,
 }: HeaderProps) {
   return (
-    <header className="p-5 w-full">
+    <header className="p-5 w-full fixed top-0 left-0 z-50 bg-[#fdf7f0] shadow-sm">
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-2xl font-bold">{title}</h1>
         {rightButton ? (

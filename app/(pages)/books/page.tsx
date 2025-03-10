@@ -18,7 +18,7 @@ export default async function BooksPage() {
           rightButton={<NewBookButton />}
         />
 
-        <main className="px-4 sm:px-6 pb-24">
+        <main className="px-4 sm:px-6 pb-24 mt-40">
           <BookGrid books={books} />
         </main>
       </div>

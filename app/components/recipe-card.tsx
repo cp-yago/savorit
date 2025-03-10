@@ -17,12 +17,6 @@ export default function RecipeCard({
   title,
   timeToCookInMinutes = 30,
 }: RecipeCardProps) {
-  console.log("RecipeCardProps", {
-    id,
-    imageURL,
-    title,
-    timeToCookInMinutes,
-  });
   return (
     <Link href={`/recipes/${id}`} className="block">
       <div className="bg-white rounded-3xl overflow-hidden border-2 border-fog-gray hover-scale">
