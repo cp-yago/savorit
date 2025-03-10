@@ -20,7 +20,7 @@ export default function NewBookForm() {
     register,
     handleSubmit,
     trigger,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<CreateBookFormValues>({
     resolver: zodResolver(createBookFormSchema),
   });
@@ -30,6 +30,8 @@ export default function NewBookForm() {
     console.log("values", values);
     await createBook(values);
   };
+
+  const isSubmitting = true
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -62,10 +64,10 @@ export default function NewBookForm() {
           className="bg-emerald shadow-md hover-scale rounded-xl border-fog-gray p-2 w-full"
         >
           {isSubmitting ? (
-            <>
+            <div className="flex items-center justify-center gap-2">
               <Loader2 className="animate-spin" />
               <span>Criando...</span>
-            </>
+            </div>
           ) : (
             <span>Criar</span>
           )}
