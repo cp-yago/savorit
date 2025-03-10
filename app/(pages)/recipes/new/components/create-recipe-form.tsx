@@ -63,10 +63,10 @@ export default function CreateRecipeForm() {
           )}
           onBlur={() => trigger("url")}
         />
+        {errors.url && (
+          <p className="text-xs text-red-600 mt-1">{errors.url.message}</p>
+        )}
       </motion.div>
-      {errors.url && (
-        <p className="text-xs text-red-600">{errors.url.message}</p>
-      )}
       <CustomButton
         type="submit"
         disabled={isSubmitting}
