@@ -20,7 +20,7 @@ export default function NewBookForm() {
     register,
     handleSubmit,
     trigger,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<CreateBookFormValues>({
     resolver: zodResolver(createBookFormSchema),
   });
@@ -30,8 +30,6 @@ export default function NewBookForm() {
     console.log("values", values);
     await createBook(values);
   };
-
-  const isSubmitting = true;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
