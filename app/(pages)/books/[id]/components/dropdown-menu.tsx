@@ -6,6 +6,8 @@ import { Edit3 } from "lucide-react";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
+import RenameBookForm from "./rename-book-form";
+
 const RecipesList = dynamic(() => import("./recipe-list-for-book"), {
   ssr: false,
   loading: () => <div className="py-4 text-center">Carregando receitas...</div>,
@@ -13,41 +15,53 @@ const RecipesList = dynamic(() => import("./recipe-list-for-book"), {
 
 interface BookDropdownMenuProps {
   bookId: string;
+  bookName: string;
 }
 
-export default function BookDropdownMenu({ bookId }: BookDropdownMenuProps) {
-  const [dialogOpen, setDialogOpen] = useState(false);
+export default function BookDropdownMenu({
+  bookId,
+  bookName,
+}: BookDropdownMenuProps) {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
-  // Função para fechar o dialog
-  const handleSuccess = () => {
-    setDialogOpen(false);
+  const handleCloseDialog = () => {
+    setIsDialogOpen(false);
+    setSelectedOption(null);
   };
 
   const options: OptionItem[] = [
     {
-      icon: (
-        <FaPlus className="text-foreground text-emerald min-w-fit w-8 h-8" />
-      ),
+      icon: <FaPlus className="w-4 h-4 text-green-500" />,
       label: "Adicionar receita",
       action: {
         type: "dialog",
-        title: "Adicionar receita",
-        description: "Adicione uma receita ao livro",
-        content: <RecipesList bookId={bookId} onSuccess={handleSuccess} />,
+        content: <RecipesList bookId={bookId} onSuccess={handleCloseDialog} />,
       },
     },
     {
       icon: <Edit3 className="w-4 h-4 text-gray-500" />,
       label: "Renomear",
-      action: { type: "action", onClick: () => { } },
+      action: {
+        type: "dialog",
+        content: (
+          <RenameBookForm
+            bookId={bookId}
+            currentName={bookName}
+            onSuccess={handleCloseDialog}
+          />
+        ),
+      },
     },
   ];
 
   return (
     <OptionsDropdown
       options={options}
-      dialogOpen={dialogOpen}
-      setDialogOpen={setDialogOpen}
+      isDialogOpen={isDialogOpen}
+      setIsDialogOpen={setIsDialogOpen}
+      selectedOption={selectedOption}
+      setSelectedOption={setSelectedOption}
       triggerButton={<RoundButtonWithIcon icon="three-dots-vertical" />}
     />
   );

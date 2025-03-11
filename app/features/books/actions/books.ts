@@ -11,7 +11,7 @@ import { BooksToRecipes } from "@/infra/db/schema/books-to-recipes";
 import { currentUser } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { createBookDb } from "../db/books";
+import { createBookDb, updateBookNameDb } from "../db/books";
 
 export async function createBook(data: Partial<InsertBook>) {
   const bookName = data.name;
@@ -90,5 +90,29 @@ export async function addRecipesToBook(bookId: string, recipeIds: string[]) {
   } catch (error) {
     console.error("Error adding recipes to book:", error);
     throw new Error("Failed to add recipes to book");
+  }
+}
+
+export async function renameBook(bookId: string, newName: string) {
+  if (!bookId) {
+    throw new Error("Book ID is required");
+  }
+
+  if (!newName || newName.trim() === "") {
+    throw new Error("Book name is required");
+  }
+
+  try {
+    await updateBookNameDb(bookId, newName.trim());
+
+    // Revalidate the book page to show the updated name
+    revalidatePath(`/books/${bookId}`);
+    // Also revalidate the books list page
+    revalidatePath("/books");
+
+    return { success: true };
+  } catch (error) {
+    console.error("Error renaming book:", error);
+    throw new Error("Failed to rename book");
   }
 }

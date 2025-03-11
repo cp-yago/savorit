@@ -32,7 +32,9 @@ export default async function RecipeBook({
       <Header
         title="Livros"
         href={`/books/${bookId}`}
-        rightButton={<BookDropdownMenu bookId={bookId} />}
+        rightButton={
+          <BookDropdownMenu bookId={bookId} bookName={book?.name || ""} />
+        }
         showSearchBar={false}
         breadcrumbItems={breadcrumbItems}
       />
