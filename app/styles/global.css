@@ -81,5 +81,5 @@
 }
 
 .hover-scale {
-  @apply hover:scale-101 transition-transform duration-200 ease-in-out cursor-pointer;
+  @apply shadow-md hover:scale-101 transition-transform duration-200 ease-in-out cursor-pointer;
 }
