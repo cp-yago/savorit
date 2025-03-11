@@ -16,7 +16,11 @@ export default function BookCard({
   images = [],
 }: BookCardProps) {
   return (
-    <Link href={`/books/${id}`} key={id} className="block hover-scale">
+    <Link
+      href={`/books/${id}`}
+      key={id}
+      className="block hover-scale rounded-3xl"
+    >
       <div className="bg-white rounded-3xl p-2 border border-gray-200 h-full flex flex-col">
         <div className="relative h-48 md:h-56">
           <div className="absolute top-0 left-0 w-1/2 h-full pr-1">

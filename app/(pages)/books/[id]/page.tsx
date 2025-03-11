@@ -16,16 +16,29 @@ export default async function RecipeBook({
   const book = await findBookByIdDb(bookId);
   const recipes = await findRecipesByBookIdDb(bookId);
 
+  const breadcrumbItems = [
+    {
+      label: "Livros",
+      href: "/books",
+    },
+    {
+      label: book?.name || "",
+      isCurrent: true,
+    },
+  ];
+
   return (
     <div className="flex flex-col items-center gap-4">
       <Header
-        title={book?.name || ""}
+        title="Livros"
         href={`/books/${bookId}`}
         rightButton={<AddRecipeToBookButton bookId={bookId} />}
         showSearchBar={false}
+        breadcrumbItems={breadcrumbItems}
+        showTitleSection={false}
       />
 
-      <main className="flex-1 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4 overflow-auto mb-16 w-full p-4 mt-30">
+      <main className="flex-1 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4 overflow-auto mb-16 w-full p-4 mt-24">
         {recipes.length === 0 && (
           <div className="col-span-full flex justify-center items-center h-full">
             <p className="text-gray-500 text-md text-center mb-4">
