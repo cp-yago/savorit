@@ -1,6 +1,6 @@
-import RoundButton from "@/components/rounded-link-button";
+import RoundButtonWithIcon from "@/components/round-button";
 import { Skeleton } from "@/components/ui/skeleton";
-
+import Link from "next/link";
 export function CardSkeleton() {
   return (
     <div className="flex flex-col space-y-3">
@@ -19,7 +19,9 @@ export default function Loading() {
       <header className="flex flex-col justify-between w-full py-4 px-5 sticky top-0 bg-peach-cream z-10">
         <div className="flex justify-between items-center py-2">
           <h1 className="text-xl">Carregando Receitas</h1>
-          <RoundButton icon="plus" pathOrUrl="/" />
+          <Link href="/recipes">
+            <RoundButtonWithIcon icon="plus" />
+          </Link>
         </div>
       </header>
 

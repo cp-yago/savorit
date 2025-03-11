@@ -20,7 +20,12 @@ import { useState } from "react";
 // Define the types of actions
 export type OptionAction =
   | { type: "link"; href: string }
-  | { type: "dialog"; title: string; description: string; content: React.ReactNode }
+  | {
+      type: "dialog";
+      title: string;
+      description: string;
+      content: React.ReactNode;
+    }
   | { type: "action"; onClick: () => void };
 
 export interface OptionItem {
