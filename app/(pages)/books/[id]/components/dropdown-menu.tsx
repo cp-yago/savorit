@@ -1,7 +1,7 @@
 "use client";
 
 import { OptionItem, OptionsDropdown } from "@/components/options-dropdown";
-import RoundButtonWithIcon from "@/components/round-button";
+import RoundButtonWithIcon from "@/components/round-button-with-icon";
 import { Edit3 } from "lucide-react";
 import dynamic from "next/dynamic";
 import { useState } from "react";
@@ -39,7 +39,7 @@ export default function BookDropdownMenu({ bookId }: BookDropdownMenuProps) {
     {
       icon: <Edit3 className="w-4 h-4 text-gray-500" />,
       label: "Renomear",
-      action: { type: "action", onClick: () => {} },
+      action: { type: "action", onClick: () => { } },
     },
   ];
 

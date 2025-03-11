@@ -1,4 +1,4 @@
-import RoundButtonWithIcon from "@/components/round-button";
+import RoundButtonWithIcon from "@/components/round-button-with-icon";
 import Image from "next/image";
 import Link from "next/link";
 import MenuButton from "./menu-button";

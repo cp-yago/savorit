@@ -1,4 +1,4 @@
-import RoundButtonWithIcon from "@/components/round-button";
+import RoundButtonWithIcon from "@/components/round-button-with-icon";
 import { Skeleton } from "@/components/ui/skeleton";
 import Link from "next/link";
 export function CardSkeleton() {

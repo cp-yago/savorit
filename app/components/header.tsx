@@ -1,4 +1,4 @@
-import RoundButtonWithIcon from "@/components/round-button";
+import RoundButtonWithIcon from "@/components/round-button-with-icon";
 import Link from "next/link";
 import BreadcrumbNavigation from "./breadcrumb-navigation";
 import SearchBar from "./search-bar";
@@ -38,7 +38,7 @@ export default function Header({
         ) : (
           <Link
             href={href}
-            // className="w-10 h-10 bg-white rounded-full flex items-center justify-center border-2 border-fog-gray hover-scale"
+          // className="w-10 h-10 bg-white rounded-full flex items-center justify-center border-2 border-fog-gray hover-scale"
           >
             <RoundButtonWithIcon icon="plus" />
           </Link>

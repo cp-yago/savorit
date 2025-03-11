@@ -1,4 +1,4 @@
-import RoundButtonWithIcon from "@/components/round-button";
+import RoundButtonWithIcon from "@/components/round-button-with-icon";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Progress } from "@radix-ui/react-progress";
 import Link from "next/link";
