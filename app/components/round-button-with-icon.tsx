@@ -1,12 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { ButtonHTMLAttributes } from "react";
-import { FaArrowLeft, FaPlus } from "react-icons/fa";
+import { FaArrowLeft, FaEllipsisV, FaPlus } from "react-icons/fa";
 
-type RoundButtonIconType = "plus" | "back";
+type RoundButtonIconType = "plus" | "back" | "three-dots-vertical";
 
 const icons: Record<RoundButtonIconType, React.ReactNode> = {
   plus: <FaPlus />,
   back: <FaArrowLeft />,
+  "three-dots-vertical": <FaEllipsisV />,
 };
 
 interface RoundButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

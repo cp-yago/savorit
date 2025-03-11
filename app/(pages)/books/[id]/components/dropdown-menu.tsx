@@ -48,7 +48,7 @@ export default function BookDropdownMenu({ bookId }: BookDropdownMenuProps) {
       options={options}
       dialogOpen={dialogOpen}
       setDialogOpen={setDialogOpen}
-      triggerButton={<RoundButtonWithIcon icon="plus" />}
+      triggerButton={<RoundButtonWithIcon icon="three-dots-vertical" />}
     />
   );
 }
