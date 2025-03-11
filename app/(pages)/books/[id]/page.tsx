@@ -2,7 +2,7 @@ import Header from "@/components/header";
 import RecipeCard from "@/components/recipe-card";
 import { findBookByIdDb } from "@/features/books/db/books";
 import { findRecipesByBookIdDb } from "@/features/recipes/db/recipes";
-import AddRecipeToBookButton from "./components/add-recipe-to-book-button";
+import BookDropdownMenu from "./components/dropdown-menu";
 
 type Params = { id: string };
 
@@ -32,10 +32,9 @@ export default async function RecipeBook({
       <Header
         title="Livros"
         href={`/books/${bookId}`}
-        rightButton={<AddRecipeToBookButton bookId={bookId} />}
+        rightButton={<BookDropdownMenu />}
         showSearchBar={false}
         breadcrumbItems={breadcrumbItems}
-        showTitleSection={false}
       />
 
       <main className="flex-1 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4 overflow-auto mb-16 w-full p-4 mt-24">
