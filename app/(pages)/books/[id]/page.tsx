@@ -26,6 +26,14 @@ export default async function RecipeBook({
       />
 
       <main className="flex-1 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4 overflow-auto mb-16 w-full p-4 mt-30">
+        {recipes.length === 0 && (
+          <div className="col-span-full flex justify-center items-center h-full">
+            <p className="text-gray-500 text-md text-center mb-4">
+              Você ainda não adicionou receitas a este livro. Clique no botão
+              acima para adicionar a sua primeira.
+            </p>
+          </div>
+        )}
         {recipes.map((recipe) => (
           <RecipeCard
             key={recipe.id}
