@@ -137,7 +137,7 @@ export function OptionsDropdown({
         </DropdownMenuTrigger>
         <DropdownMenuContent
           align="end"
-          className="w-56 rounded-xl mt-2 p-1 border border-gray-200 bg-soft-peach shadow-lg animate-in fade-in-80 zoom-in-95 z-50"
+          className="w-56 rounded-xl mt-2 p-1 border border-gray-200 bg-white shadow-lg animate-in fade-in-80 zoom-in-95 z-50"
         >
           <div className="border-b border-gray-100 pb-1 mb-1">
             <div className="px-3 py-2 text-sm font-medium text-gray-800">
