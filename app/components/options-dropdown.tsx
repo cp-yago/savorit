@@ -20,7 +20,7 @@ import { useState } from "react";
 // Define the types of actions
 export type OptionAction =
   | { type: "link"; href: string }
-  | { type: "dialog"; content: React.ReactNode }
+  | { type: "dialog"; title: string; description: string; content: React.ReactNode }
   | { type: "action"; onClick: () => void };
 
 export interface OptionItem {
@@ -33,8 +33,8 @@ interface OptionsDropdownProps {
   options: OptionItem[];
   triggerButton?: React.ReactNode;
   buttonLabel?: string;
-  dialogTitle?: string;
-  dialogDescription?: string;
+  dialogOpen?: boolean;
+  setDialogOpen?: (open: boolean) => void;
 }
 
 function OptionItemComponent({
@@ -89,8 +89,9 @@ function OptionItemComponent({
 export function OptionsDropdown({
   options,
   buttonLabel = "Opções",
-  dialogDescription = "Realize a ação desejada",
   triggerButton,
+  dialogOpen,
+  setDialogOpen,
 }: OptionsDropdownProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<OptionItem | null>(null);
@@ -99,15 +100,26 @@ export function OptionsDropdown({
   const handleOptionSelect = (option: OptionItem) => {
     if ("content" in option.action) {
       setSelectedOption(option);
-      setIsDialogOpen(true);
+      if (setDialogOpen) {
+        setDialogOpen(true);
+      } else {
+        setIsDialogOpen(true);
+      }
       setIsDropdownOpen(false);
     }
   };
 
   const handleDialogClose = () => {
-    setIsDialogOpen(false);
+    if (setDialogOpen) {
+      setDialogOpen(false);
+    } else {
+      setIsDialogOpen(false);
+    }
     setSelectedOption(null);
   };
+
+  // Use the external state if provided, otherwise use internal state
+  const dialogIsOpen = dialogOpen !== undefined ? dialogOpen : isDialogOpen;
 
   return (
     <>
@@ -143,14 +155,14 @@ export function OptionsDropdown({
       </DropdownMenu>
 
       {selectedOption && "content" in selectedOption.action && (
-        <Dialog open={isDialogOpen} onOpenChange={handleDialogClose}>
+        <Dialog open={dialogIsOpen} onOpenChange={handleDialogClose}>
           <DialogContent className="sm:max-w-[425px] bg-soft-peach border-fog-gray">
             <DialogHeader>
               <DialogTitle className="font-bold">
-                {selectedOption.label}
+                {selectedOption.action.title || selectedOption.label}
               </DialogTitle>
               <DialogDescription className="text-gray">
-                {dialogDescription}
+                {selectedOption.action.description || "Realize a ação desejada"}
               </DialogDescription>
             </DialogHeader>
             {selectedOption.action.content}
