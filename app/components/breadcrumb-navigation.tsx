@@ -17,7 +17,9 @@ interface BreadcrumbNavigationProps {
   }[];
 }
 
-export default function BreadcrumbNavigation({ items }: BreadcrumbNavigationProps) {
+export default function BreadcrumbNavigation({
+  items,
+}: BreadcrumbNavigationProps) {
   return (
     <Breadcrumb className="text-2xl font-bold">
       <BreadcrumbList>
@@ -30,7 +32,10 @@ export default function BreadcrumbNavigation({ items }: BreadcrumbNavigationProp
                 </BreadcrumbPage>
               ) : item.href ? (
                 <BreadcrumbLink asChild>
-                  <Link href={item.href} className="hover:text-gray-900 transition-colors">
+                  <Link
+                    href={item.href}
+                    className="hover:text-gray-900 transition-colors"
+                  >
                     <h1 className="text-2xl font-bold">{item.label}</h1>
                   </Link>
                 </BreadcrumbLink>
@@ -44,4 +49,4 @@ export default function BreadcrumbNavigation({ items }: BreadcrumbNavigationProp
       </BreadcrumbList>
     </Breadcrumb>
   );
-} 
+}

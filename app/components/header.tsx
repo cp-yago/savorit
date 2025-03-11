@@ -29,13 +29,11 @@ export default function Header({
   return (
     <header className="p-5 w-full fixed top-0 left-0 z-50 bg-peach-cream shadow-sm">
       {breadcrumbItems && breadcrumbItems.length > 0 && (
-        <div className={`${!showTitleSection ? 'flex justify-between items-center' : 'mb-4'}`}>
+        <div
+          className={`${!showTitleSection ? "flex justify-between items-center" : "mb-4"}`}
+        >
           <BreadcrumbNavigation items={breadcrumbItems} />
-          {!showTitleSection && rightButton && (
-            <div>
-              {rightButton}
-            </div>
-          )}
+          {!showTitleSection && rightButton && <div>{rightButton}</div>}
         </div>
       )}
       {showTitleSection && (
