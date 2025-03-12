@@ -64,8 +64,11 @@ export default async function RecipeBook({
                 action: {
                   type: "dialog",
                   title: "Remover receita",
-                  description: "Tem certeza que deseja remover esta receita do livro?",
-                  content: <RemoveRecipeDialog bookId={bookId} recipeId={recipe.id} />,
+                  description:
+                    "Tem certeza que deseja remover esta receita do livro?",
+                  content: (
+                    <RemoveRecipeDialog bookId={bookId} recipeId={recipe.id} />
+                  ),
                 },
               },
             ]}

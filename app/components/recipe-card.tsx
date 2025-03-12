@@ -28,9 +28,7 @@ export default function RecipeCard({
         <div className="absolute top-2 right-2 z-10">
           <OptionsDropdown
             options={options}
-            triggerButton={
-              <RoundButtonWithIcon icon="three-dots-vertical" />
-            }
+            triggerButton={<RoundButtonWithIcon icon="three-dots-vertical" />}
           />
         </div>
       )}
