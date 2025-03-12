@@ -64,8 +64,11 @@ export default function BookDropdownMenu({
       action: {
         type: "dialog",
         title: "Deletar livro",
-        description: "Tem certeza que deseja deletar este livro? Esta ação não pode ser desfeita.",
-        content: <DeleteBookDialog bookId={bookId} onSuccess={handleCloseDialog} />,
+        description:
+          "Tem certeza que deseja deletar este livro? Esta ação não pode ser desfeita.",
+        content: (
+          <DeleteBookDialog bookId={bookId} onSuccess={handleCloseDialog} />
+        ),
       },
     },
   ];
