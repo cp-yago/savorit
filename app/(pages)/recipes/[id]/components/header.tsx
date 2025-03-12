@@ -1,5 +1,6 @@
-import RoundButton from "@/components/rounded-link-button";
+import RoundButtonWithIcon from "@/components/round-button-with-icon";
 import Image from "next/image";
+import Link from "next/link";
 import MenuButton from "./menu-button";
 
 interface HeaderProps {
@@ -15,11 +16,9 @@ export default function RecipeHeader({
 }: HeaderProps) {
   return (
     <header className="relative h-[33svh] overflow-hidden">
-      <RoundButton
-        icon="back"
-        className="absolute z-10 bg-white top-3 left-3"
-        pathOrUrl="/recipes"
-      />
+      <Link href="/recipes" className="absolute z-10 top-3 left-3">
+        <RoundButtonWithIcon icon="back" />
+      </Link>
       {imageUrl && (
         <Image
           src={imageUrl}

@@ -12,7 +12,6 @@ https://www.instagram.com/p/DE8P7thz_iD/
 
 # To do
 
-- [ ] Corrigir input da criação de receita
 - [ ] Feature Editar receita (sem alterar a foto)
 - [ ] Feature favoritar receita
 - [ ] Lidar com erros na geração de receita
@@ -21,7 +20,12 @@ https://www.instagram.com/p/DE8P7thz_iD/
 
 # Melhorias de experiência do usuário e layout
 
-- [ ] O comportamento do botão de deletar conta não está funcionando corretamente, ajustar isso
+## Lugares onde o botão redondo é usado
+
+- [ ] Detalhes da receita
+- [ ] Listagem de receitas
+- [ ] Listagem de livros
+- [ ] Detalhes do livro
 
 ## Done
 

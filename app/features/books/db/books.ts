@@ -61,3 +61,18 @@ export async function findBookByIdDb(id: string) {
 
   return book ? bookToUiBook(book) : null;
 }
+
+export async function updateBookNameDb(bookId: string, newName: string) {
+  try {
+    const updatedBook = await db
+      .update(BooksTable)
+      .set({ name: newName })
+      .where(eq(BooksTable.id, bookId))
+      .returning();
+
+    return updatedBook[0];
+  } catch (error) {
+    console.error("Error updating book name:", error);
+    return null;
+  }
+}

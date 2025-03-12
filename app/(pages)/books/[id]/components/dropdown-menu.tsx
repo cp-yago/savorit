@@ -1,40 +1,72 @@
 "use client";
 
 import { OptionItem, OptionsDropdown } from "@/components/options-dropdown";
-import { Button } from "@/components/ui/button";
+import RoundButtonWithIcon from "@/components/round-button-with-icon";
 import { Edit3 } from "lucide-react";
+import dynamic from "next/dynamic";
+import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
+import RenameBookForm from "./rename-book-form";
 
-const options: OptionItem[] = [
-  {
-    icon: <Edit3 className="w-4 h-4 text-gray-500" />,
-    label: "Renomear",
-    action: { type: "action", onClick: () => {} },
-  },
-  // {
-  //   icon: <Trash className="w-4 h-4 text-gray-500" />,
-  //   label: "Excluir",
-  //   action: { type: "action", onClick: () => { } },
-  // },
-  // {
-  //   icon: <FaPlus className="text-foreground text-emerald min-w-fit w-8 h-8" />,
-  //   label: "Adicionar receita",
-  //   action: { type: "action", onClick: () => { } },
-  // },
-];
+const RecipesList = dynamic(() => import("./recipe-list-for-book"), {
+  ssr: false,
+  loading: () => <div className="py-4 text-center">Carregando receitas...</div>,
+});
 
-export default function BookDropdownMenu() {
+interface BookDropdownMenuProps {
+  bookId: string;
+  bookName: string;
+}
+
+export default function BookDropdownMenu({
+  bookId,
+  bookName,
+}: BookDropdownMenuProps) {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+
+  const handleCloseDialog = () => {
+    setIsDialogOpen(false);
+    setSelectedOption(null);
+  };
+
+  const options: OptionItem[] = [
+    {
+      icon: <FaPlus className="w-4 h-4 text-green-500" />,
+      label: "Adicionar receita",
+      action: {
+        type: "dialog",
+        title: "Adicionar receita",
+        description: "Selecione as receitas que deseja adicionar ao livro",
+        content: <RecipesList bookId={bookId} onSuccess={handleCloseDialog} />,
+      },
+    },
+    {
+      icon: <Edit3 className="w-4 h-4 text-gray-500" />,
+      label: "Renomear",
+      action: {
+        type: "dialog",
+        title: "Renomear livro",
+        description: "Altere o nome do seu livro",
+        content: (
+          <RenameBookForm
+            bookId={bookId}
+            currentName={bookName}
+            onSuccess={handleCloseDialog}
+          />
+        ),
+      },
+    },
+  ];
+
   return (
     <OptionsDropdown
       options={options}
-      triggerButton={
-        <Button
-          variant="ghost"
-          className="w-10 h-10 bg-white rounded-full flex items-center justify-center border-2 border-fog-gray hover-scale focus:outline-none focus:ring-0 focus:border-fog-gray"
-        >
-          <FaPlus className="text-foreground text-emerald min-w-fit w-8 h-8" />
-        </Button>
-      }
+      isDialogOpen={isDialogOpen}
+      setIsDialogOpen={setIsDialogOpen}
+      selectedOption={selectedOption}
+      setSelectedOption={setSelectedOption}
+      triggerButton={<RoundButtonWithIcon icon="three-dots-vertical" />}
     />
   );
 }
