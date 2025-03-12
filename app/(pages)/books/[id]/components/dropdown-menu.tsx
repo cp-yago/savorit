@@ -36,6 +36,8 @@ export default function BookDropdownMenu({
       label: "Adicionar receita",
       action: {
         type: "dialog",
+        title: "Adicionar receita",
+        description: "Selecione as receitas que deseja adicionar ao livro",
         content: <RecipesList bookId={bookId} onSuccess={handleCloseDialog} />,
       },
     },
@@ -44,6 +46,8 @@ export default function BookDropdownMenu({
       label: "Renomear",
       action: {
         type: "dialog",
+        title: "Renomear livro",
+        description: "Altere o nome do seu livro",
         content: (
           <RenameBookForm
             bookId={bookId}
