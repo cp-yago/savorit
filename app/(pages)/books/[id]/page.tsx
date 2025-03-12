@@ -4,6 +4,7 @@ import { findBookByIdDb } from "@/features/books/db/books";
 import { findRecipesByBookIdDb } from "@/features/recipes/db/recipes";
 import { Trash2 } from "lucide-react";
 import BookDropdownMenu from "./components/dropdown-menu";
+import RemoveRecipeDialog from "./components/remove-recipe-dialog";
 
 type Params = { id: string };
 
@@ -64,16 +65,7 @@ export default async function RecipeBook({
                   type: "dialog",
                   title: "Remover receita",
                   description: "Tem certeza que deseja remover esta receita do livro?",
-                  content: (
-                    <div className="flex justify-end gap-2 mt-4">
-                      <button className="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100">
-                        Cancelar
-                      </button>
-                      <button className="px-4 py-2 rounded-lg bg-red-500 text-white hover:bg-red-600">
-                        Remover
-                      </button>
-                    </div>
-                  ),
+                  content: <RemoveRecipeDialog bookId={bookId} recipeId={recipe.id} />,
                 },
               },
             ]}

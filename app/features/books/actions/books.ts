@@ -11,7 +11,11 @@ import { BooksToRecipes } from "@/infra/db/schema/books-to-recipes";
 import { currentUser } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { createBookDb, updateBookNameDb } from "../db/books";
+import {
+  createBookDb,
+  removeRecipeFromBookDb,
+  updateBookNameDb,
+} from "../db/books";
 
 export async function createBook(data: Partial<InsertBook>) {
   const bookName = data.name;
@@ -114,5 +118,31 @@ export async function renameBook(bookId: string, newName: string) {
   } catch (error) {
     console.error("Error renaming book:", error);
     throw new Error("Failed to rename book");
+  }
+}
+
+export async function removeRecipeFromBook(bookId: string, recipeId: string) {
+  if (!bookId) {
+    throw new Error("Book ID is required");
+  }
+
+  if (!recipeId) {
+    throw new Error("Recipe ID is required");
+  }
+
+  try {
+    const success = await removeRecipeFromBookDb(bookId, recipeId);
+
+    if (!success) {
+      throw new Error("Failed to remove recipe from book");
+    }
+
+    // Revalidate the book page to show the updated recipes list
+    revalidatePath(`/books/${bookId}`);
+
+    return { success: true };
+  } catch (error) {
+    console.error("Error removing recipe from book:", error);
+    throw new Error("Failed to remove recipe from book");
   }
 }
