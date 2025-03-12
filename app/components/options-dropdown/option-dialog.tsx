@@ -15,7 +15,11 @@ interface OptionDialogProps {
   onOpenChange: (open: boolean) => void;
 }
 
-export function OptionDialog({ selectedOption, isOpen, onOpenChange }: OptionDialogProps) {
+export function OptionDialog({
+  selectedOption,
+  isOpen,
+  onOpenChange,
+}: OptionDialogProps) {
   if (!selectedOption || !("content" in selectedOption.action)) {
     return null;
   }
@@ -37,4 +41,4 @@ export function OptionDialog({ selectedOption, isOpen, onOpenChange }: OptionDia
       </DialogContent>
     </Dialog>
   );
-} 
+}

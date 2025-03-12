@@ -9,7 +9,12 @@ interface OptionItemComponentProps extends OptionItem {
 }
 
 // Component for action items (onClick)
-function ActionItem({ label, icon, action, onSelect }: OptionItemComponentProps) {
+function ActionItem({
+  label,
+  icon,
+  action,
+  onSelect,
+}: OptionItemComponentProps) {
   if (!("onClick" in action)) return null;
 
   return (
@@ -74,4 +79,4 @@ export function OptionItemComponent(props: OptionItemComponentProps) {
   }
 
   return null;
-} 
+}
