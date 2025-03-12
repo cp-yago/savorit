@@ -2,10 +2,11 @@
 
 import { OptionItem, OptionsDropdown } from "@/components/options-dropdown";
 import RoundButtonWithIcon from "@/components/round-button-with-icon";
-import { Edit3 } from "lucide-react";
+import { Edit3, Trash2 } from "lucide-react";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
+import DeleteBookDialog from "./delete-book-dialog";
 import RenameBookForm from "./rename-book-form";
 
 const RecipesList = dynamic(() => import("./recipe-list-for-book"), {
@@ -54,6 +55,19 @@ export default function BookDropdownMenu({
             currentName={bookName}
             onSuccess={handleCloseDialog}
           />
+        ),
+      },
+    },
+    {
+      icon: <Trash2 className="w-4 h-4 text-red-500" />,
+      label: "Deletar livro",
+      action: {
+        type: "dialog",
+        title: "Deletar livro",
+        description:
+          "Tem certeza que deseja deletar este livro? Esta ação não pode ser desfeita.",
+        content: (
+          <DeleteBookDialog bookId={bookId} onSuccess={handleCloseDialog} />
         ),
       },
     },

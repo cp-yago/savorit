@@ -13,6 +13,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import {
   createBookDb,
+  deleteBookDb,
   removeRecipeFromBookDb,
   updateBookNameDb,
 } from "../db/books";
@@ -144,5 +145,25 @@ export async function removeRecipeFromBook(bookId: string, recipeId: string) {
   } catch (error) {
     console.error("Error removing recipe from book:", error);
     throw new Error("Failed to remove recipe from book");
+  }
+}
+
+export async function deleteBook(bookId: string) {
+  if (!bookId) {
+    throw new Error("Book ID is required");
+  }
+
+  try {
+    const success = await deleteBookDb(bookId);
+
+    if (!success) {
+      throw new Error("Failed to delete book");
+    }
+
+    // Revalidate the books list page
+    revalidatePath("/books");
+  } catch (error) {
+    console.error("Error deleting book:", error);
+    throw new Error("Failed to delete book");
   }
 }

@@ -96,3 +96,19 @@ export async function removeRecipeFromBookDb(bookId: string, recipeId: string) {
     throw error;
   }
 }
+
+export async function deleteBookDb(bookId: string) {
+  try {
+    await db.delete(BooksToRecipes).where(eq(BooksToRecipes.bookId, bookId));
+
+    const result = await db
+      .delete(BooksTable)
+      .where(eq(BooksTable.id, bookId))
+      .returning();
+
+    return result.length > 0;
+  } catch (error) {
+    console.error("Error deleting book:", error);
+    throw error;
+  }
+}
