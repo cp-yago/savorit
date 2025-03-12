@@ -1,14 +1,18 @@
+"use client";
 import InstagramIcon from "@/components/icons/instagram";
+import { OptionItem, OptionsDropdown } from "@/components/options-dropdown";
 import placeholderImage from "@/public/img/placeholder.png";
 import { Clock } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import RoundButtonWithIcon from "./round-button-with-icon";
 
 interface RecipeCardProps {
   id: string;
   imageURL: string;
   title: string;
   timeToCookInMinutes: number;
+  options?: OptionItem[];
 }
 
 export default function RecipeCard({
@@ -16,10 +20,22 @@ export default function RecipeCard({
   imageURL,
   title,
   timeToCookInMinutes = 30,
+  options,
 }: RecipeCardProps) {
   return (
-    <Link href={`/recipes/${id}`} className="block">
-      <div className="bg-white rounded-3xl overflow-hidden border-2 border-fog-gray hover-scale">
+    <div className="bg-white rounded-3xl overflow-hidden border-2 border-fog-gray hover-scale relative">
+      {options && (
+        <div className="absolute top-2 right-2 z-10">
+          <OptionsDropdown
+            options={options}
+            triggerButton={
+              <RoundButtonWithIcon icon="three-dots-vertical" />
+            }
+          />
+        </div>
+      )}
+
+      <Link href={`/recipes/${id}`} className="block">
         <div className="relative h-32 overflow-hidden rounded-2xl mx-1 my-1">
           <Image
             src={imageURL || placeholderImage}
@@ -43,7 +59,7 @@ export default function RecipeCard({
             </button>
           </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }
