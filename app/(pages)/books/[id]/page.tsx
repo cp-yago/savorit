@@ -2,7 +2,9 @@ import Header from "@/components/header";
 import RecipeCard from "@/components/recipe-card";
 import { findBookByIdDb } from "@/features/books/db/books";
 import { findRecipesByBookIdDb } from "@/features/recipes/db/recipes";
+import { Trash2 } from "lucide-react";
 import BookDropdownMenu from "./components/dropdown-menu";
+import RemoveRecipeDialog from "./components/remove-recipe-dialog";
 
 type Params = { id: string };
 
@@ -55,6 +57,21 @@ export default async function RecipeBook({
             imageURL={recipe.imageUrl!} // refactor
             title={recipe.title || "Untitled"}
             timeToCookInMinutes={30}
+            options={[
+              {
+                icon: <Trash2 className="w-4 h-4 text-red-500" />,
+                label: "Remover do livro",
+                action: {
+                  type: "dialog",
+                  title: "Remover receita",
+                  description:
+                    "Tem certeza que deseja remover esta receita do livro?",
+                  content: (
+                    <RemoveRecipeDialog bookId={bookId} recipeId={recipe.id} />
+                  ),
+                },
+              },
+            ]}
           />
         ))}
       </main>

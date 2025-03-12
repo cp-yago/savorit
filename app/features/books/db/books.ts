@@ -1,6 +1,7 @@
 import { db } from "@/infra/db";
 import { BooksTable, InsertBook } from "@/infra/db/schema";
-import { eq } from "drizzle-orm";
+import { BooksToRecipes } from "@/infra/db/schema/books-to-recipes";
+import { and, eq } from "drizzle-orm";
 import { BookWithRecipes, UiBook } from "../types";
 
 export async function createBookDb(data: InsertBook) {
@@ -74,5 +75,24 @@ export async function updateBookNameDb(bookId: string, newName: string) {
   } catch (error) {
     console.error("Error updating book name:", error);
     return null;
+  }
+}
+
+export async function removeRecipeFromBookDb(bookId: string, recipeId: string) {
+  try {
+    const result = await db
+      .delete(BooksToRecipes)
+      .where(
+        and(
+          eq(BooksToRecipes.bookId, bookId),
+          eq(BooksToRecipes.recipeId, recipeId),
+        ),
+      )
+      .returning();
+
+    return result.length > 0;
+  } catch (error) {
+    console.error("Error removing recipe from book:", error);
+    throw error;
   }
 }
