@@ -1,6 +1,6 @@
 import AddFirstCard from "@/components/add-first-card";
+import RecipeCard from "@/components/recipe-card";
 import { UiRecipe } from "@/features/recipes/types";
-import RecipeCard from "./recipe-card";
 
 interface RecipeGridProps {
   recipes: UiRecipe[];
