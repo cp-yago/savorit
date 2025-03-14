@@ -1,7 +1,7 @@
-import RoundButtonWithIcon from "@/components/round-button-with-icon";
 import { Skeleton } from "@/components/ui/skeleton";
-import Link from "next/link";
-export function CardSkeleton() {
+import { Loader2 } from "lucide-react";
+
+function CardSkeleton() {
   return (
     <div className="flex flex-col space-y-3">
       <Skeleton className="h-[125px] w-[150px] rounded-xl" />
@@ -15,13 +15,14 @@ export function CardSkeleton() {
 
 export default function Loading() {
   return (
-    <div className="flex flex-col items-center gap-4">
-      <header className="flex flex-col justify-between w-full py-4 px-5 sticky top-0 bg-peach-cream z-10">
+    <div className="flex flex-col items-center gap-4 p-4">
+      <header className="flex flex-col justify-between w-full py-4 px-5 sticky top-0 z-10">
         <div className="flex justify-between items-center py-2">
-          <h1 className="text-xl">Carregando Receitas</h1>
-          <Link href="/recipes">
-            <RoundButtonWithIcon icon="plus" />
-          </Link>
+          <h1 className="text-xl flex items-center">
+            Carregando Receitas
+            <Loader2 className="animate-spin ml-4" />
+          </h1>
+          <Skeleton className="h-10 w-10 rounded-full" />
         </div>
       </header>
 
