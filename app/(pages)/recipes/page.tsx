@@ -20,13 +20,13 @@ export default async function RecipeList() {
         <Header title="Receitas" href="/recipes/new" showSearchBar={false} />
       </div>
 
-      <div className="flex-1 pb-[80px]">
-        <div className="px-5 h-[calc(100vh-152px)]">
-          <div className={recipes.length === 0 ? 'h-full flex items-center justify-center' : ''}>
+      <main className="pt-[100px] pb-[80px] min-h-screen">
+        <div className="px-5">
+          <div className={`${recipes.length === 0 ? 'h-[calc(100vh-152px)] flex items-center justify-center' : ''}`}>
             <RecipeGrid recipes={recipes} />
           </div>
         </div>
-      </div>
+      </main>
     </>
   );
 }
