@@ -15,12 +15,20 @@ export default async function RecipeList() {
   const recipes = await findRecipesByUserId(user.userId);
 
   return (
-    <div className="flex flex-col h-screen">
-      <Header title="Receitas" href="/recipes/new" showSearchBar={false} />
+    <>
+      <div className="fixed top-0 left-0 right-0 z-50 bg-background">
+        <Header title="Receitas" href="/recipes/new" showSearchBar={false} />
+      </div>
 
-      <main className="flex-1 overflow-auto px-5 pb-20 relative mt-30">
-        <RecipeGrid recipes={recipes} />
+      <main className="pt-[100px] pb-[80px] min-h-screen">
+        <div className="px-3 sm:px-5">
+          <div
+            className={`${recipes.length === 0 ? "h-[calc(100vh-152px)] flex items-center justify-center" : ""}`}
+          >
+            <RecipeGrid recipes={recipes} />
+          </div>
+        </div>
       </main>
-    </div>
+    </>
   );
 }

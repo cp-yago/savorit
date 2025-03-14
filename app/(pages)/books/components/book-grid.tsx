@@ -10,7 +10,7 @@ export default function BookGrid({ books }: BookGridProps) {
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
       {books.length === 0 && (
         <div className="col-span-full flex justify-center items-center h-full">
-          <p className="text-gray-500 text-md text-center mb-4">
+          <p className="text-gray-500 text-lg text-center mb-4">
             Você ainda não possui livros. Clique no botão acima para criar o seu
             primeiro.
           </p>

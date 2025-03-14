@@ -23,13 +23,17 @@ export default function RootLayout({
             content="width=device-width, initial-scale=1.0"
           />
         </Head>
-        <body className="bg-soft-peach pb-16">
-          {children}
-          <Suspense>
-            <SignedIn>
-              <BottomNavigation />
-            </SignedIn>
-          </Suspense>
+        <body className="bg-soft-peach">
+          <div className="min-h-screen flex flex-col relative">
+            {children}
+            <Suspense>
+              <SignedIn>
+                <div className="fixed bottom-0 left-0 right-0 z-50 bg-background">
+                  <BottomNavigation />
+                </div>
+              </SignedIn>
+            </Suspense>
+          </div>
         </body>
       </html>
     </ClerkProvider>
