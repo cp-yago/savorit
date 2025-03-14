@@ -10,15 +10,13 @@ export default function RecipeGrid({ recipes }: RecipeGridProps) {
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
       {recipes.length === 0 && (
-        <>
-          <div className="col-span-full flex justify-center items-center h-full">
-            <p className="text-gray-500 text-md text-center mb-4">
-              Você ainda não possui receitas. Clique no botão ou card para criar
-              a sua primeira.
-            </p>
-          </div>
+        <div className="col-span-full flex flex-col justify-center items-center h-full">
+          <p className="text-gray-500 text-lg text-center mb-6">
+            Você ainda não possui receitas. Clique no botão ou card para criar
+            a sua primeira.
+          </p>
           <AddFirstCard href="/recipes/new" title="Adicionar Receita" />
-        </>
+        </div>
       )}
       {recipes.map((recipe, index) => (
         <RecipeCard
