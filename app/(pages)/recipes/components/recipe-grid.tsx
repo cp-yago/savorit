@@ -8,7 +8,7 @@ interface RecipeGridProps {
 
 export default function RecipeGrid({ recipes }: RecipeGridProps) {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-fr">
       {recipes.length === 0 && (
         <div className="col-span-full flex flex-col justify-center items-center h-full">
           <p className="text-gray-500 text-lg text-center mb-6">

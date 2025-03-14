@@ -21,7 +21,7 @@ export default async function RecipeList() {
       </div>
 
       <main className="pt-[100px] pb-[80px] min-h-screen">
-        <div className="px-5">
+        <div className="px-3 sm:px-5">
           <div className={`${recipes.length === 0 ? 'h-[calc(100vh-152px)] flex items-center justify-center' : ''}`}>
             <RecipeGrid recipes={recipes} />
           </div>
