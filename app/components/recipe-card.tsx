@@ -53,7 +53,9 @@ export default function RecipeCard({
           <TooltipProvider>
             <Tooltip delayDuration={300}>
               <TooltipTrigger asChild>
-                <h3 className="text-xs font-bold leading-tight line-clamp-2 overflow-hidden">{title}</h3>
+                <h3 className="text-xs font-bold leading-tight line-clamp-2 overflow-hidden">
+                  {title}
+                </h3>
               </TooltipTrigger>
               <TooltipContent side="top" className="max-w-[200px]">
                 <p className="text-xs">{title}</p>

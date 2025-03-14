@@ -27,7 +27,6 @@ export default function Loading() {
 
       {/* Continue button skeleton */}
       <Skeleton className="h-10 w-full max-w-sm rounded-lg" />
-
     </div>
   );
 }
